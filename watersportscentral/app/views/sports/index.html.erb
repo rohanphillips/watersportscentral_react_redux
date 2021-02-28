@@ -1,0 +1,29 @@
+<h1>Sports</h1>
+<%= form_tag sports_path, method:"get" do %>
+  <label>Search Sports:</label><br>
+  <input type="text" id="sport_search" name="sport[search_text]"><br> 
+  <input type="submit" value="Submit Search">
+<% end %>
+<br>
+<%if current_user then%> 
+  <div style="float:left; width: auto;">
+    <%= button_to "New", new_sport_button_url, method: :get%>
+  </div>
+<%end%>
+<br><br>
+<% @sports.each do |s|%>
+  <div style="float:left; width: auto;">
+    <%= s.name %> <%= s.description%> 
+  </div>
+  <%if current_user then%> 
+    <div style="float:left; width: auto;">
+      <%= button_to "View", show_sport_button_url(s), method: :get%>
+    </div>
+    <%if owns_record(s) then %>
+      <div style="float:left; width: auto;">
+        <%= button_to "Edit", edit_sport_button_url(s), method: :get%>
+      </div><br><br>
+    <%end%>
+  <%end%>
+  <br><br>
+<% end %>

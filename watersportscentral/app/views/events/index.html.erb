@@ -1,0 +1,24 @@
+<h1>Events</h1>
+ <%if current_user then%> 
+  <div style="float:left; width: auto;">
+    <%= button_to "New", new_event_button_url, method: :get%>
+  </div>
+<%end%>
+<br><br>
+<% @events.each do |e|%>
+  <div style="float:left; width: auto;">
+    <%= e.name %> <%= e.description%> 
+  </div>
+  
+  <%if current_user then%> 
+    <div style="float:left; width: auto;">
+      <%= button_to "View", show_event_button_url(e), method: :get%>
+    </div>
+    <%if owns_record(e) then %>  
+      <div style="float:left; width: auto;">
+        <%= button_to "Edit", edit_event_button_url(e), method: :get%>
+      </div>
+    <%end%>
+  <%end%>
+  <br><br>
+<% end %>

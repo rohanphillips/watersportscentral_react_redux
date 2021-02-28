@@ -1,0 +1,32 @@
+<div><h1>WaterSportsCentral</h1></div>
+<div>
+  <%if !current_user then%>    
+    <div style="float:left; width: auto;">
+      <%= button_to "Login", '/login', method: :get%>
+    </div>
+   
+  <%else %>    
+    <div style="float:right; width: auto;">
+      <%= button_to "Profile", '/users/' + session[:user_id].to_s, method: :get%>
+    </div>
+    <div style="float:right; width: auto;">
+      <%= button_to "Logout", '/logout', method: :get%>
+    </div>
+   
+  <%end%>
+  <% if is_admin then%>
+    <div style="float:left; width: auto;">
+      <%= button_to "Users", '/users/' , method: :get%>
+    </div>
+  <%end%>
+  <div style="float:left; width: auto;">
+    <%= button_to "Sports", '/sports/' , method: :get%>
+  </div>
+  <div style="float:left; width: auto;">
+    <%= button_to "Locations", '/locations/' , method: :get%>
+  </div>
+  <div style="float:left; width: auto;">
+    <%= button_to "Events", '/events/' , method: :get%>
+  </div>
+  <br><br>
+</div>

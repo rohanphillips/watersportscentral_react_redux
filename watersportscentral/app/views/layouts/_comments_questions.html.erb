@@ -1,0 +1,58 @@
+<% if questions_comments(form_model) %>
+  <p>Comments:</p>
+  <%= form_with model: form_model.comments.build do |comment_content| %>
+    <%= comment_content.hidden_field :user_id, value: session[:user_id] %>
+    <%= comment_content.hidden_field :record_id, value: form_model.id %>
+    <%= comment_content.hidden_field :from_controller, value: controller_name %>
+    <%= comment_content.text_area :comment_text %>    
+    <%= comment_content.submit %>
+  <%end%> 
+  <% if form_model.comments.count > 0 then %>
+    <div style="float:left; width: auto;">
+       <%= form_model.comments.count %> Comment(s)<br><br>
+    </div><br><br>
+   
+    <% form_model.comments.each do |c|%>
+      <%if c.comment_text != nil then%>  
+        <div style="float:left; width: auto;">
+          Comment ID: <%= c.id %> 
+          <%= c.comment_text %>
+          by <%= user_detail(c.user_id)%>
+           @ <%= c.created_at%>
+        </div><br>
+      <% end %>
+    <% end %>
+  <% else %>
+    <div>
+      No Comments Yet
+    </div>
+  <%end%><br>
+  <p>Questions:</p>
+  <%= form_with model: form_model.questions.build do |question_content| %>
+    <%= question_content.hidden_field :user_id, value: session[:user_id] %>
+    <%= question_content.hidden_field :record_id, value: form_model.id %>
+    <%= question_content.hidden_field :from_controller, value: controller_name %>
+    <%= question_content.text_area :question_text %>    
+    <%= question_content.submit %>
+  <%end%>
+  <% if form_model.questions.count > 0 then %>
+    <div style="float:left; width: auto;">
+       <%= form_model.questions.count %> Questions(s)<br><br>
+    </div><br><br>
+   
+    <% form_model.questions.each do |q|%>
+      <%if q.question_text != nil then%>  
+        <div style="float:left; width: auto;">
+          Question ID: <%= q.id %> 
+          <%= q.question_text %>
+          by <%= user_detail(q.user_id)%>
+           @ <%= q.created_at%>
+        </div><br>
+      <% end %>
+    <% end %>
+  <% else %>
+    <div>
+      No Questions Yet
+    </div>
+  <%end%><br>
+<% end %>
