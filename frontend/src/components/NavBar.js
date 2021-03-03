@@ -9,15 +9,15 @@ const NavBar = () => {
           <ul>
             <li>
               <NavLink to="/">Home</NavLink>              
-            </li>
-            <li>
-              <NavLink to="/events">Events</NavLink>
-            </li>
+            </li>           
             <li>
               <NavLink to="/locations">Locations</NavLink>
             </li>
             <li>
               <NavLink to="/sports">Sports</NavLink>
+            </li>
+            <li>
+              <NavLink to="/events">Events</NavLink>
             </li>
             <li>
               <NavLink to="/users">Users</NavLink>
