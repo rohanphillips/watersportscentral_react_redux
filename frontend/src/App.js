@@ -1,18 +1,23 @@
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
+
 import logo from './logo.svg';
 import './App.css';
-import jQuery from 'jquery';
 
-function App() {
+
+const App = (props) => {
   return (
-    <div >
-      <header >
-        <p>Header</p>
-      </header>
-      <div>
-        <div>Menu</div>
-        <p>test</p>
-      </div>
-    </div>
+    <Router>
+      {
+        <div>
+          <NavBar/>
+        </div>
+      }
+    </Router>
   );
 }
 
