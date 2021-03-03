@@ -1,53 +1,45 @@
 import React, { Component } from 'react';
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route
-// } from 'react-dom';
+import { connect } from 'react-redux';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
 import './App.css';
-// import NavBar from './components/NavBar'
+import NavBar from './components/NavBar'
+import Home from './components/Home';
+import Events from './components/Events';
+import Locations from './components/Locations';
+import Sports from './components/Sports';
+import Users from './components/Users';
 
-class App extends Component {
- 
-  componentDidMount() {
-    // console.log("componentDidMount:")
-    // console.log(this.props)
-    // this.props.fetchCats()
-  }
- 
-  render() {
-    // console.log(this.props.catPics) // log will fire every time App renders
-    return (
-      <div className="App">
-      </div>
-    );
-  }
+const App = (props) => {
+  return (
+    <Router>
+      {
+        <div>
+          <NavBar/>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/events">
+              <Events />
+            </Route>
+            <Route exact path="/locations">
+              <Locations />
+            </Route>
+            <Route exact path="/sports">
+              <Sports />
+            </Route>
+            <Route exact path="/users">
+              <Users />
+            </Route>
+          </Switch>
+        </div>
+      }
+    </Router>
+  );
 }
- 
-// const mapStateToProps = state => {
-//   return {
-//     catPics: state.cats,
-//     loading: state.loading
-//   }
-// }
- 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     fetchCats: () => dispatch(fetchCats())
-//   }
-// }
-export default App
 
-// const App = (props) => {
-//   return (
-//     <Router>
-//       {
-//         <div>
-//           {/* <NavBar/> */}
-//         </div>
-//       }
-//     </Router>
-//   );
-// }
-
-// export default App;
+export default App;
