@@ -17,6 +17,7 @@ const createUser = newUser => async (dispatch) => {
     const { token } = response.data;
     localStorage.setItem('jwt', token);
   } catch {
-
+    dispatch({type: 'CREATE_USER_ERROR'});
   }
 }
+export {createUser}

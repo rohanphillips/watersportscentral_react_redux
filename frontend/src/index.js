@@ -8,7 +8,19 @@ import App from './App';
 import siteReducer from './reducers/siteReducer'
 // import reportWebVitals from './reportWebVitals';
 
-const store = createStore(siteReducer, applyMiddleware(thunk))
+const initialState = {
+	user: {
+		isLogin: false,
+		newuser: {
+			username: '',
+      firstName: '',
+      lastName: '',
+			email: '',
+			password: '',
+		},
+	},
+};
+const store = createStore(siteReducer, initialState, applyMiddleware(thunk))
 
 ReactDOM.render(
   <Provider store={store}>
