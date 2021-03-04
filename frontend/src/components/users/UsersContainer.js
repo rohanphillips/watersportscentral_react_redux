@@ -20,7 +20,7 @@ const UsersContainer = ({ match, locations}) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    createUser: (user) => dispatch({ type: 'CREATE_USER', payload: user })
+    createUser: newUser
   };
 };
 
