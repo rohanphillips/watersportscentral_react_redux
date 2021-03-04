@@ -8,7 +8,7 @@ import './App.css';
 import NavBar from './components/NavBar'
 import Home from './components/Home';
 import Events from './components/Events';
-import LocationsPage from './components/locations/LocationsPage';
+import LocationsContainer from './components/locations/LocationsContainer';
 import Sports from './components/Sports';
 import Users from './components/Users';
 import Signup from './components/users/Signup'
@@ -42,7 +42,7 @@ class App extends Component {
                 <Events />
               </Route>
               {console.log("AppURL")}
-              <Route path="/locations" render={routerProps => <LocationsPage {...routerProps} locations={this.state.locations}/>}/>
+              <Route path="/locations" render={routerProps => <LocationsContainer {...routerProps} locations={this.state.locations}/>}/>
               <Route exact path="/sports">
                 <Sports />
               </Route>

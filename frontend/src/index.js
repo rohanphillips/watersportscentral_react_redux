@@ -5,6 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import './index.css';
 import App from './App';
+import siteReducer from './reducers/siteReducer'
 // import reportWebVitals from './reportWebVitals';
 
 const store = createStore(siteReducer, applyMiddleware(thunk))

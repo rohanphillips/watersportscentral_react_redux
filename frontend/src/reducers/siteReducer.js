@@ -7,7 +7,8 @@ const initialState = {
     email: '',
     password: '',
   }
-}
+};
+
 const siteReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'CREATE_USER':
