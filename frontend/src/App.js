@@ -5,6 +5,7 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
+import { useLocation } from 'react-router-dom'
 import './App.css';
 import NavBar from './components/NavBar'
 import Home from './components/Home';
@@ -22,7 +23,13 @@ class App extends Component {
       3: { id: 3, title: 'Bull Shoals' }
     }
   }
+
+  location = () => {
+    return "test";
+  }
+
   render() {
+    
     return (
       <Router>
         {
@@ -35,7 +42,8 @@ class App extends Component {
               <Route exact path="/events">
                 <Events />
               </Route>
-              <Route exact path="/locations" render={routerProps => <LocationsPage {...routerProps} locations={this.state.locations}/>}/>
+              {console.log("AppURL")}
+              <Route path="/locations" render={routerProps => <LocationsPage {...routerProps} locations={this.state.locations}/>}/>
               <Route exact path="/sports">
                 <Sports />
               </Route>

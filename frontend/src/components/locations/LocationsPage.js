@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 import LocationShow from './LocationShow';
 import LocationsList from './LocationsList';
+import LocationEdit from './LocationEdit'
 
 const LocationsPage = ({ match, locations}) => {
   return (
@@ -12,8 +13,11 @@ const LocationsPage = ({ match, locations}) => {
       <div>
         {<h1>Locations Page</h1>}
         <LocationsList locations={locations} />
+        
         <Route exact path={match.url} render={() => <h3>Choose a location from the list </h3>}/>
-        <Route path={`${match.url}/:locationId`} render={routerProps => <LocationShow {...routerProps} locations={locations}/>} />
+        {console.log("LocationsPageURL:", match.url)}
+        <Route exact path={`${match.url}/:locationId`} render={routerProps => <LocationShow {...routerProps} locations={locations}/>} />
+        <Route exact path={`${match.url}/:locationId/edit`} render={routerProps => <LocationEdit {...routerProps} locations={locations}/>} />
       </div>
     </Router>
   );
