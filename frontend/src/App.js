@@ -27,7 +27,7 @@ class App extends Component {
       <Router>
         {
           <div>
-            <NavBar/>
+            <NavBar state={this.props.state}/>
             <Switch>
               <Route exact path="/">
                 <Home />
@@ -35,13 +35,11 @@ class App extends Component {
               <Route exact path="/events">
                 <Events />
               </Route>
-              <Route path="/locations" render={routerProps => <LocationsContainer {...routerProps} locations={this.state.locations}/>}/>
+              <Route path="/locations" render={routerProps => <LocationsContainer {...routerProps} locations={this.props.state.locations}/>}/>
               <Route exact path="/sports">
                 <Sports />
               </Route>
-              <Route exact path="/users">
-                <Users />
-              </Route>
+              <Route exact path="/users" render={routerProps => <UsersContainer {...routerProps} state={this.props.state}/>}/>        
               <Route path="/signup" render={routerProps => <UsersContainer {...routerProps} state={this.props.state}/>}/>
             </Switch>
           </div>
