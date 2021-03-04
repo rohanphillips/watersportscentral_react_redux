@@ -7,7 +7,7 @@ import LocationShow from './LocationShow';
 import LocationsList from './LocationsList';
 import LocationEdit from './LocationEdit'
 
-const LocationsPage = ({ match, locations}) => {
+const LocationsContainer = ({ match, locations}) => {
   return (
     <Router>
       <div>
@@ -21,4 +21,4 @@ const LocationsPage = ({ match, locations}) => {
   );
 };
 
-export default LocationsPage;
+export default LocationsContainer;

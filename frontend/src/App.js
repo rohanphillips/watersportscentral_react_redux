@@ -11,7 +11,7 @@ import Events from './components/Events';
 import LocationsContainer from './components/locations/LocationsContainer';
 import Sports from './components/Sports';
 import Users from './components/Users';
-import Signup from './components/users/Signup'
+import UsersContainer from './components/users/UsersContainer';
 
 // const App = (props) => {
 class App extends Component {
@@ -49,9 +49,7 @@ class App extends Component {
               <Route exact path="/users">
                 <Users />
               </Route>
-              <Route exact path="/signup">
-                <Signup />
-              </Route>
+              <Route path="/signup" render={routerProps => <UsersContainer {...routerProps} state={this.state}/>}/>
             </Switch>
           </div>
         }
