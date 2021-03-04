@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { createUser } from '../../actions/siteActions';
 
-class Signup extends Component {
+class Signup extends Component {  
+
   constructor(props) {
     super(props);
     this.state = {
@@ -42,7 +43,14 @@ class Signup extends Component {
     }
   }
 
+  
+
   render() {
+    const useForm = () => {
+      return useForm();
+    }
+    const { register, errors, handleSubmit } = useForm;
+    const onSubmit = (data) => console.log(data);
     const { message } = this.state;
    
     return (
@@ -50,10 +58,11 @@ class Signup extends Component {
          <form onSubmit={this.handleOnSubmit}>
           <h1>{message}</h1>
           <input onChange={this.handleChange}
-          type="text"
-          name="username"
-          placeholder="Username"
-          required />
+            type="text"
+            name="username"
+            placeholder="Username"
+            required 
+          />
 
           <input onChange={this.handleChange}
             type="text"
