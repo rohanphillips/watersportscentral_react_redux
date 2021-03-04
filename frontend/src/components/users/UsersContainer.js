@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {
   BrowserRouter as Router,
   Route 
@@ -17,4 +18,14 @@ const UsersContainer = ({ match, locations}) => {
   );
 };
 
-export default UsersContainer;
+const mapDispatchToProps = dispatch => {
+  return {
+    createUser: (user) => dispatch({ type: 'CREATE_USER', payload: user })
+  };
+};
+
+const mapStateToProps = state => {
+  return {state}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
