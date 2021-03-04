@@ -12,7 +12,7 @@ const UsersContainer = ({ match, locations}) => {
   return (
     <Router>
       <div>
-        <Route exact path={`${match.url}/:signup`} render={routerProps => <Signup {...routerProps} locations={locations}/>} />
+        <Route exact path={`${match.url}/:signup`} render={routerProps => <Signup {...routerProps} state={this.state}/>} />
       </div>
     </Router>
   );
