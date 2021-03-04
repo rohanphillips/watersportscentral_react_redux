@@ -9,6 +9,16 @@ function Signup(data){
   return null;
 }
 
+function Login(data){
+  console.log("Login:", data.isLogin);
+  if (data.isLogin === false){
+    return <li><NavLink to="/login">Log In</NavLink></li>;
+  } else {
+    return <li><NavLink to="/logout">Log Out</NavLink></li>;
+  }
+  
+}
+
 const NavBar = (state) => {  
   return (
     <div className="navbar">
@@ -30,7 +40,8 @@ const NavBar = (state) => {
             <li>
               <NavLink to="/users">Users</NavLink>
             </li>
-            <Signup isLogin={state.state.isLogin} />            
+            <Login data={state.state.isLogin} />
+            <Signup data={state.state.isLogin} />            
           </ul>
         </nav>
       }
