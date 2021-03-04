@@ -12,10 +12,8 @@ const LocationsPage = ({ match, locations}) => {
     <Router>
       <div>
         {<h1>Locations Page</h1>}
-        <LocationsList locations={locations} />
-        
+        <LocationsList locations={locations} />        
         <Route exact path={match.url} render={() => <h3>Choose a location from the list </h3>}/>
-        {console.log("LocationsPageURL:", match.url)}
         <Route exact path={`${match.url}/:locationId`} render={routerProps => <LocationShow {...routerProps} locations={locations}/>} />
         <Route exact path={`${match.url}/:locationId/edit`} render={routerProps => <LocationEdit {...routerProps} locations={locations}/>} />
       </div>

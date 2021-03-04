@@ -8,7 +8,6 @@ class LocationEdit extends React.Component {
   render() {
     return (
       <div>
-        {console.log("LocationEdit")}
        <h3>{ this.props.locations[this.props.match.params.locationId].title }</h3>
       </div>
     );
