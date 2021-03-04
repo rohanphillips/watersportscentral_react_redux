@@ -1,16 +1,20 @@
 class UsersController < ApplicationController
-  skip_before_action :authorized, only: [:new, :create]
+  skip_before_action :verify_authenticity_token
+  before_action :authorized, only: [:auto_login]
 
   def new
     @user = User.new
   end
 
   def create
-    @user = User.new(user_params)
+    byebug
+    @user = User.new(user_params)    
     if @user.save
-      redirect_to user_url(@user.id)
+      token = encode_token(user_id: @user.id)
+      time = Time.now + 24.hours.to_i
+      render json: { token: token, time: time }, status: :ok
     else
-      render :new
+      render json: {:error => @user.errors.messages}
     end
   end
 
