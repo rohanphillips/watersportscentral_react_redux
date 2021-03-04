@@ -22,5 +22,12 @@ const siteReducer = (state = initialState, action) => {
           password: action.user.password,
         }
       }
+    case 'CREATE_USER_ERROR':
+      return {
+        isLogin: false,
+      }
+    default: return state;
   }
 }
+
+export default siteReducer;
