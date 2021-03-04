@@ -7,7 +7,7 @@ import './index.css';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
 
-const store = createStore(applyMiddleware(thunk))
+const store = createStore(siteReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
   <Provider store={store}>
