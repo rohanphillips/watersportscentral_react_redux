@@ -42,7 +42,6 @@ class App extends Component {
               <Route exact path="/events">
                 <Events />
               </Route>
-              {console.log("AppURL")}
               <Route path="/locations" render={routerProps => <LocationsContainer {...routerProps} locations={this.state.locations}/>}/>
               <Route exact path="/sports">
                 <Sports />

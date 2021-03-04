@@ -13,7 +13,7 @@ const UsersContainer = ({ match, state}) => {
     // <Signup/>
     <Router>
       <div>
-        {console.log("UsersContainer:", match.url)}
+        {/* {console.log("UsersContainer:", match.url)} */}
         <Route exact path={match.url} render={routerProps => <Signup {...routerProps} state={state}/>} />
       </div>
     </Router>

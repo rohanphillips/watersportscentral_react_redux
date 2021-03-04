@@ -32,7 +32,7 @@ class Signup extends Component {
     await newUser({
       username, email, password, first_name, last_name
     })
-    if(newUser.isLogin === true) {
+    if(this.props.state.isLogin === true) {
       const { history } = this.props;
       history.push('/')
     } else {
