@@ -20,6 +20,23 @@ class Signup extends Component {
     })
   }
 
+  handleOnSubmit = async (e) => {
+    e.preventDefault();
+    const {username, firstName, lastName, email, password} = this.state;
+    const {newUser} = this.props;
+    await newUser({
+      username, firstName, lastName, email, password
+    })
+    if(user.isLogin === true) {
+      const { history } = this.props;
+      history.push('/')
+    } else {
+      this.setState({
+        message: 'welcome',
+      })
+    }
+  }
+
   render() {
     return (
       <div>
