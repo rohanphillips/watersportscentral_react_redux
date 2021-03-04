@@ -4,6 +4,7 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './App.css';
 import NavBar from './components/NavBar'
 import Home from './components/Home';
@@ -28,7 +29,7 @@ class App extends Component {
   }
 
   render() {
-    
+    console.log("AppProps:", this.props);
     return (
       <Router>
         {
@@ -49,7 +50,7 @@ class App extends Component {
               <Route exact path="/users">
                 <Users />
               </Route>
-              <Route path="/signup" render={routerProps => <UsersContainer {...routerProps} state={this.state}/>}/>
+              <Route path="/signup" render={routerProps => <UsersContainer {...routerProps} state={this.props.state}/>}/>
             </Switch>
           </div>
         }
@@ -58,4 +59,7 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {state}
+}
+export default connect(mapStateToProps) (App);

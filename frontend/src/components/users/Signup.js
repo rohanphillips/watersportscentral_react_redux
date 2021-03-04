@@ -18,7 +18,6 @@ class Signup extends Component {
   }
 
   handleChange = (e) => {
-    console.log("handleChange", e.target.name);
     this.setState({
       [e.target.name]: e.target.value,
     })
@@ -26,17 +25,13 @@ class Signup extends Component {
 
   handleOnSubmit = async (e) => {
     e.preventDefault();
-    console.log("handleOnSubmit:");
     const {username, email, password} = this.state;
     const {newUser} = this.props;
     const first_name = this.state.firstName;
     const last_name = this.state.lastName;
-    console.log("handleOnSubmit onSubmit props:", this.props);
-    console.log("handleOnSubmit onSubmit:", newUser);
     await newUser({
       username, email, password, first_name, last_name
     })
-    console.log("newUser onSubmit:", newUser);
     if(newUser.isLogin === true) {
       const { history } = this.props;
       history.push('/')
@@ -91,9 +86,6 @@ class Signup extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-	user: state.user,
-});
 const mapDispatchToProps = dispatch => ({
 	newUser: payload => dispatch(createUser(payload)),
 });
@@ -102,4 +94,4 @@ Signup.propTypes = {
 	user: PropTypes.object.isRequired,
 	history: PropTypes.object.isRequired,
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Signup);
+export default connect(null, mapDispatchToProps)(Signup);

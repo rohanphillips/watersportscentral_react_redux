@@ -8,16 +8,14 @@ import App from './App';
 import siteReducer from './reducers/siteReducer'
 // import reportWebVitals from './reportWebVitals';
 
-const initialState = {
+const initialState = {	
+	isLogin: false,
 	user: {
-		isLogin: false,
-		newuser: {
-			username: '',
-      firstName: '',
-      lastName: '',
-			email: '',
-			password: '',
-		},
+		username: '',
+		firstName: '',
+		lastName: '',
+		email: '',
+		password: '',
 	},
 };
 const store = createStore(siteReducer, initialState, applyMiddleware(thunk))

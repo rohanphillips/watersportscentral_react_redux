@@ -7,10 +7,7 @@ const NEW_USER_URL = `${SITE_URL}/users`
 
 const createUser = newUser => async (dispatch) => {
   try {
-    console.log("createUser siteAction:", newUser);
-    console.log("dispatch:");
     dispatch({type: 'CREATE_USER', ...newUser});
-    console.log("newuserurl:", NEW_USER_URL);
     const response = await axios({
       method: 'POST',
       url: NEW_USER_URL,
@@ -19,12 +16,11 @@ const createUser = newUser => async (dispatch) => {
     })
     const { token } = response.data;
     if (response.data.error){
-      console.log("response:", response)
+      const error = response.data.error;
+      dispatch({type: 'CREATE_USER_ERROR', error});
     } else {
-      console.log("NewUser:")
       localStorage.setItem('jwt', token);}
   } catch {
-    console.log("siteActions:error")
     dispatch({type: 'CREATE_USER_ERROR'});
   }
 }
