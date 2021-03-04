@@ -23,6 +23,25 @@ class Signup extends Component {
           placeholder="Username"
           required />
 
+          <input onChange={this.handleChange}
+            type="text"
+            name="firstName"
+            placeholder="Firstname"
+            required />
+
+          <input onChange={this.handleChange}
+            type="text"
+            name="lastName"
+            placeholder="Lastname"
+            />
+          
+          <input onChange={this.handleChange}
+            type="text"
+            name="email"
+            placeholder="Email"
+            required />
+          
+          <button type="submit">Create Accout</button>
         </form>
       </div>
     )
