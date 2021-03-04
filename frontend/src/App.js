@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from 'react-router-dom';
-import { useLocation } from 'react-router-dom'
 import './App.css';
 import NavBar from './components/NavBar'
 import Home from './components/Home';
@@ -13,6 +11,7 @@ import Events from './components/Events';
 import LocationsPage from './components/locations/LocationsPage';
 import Sports from './components/Sports';
 import Users from './components/Users';
+import Signup from './components/users/Signup'
 
 // const App = (props) => {
 class App extends Component {
@@ -49,6 +48,9 @@ class App extends Component {
               </Route>
               <Route exact path="/users">
                 <Users />
+              </Route>
+              <Route exact path="/signup">
+                <Signup />
               </Route>
             </Switch>
           </div>
