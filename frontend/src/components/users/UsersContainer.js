@@ -8,24 +8,17 @@ import Signup from './Signup';
 // import LocationsList from './LocationsList';
 // import LocationEdit from './LocationEdit'
 
-const UsersContainer = ({ match, locations}) => {
+const UsersContainer = ({ match, state}) => {
   return (
+    // <Signup/>
     <Router>
       <div>
-        <Route exact path={`${match.url}/:signup`} render={routerProps => <Signup {...routerProps} state={this.state}/>} />
+        {console.log("UsersContainer:", match.url)}
+        <Route exact path={match.url} render={routerProps => <Signup {...routerProps} state={state}/>} />
       </div>
     </Router>
   );
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    createUser: newUser
-  };
-};
 
-const mapStateToProps = state => {
-  return {state}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default UsersContainer;

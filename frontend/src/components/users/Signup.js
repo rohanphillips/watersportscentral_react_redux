@@ -1,4 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { createUser } from '../../actions/siteActions';
 
 class Signup extends Component {
   constructor(props) {
@@ -22,12 +26,16 @@ class Signup extends Component {
 
   handleOnSubmit = async (e) => {
     e.preventDefault();
+    console.log("handleOnSubmit:");
     const {username, firstName, lastName, email, password} = this.state;
     const {newUser} = this.props;
+    console.log("handleOnSubmit onSubmit props:", this.props);
+    console.log("handleOnSubmit onSubmit:", newUser);
     await newUser({
       username, firstName, lastName, email, password
     })
-    if(user.isLogin === true) {
+    console.log("newUser onSubmit:", newUser);
+    if(newUser.isLogin === true) {
       const { history } = this.props;
       history.push('/')
     } else {
@@ -38,10 +46,12 @@ class Signup extends Component {
   }
 
   render() {
+    const { message } = this.state;
+   
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <h1>{this.state.message}</h1>
+         <form onSubmit={this.handleOnSubmit}>
+          <h1>{message}</h1>
           <input onChange={this.handleChange}
           type="text"
           name="username"
@@ -66,6 +76,12 @@ class Signup extends Component {
             placeholder="Email"
             required />
           
+          <input onChange={this.handleChange}
+            type="text"
+            name="password"
+            placeholder="Password"
+            required />
+
           <button type="submit">Create Accout</button>
         </form>
       </div>
@@ -73,4 +89,15 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+const mapStateToProps = state => ({
+	user: state.user,
+});
+const mapDispatchToProps = dispatch => ({
+	newUser: payload => dispatch(createUser(payload)),
+});
+Signup.propTypes = {
+	newUser: PropTypes.func.isRequired,
+	user: PropTypes.object.isRequired,
+	history: PropTypes.object.isRequired,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
