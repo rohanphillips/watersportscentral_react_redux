@@ -7,16 +7,18 @@ import './index.css';
 import App from './App';
 import siteReducer from './reducers/siteReducer'
 // import reportWebVitals from './reportWebVitals';
-
-const initialState = {	
-	isLogin: false,
+const initialUser = {
 	user: {
 		username: '',
 		firstName: '',
 		lastName: '',
 		email: '',
 		password: '',
-	},
+	}
+}
+const initialState = {	
+	isLogin: false,
+	...initialUser,
 	locations: {
 		1: { id: 1, title: 'Coralville Lake' },
 		2: { id: 2, title: 'Cedar River' },

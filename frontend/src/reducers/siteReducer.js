@@ -1,5 +1,4 @@
-const initialState = {
-  isLogin: false,
+const initialUser = {
   user: {
     username: '',
     firstName: '',
@@ -9,57 +8,38 @@ const initialState = {
   }
 };
 
+const initialState = {
+  isLogin: false,
+  ...initialUser
+}
+
 const siteReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'CREATE_USER':
       return {
         ...state,
         isLogin: true,
-        user: {
-          username: action.username,
-          firstName: action.first_name,
-          lastName: action.last_name,
-          email: action.email,
-          password: action.password,
-        }
+        ...initialUser,
       }
     case 'CREATE_USER_ERROR':
       return {
         ...state,
         isLogin: false,
-        user: {
-          username: '',
-          firstName: '',
-          lastName: '',
-          email: '',
-          password: '',
-        },
+        ...initialUser,
         errors: {...action.error},
       }
     case 'USER_LOGIN':
       return {
         ...state, 
         isLogin: true,
-        user: {
-          username: action.username,
-          firstName: action.first_name,
-          lastName: action.last_name,
-          email: action.email,
-          password: action.password,
-        }
+        ...initialUser
       }
     case 'USER_LOGOUT':
       console.log("Logout:")
       return {
         ...state,
         isLogin: false,
-        user: {
-          username: '',
-          firstName: '',
-          lastName: '',
-          email: '',
-          password: '',
-        }
+        ...initialUser
       }
     default: return state;
   }
