@@ -30,14 +30,6 @@ class Login extends Component {
       username, password
     })
     console.log("endlogin:")
-    // if(this.props.state.isLogin === true) {
-    //   const { history } = this.props;
-    //   history.push('/')
-    // } else {
-    //   this.setState({
-    //     message: 'welcome',
-    //   })
-    // }
   }
 
   signup = () => {

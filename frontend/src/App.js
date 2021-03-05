@@ -10,9 +10,11 @@ import NavBar from './components/NavBar'
 import Home from './components/Home';
 import Events from './components/Events';
 import LocationsContainer from './components/locations/LocationsContainer';
+import SessionsContainer from './components/sessions/SessionsContainer';
+import UsersContainer from './components/users/UsersContainer';
+
 import Sports from './components/Sports';
 import Users from './components/Users';
-import UsersContainer from './components/users/UsersContainer';
 
 // const App = (props) => {
 class App extends Component {
@@ -40,8 +42,8 @@ class App extends Component {
                 <Sports />
               </Route>
               <Route exact path="/users" render={routerProps => <UsersContainer {...routerProps} state={this.props.state}/>}/>        
-              <Route path="/login" render={routerProps => <UsersContainer {...routerProps} state={this.props.state}/>}/>
-              <Route path="/signup" render={routerProps => <UsersContainer {...routerProps} state={this.props.state}/>}/>
+              <Route path="/login" render={routerProps => <SessionsContainer {...routerProps} state={this.props.state}/>}/>
+              <Route path="/signup" render={routerProps => <SessionsContainer {...routerProps} state={this.props.state}/>}/>
             </Switch>
           </div>
         }

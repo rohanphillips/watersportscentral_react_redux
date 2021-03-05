@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import Logout from '../components/users/Logout'
+import Logout from './sessions/Logout'
 
 function Signup(data){
   console.log("Signup:", data.isLogin);
