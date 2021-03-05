@@ -29,21 +29,23 @@ export {createUser}
 
 const loginUser = loginUser => async (dispatch) => {
   try {
-    dispatch({type: 'USER_LOGIN', ...loginUser});
+    console.log("loginUser:", loginUser)    
     const response = await axios({
       method: 'POST',
       url: LOGIN_USER_URL,
       data: {user: loginUser},
       crossdomain: true,
-    })
-    console.log("loginUser:", response.data)
+    })    
+    console.log("loginResponse:", response.data)
     const { token } = response.data;
+    const { user } = response.data;
     console.log("loginUser:", response)
     if (response.data.error){
       const error = response.data.error;
       dispatch({type: 'CREATE_USER_ERROR', error});
     } else {
       localStorage.setItem('jwt', token);}
+      dispatch({type: 'USER_LOGIN', ...user});
   } catch {
     dispatch({type: 'CREATE_USER_ERROR'});
   }

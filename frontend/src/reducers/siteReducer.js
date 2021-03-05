@@ -19,7 +19,13 @@ const siteReducer = (state = initialState, action) => {
       return {
         ...state,
         isLogin: true,
-        ...initialUser,
+        user: {
+          username: action.username,
+          firstName: action.first_name,
+          lastName: action.last_name,
+          email: action.email,
+          password: action.password,
+        }
       }
     case 'CREATE_USER_ERROR':
       return {
@@ -32,14 +38,21 @@ const siteReducer = (state = initialState, action) => {
       return {
         ...state, 
         isLogin: true,
-        ...initialUser
+        user: {
+          username: action.username,
+          firstName: action.first_name,
+          lastName: action.last_name,
+          email: action.email,
+          admin: action.admin,
+          active: action.active,
+        }
       }
     case 'USER_LOGOUT':
       console.log("Logout:")
       return {
         ...state,
         isLogin: false,
-        ...initialUser
+        ...initialUser,
       }
     default: return state;
   }

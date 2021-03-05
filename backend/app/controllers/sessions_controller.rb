@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:user][:password])
       token = encode_token(user_id: @user.id)
       time = Time.now + 24.hours.to_i
-      render json: { token: token, time: time }, status: :ok
+      render json: { token: token, time: time , user: @user}, status: :ok
     else
       render json: {:error => @user.errors.messages}
     end 

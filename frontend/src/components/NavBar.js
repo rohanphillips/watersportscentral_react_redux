@@ -20,8 +20,8 @@ function Login(data){
   
 }
 
-const NavBar = (state) => {  
-  console.log("NavBarState:", state.state.isLogin)
+const NavBar = (props) => {  
+  console.log("NavBarState:", props.state.isLogin)
   return (
     <div className="navbar">
       {
@@ -42,8 +42,8 @@ const NavBar = (state) => {
             <li>
               <NavLink to="/users">Users</NavLink>
             </li>
-            <Login login={state.state.isLogin} />
-            <Signup login={state.state.isLogin} />            
+            <Login login={props.state.isLogin} />
+            <Signup login={props.state.isLogin} />            
           </ul>
         </nav>
       }
