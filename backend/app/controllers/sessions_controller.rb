@@ -1,16 +1,17 @@
 class SessionsController < ApplicationController
-  skip_before_action :authorized, only: [:new, :create, :welcome, :index, :fb_create]
-  
+  skip_before_action :verify_authenticity_token
+  before_action :authorized, only: [:auto_login]
   def new
   end
 
   def create
-    @user = User.find_by(username: params[:username])    
-    if @user && @user.authenticate(params[:password])
-      session[:user_id] = @user.id
-      redirect_to '/welcome'
+    @user = User.find_by(username: params[:user][:username])  
+    if @user && @user.authenticate(params[:user][:password])
+      token = encode_token(user_id: @user.id)
+      time = Time.now + 24.hours.to_i
+      render json: { token: token, time: time }, status: :ok
     else
-      redirect_to '/login', notice: "Invalid Login Credentials"
+      render json: {:error => @user.errors.messages}
     end 
   end
 

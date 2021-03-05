@@ -40,6 +40,7 @@ class App extends Component {
                 <Sports />
               </Route>
               <Route exact path="/users" render={routerProps => <UsersContainer {...routerProps} state={this.props.state}/>}/>        
+              <Route path="/login" render={routerProps => <UsersContainer {...routerProps} state={this.props.state}/>}/>
               <Route path="/signup" render={routerProps => <UsersContainer {...routerProps} state={this.props.state}/>}/>
             </Switch>
           </div>

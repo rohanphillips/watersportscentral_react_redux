@@ -25,7 +25,15 @@ const siteReducer = (state = initialState, action) => {
       }
     case 'CREATE_USER_ERROR':
       return {
-        initialState,
+        ...state,
+        isLogin: false,
+        user: {
+          username: '',
+          firstName: '',
+          lastName: '',
+          email: '',
+          password: '',
+        },
         errors: {...action.error},
       }
     case 'USER_LOGIN':
@@ -43,7 +51,15 @@ const siteReducer = (state = initialState, action) => {
     case 'USER_LOGOUT':
       console.log("Logout:")
       return {
-        initialState,
+        ...state,
+        isLogin: false,
+        user: {
+          username: '',
+          firstName: '',
+          lastName: '',
+          email: '',
+          password: '',
+        }
       }
     default: return state;
   }

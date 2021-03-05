@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { createUser } from '../../actions/siteActions';
+import { loginUser } from '../../actions/siteActions';
 
-class Signup extends Component {  
+class Login extends Component {  
 
   constructor(props) {
     super(props);
@@ -23,31 +23,26 @@ class Signup extends Component {
 
   handleOnSubmit = async (e) => {
     e.preventDefault();
-    const {username, email, password} = this.state;
-    const {newUser} = this.props;
-    const first_name = this.state.firstName;
-    const last_name = this.state.lastName;
-    await newUser({
-      username, email, password, first_name, last_name
+    const {username, password} = this.state;
+    const {loginUser} = this.props;
+    console.log("startlogin:")
+    await loginUser({
+      username, password
     })
-    if(this.props.state.isLogin === true) {
-      const { history } = this.props;
-      history.push('/')
-    } else {
-      this.setState({
-        message: 'welcome',
-      })
-    }
+    console.log("endlogin:")
+    // if(this.props.state.isLogin === true) {
+    //   const { history } = this.props;
+    //   history.push('/')
+    // } else {
+    //   this.setState({
+    //     message: 'welcome',
+    //   })
+    // }
   }
 
   
 
   render() {
-    const useForm = () => {
-      return useForm();
-    }
-    const { register, errors, handleSubmit } = useForm;
-    const onSubmit = (data) => console.log(data);
     const { message } = this.state;
    
     return (
@@ -74,11 +69,7 @@ class Signup extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-	newUser: payload => dispatch(createUser(payload)),
+	loginUser: action => dispatch(loginUser(action)),
 });
-Signup.propTypes = {
-	newUser: PropTypes.func.isRequired,
-	user: PropTypes.object.isRequired,
-	history: PropTypes.object.isRequired,
-};
-export default connect(null, mapDispatchToProps)(Signup);
+
+export default connect(null, mapDispatchToProps)(Login);
