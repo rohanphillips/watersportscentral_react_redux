@@ -26,6 +26,14 @@ function Signout(data){
   return null;
 }
 
+function DisplayUsers(data){
+  const {admin} = data.displayusers.user;
+  if (admin){
+    return <li><NavLink to="/users">Users</NavLink></li>;
+  }
+  return null;
+}
+
 const NavBar = (props) => {  
   console.log("NavBarState:", props.state.isLogin)
   return (
@@ -45,9 +53,7 @@ const NavBar = (props) => {
             <li>
               <NavLink to="/events">Events</NavLink>
             </li>
-            <li>
-              <NavLink to="/users">Users</NavLink>
-            </li>
+            <DisplayUsers displayusers={props.state} />
             <Login login={props.state.isLogin} />
             <Signout login={props.state.isLogin} />
             <Signup login={props.state.isLogin} />            
