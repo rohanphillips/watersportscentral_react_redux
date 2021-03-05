@@ -50,6 +50,7 @@ class Login extends Component {
     console.log("login render:")
     return (
       <div>
+         <h1>Log In</h1>
          <form onSubmit={this.handleOnSubmit}>
           <h1>{message}</h1>
           <input onChange={this.handleChange}

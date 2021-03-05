@@ -8,7 +8,7 @@ const UsersContainer = ({ match, state}) => {
   console.log("UsersContainerState:", state);
   return (
     <div>
-      
+      <h1>Users</h1>
     </div>
   );
 };
