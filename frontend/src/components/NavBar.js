@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import Logout from '../components/users/Logout'
 
 function Signup(data){
   console.log("Signup:", data.isLogin);
@@ -10,16 +11,17 @@ function Signup(data){
 }
 
 function Login(data){
-  console.log("Login:", data.isLogin);
-  if (data.isLogin === false){
+  console.log("Login:", data.login);
+  if (data.login === false){
     return <li><NavLink to="/login">Log In</NavLink></li>;
   } else {
-    return <li><NavLink to="/logout">Log Out</NavLink></li>;
+    return <li><Logout/></li>;
   }
   
 }
 
 const NavBar = (state) => {  
+  console.log("NavBarState:", state.state.isLogin)
   return (
     <div className="navbar">
       {
@@ -40,8 +42,8 @@ const NavBar = (state) => {
             <li>
               <NavLink to="/users">Users</NavLink>
             </li>
-            <Login data={state.state.isLogin} />
-            <Signup data={state.state.isLogin} />            
+            <Login login={state.state.isLogin} />
+            <Signup login={state.state.isLogin} />            
           </ul>
         </nav>
       }

@@ -25,3 +25,8 @@ const createUser = newUser => async (dispatch) => {
   }
 }
 export {createUser}
+
+const logoutUser = (dispatch) =>{
+  dispatch({type: 'LOGOUT_USER'});
+}
+export {logoutUser};

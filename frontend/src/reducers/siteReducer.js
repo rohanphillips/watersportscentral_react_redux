@@ -41,6 +41,7 @@ const siteReducer = (state = initialState, action) => {
         }
       }
     case 'USER_LOGOUT':
+      console.log("Logout:")
       return {
         initialState,
       }
