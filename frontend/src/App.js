@@ -41,7 +41,7 @@ class App extends Component {
               <Route exact path="/sports">
                 <Sports />
               </Route>
-              <Route exact path="/users" render={routerProps => <UsersContainer {...routerProps} state={this.props.state}/>}/>        
+              <Route path="/users" render={routerProps => <UsersContainer {...routerProps} state={this.props.state}/>}/>        
               <Route path="/login" render={routerProps => <SessionsContainer {...routerProps} state={this.props.state}/>}/>
               <Route path="/signup" render={routerProps => <SessionsContainer {...routerProps} state={this.props.state}/>}/>
             </Switch>
