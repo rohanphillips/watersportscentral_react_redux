@@ -34,8 +34,19 @@ function DisplayUsers(data){
   return null;
 }
 
+function Profile(data){
+  console.log("ProfileData:", data.data);
+  // console.log("Profile:", data.data.state.isLogin);  
+  if (data.data.isLogin){
+    const {id} = data.data.user;
+    const link = `/users/${id}`
+    return <li><NavLink to={`${link}`}>Profile</NavLink></li>;
+  }
+  return null;
+}
+
 const NavBar = (props) => {  
-  console.log("NavBarState:", props.state.isLogin)
+  console.log("NavBarState:", props.state)
   return (
     <div className="navbar">
       {
@@ -56,7 +67,8 @@ const NavBar = (props) => {
             <DisplayUsers displayusers={props.state} />
             <Login login={props.state.isLogin} />
             <Signout login={props.state.isLogin} />
-            <Signup login={props.state.isLogin} />            
+            <Signup login={props.state.isLogin} />   
+            <Profile data={props.state} />         
           </ul>
         </nav>
       }

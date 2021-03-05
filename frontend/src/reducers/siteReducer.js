@@ -35,10 +35,11 @@ const siteReducer = (state = initialState, action) => {
         errors: {...action.error},
       }
     case 'USER_LOGIN':
-      return {
+    return {
         ...state, 
         isLogin: true,
         user: {
+          id: action.id,
           username: action.username,
           firstName: action.first_name,
           lastName: action.last_name,
