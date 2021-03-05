@@ -52,7 +52,8 @@ const loginUser = loginUser => async (dispatch) => {
 }
 export {loginUser}
 
-const logoutUser = (dispatch) =>{
-  dispatch({type: 'LOGOUT_USER'});
+const logoutUser = logoutUser => (dispatch) =>{
+  console.log("logoutUserAction:")
+  dispatch({type: 'USER_LOGOUT'});
 }
 export {logoutUser};

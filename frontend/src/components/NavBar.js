@@ -14,10 +14,16 @@ function Login(data){
   console.log("Login:", data.login);
   if (data.login === false){
     return <li><NavLink to="/login">Log In</NavLink></li>;
-  } else {
+  }   
+  return null;
+}
+
+function Signout(data){
+  console.log("Logout:", data.login);
+  if (data.login){
     return <li><Logout/></li>;
   }
-  
+  return null;
 }
 
 const NavBar = (props) => {  
@@ -43,6 +49,7 @@ const NavBar = (props) => {
               <NavLink to="/users">Users</NavLink>
             </li>
             <Login login={props.state.isLogin} />
+            <Signout login={props.state.isLogin} />
             <Signup login={props.state.isLogin} />            
           </ul>
         </nav>

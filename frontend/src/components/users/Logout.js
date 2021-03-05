@@ -15,7 +15,8 @@ class Logout extends Component {
     this.setState({
       navigate: true
     })
-    // this.props.logOut();
+    console.log("logoutProps:", this.props)
+    this.props.logOut({logout: true});
   }
 
   render() {
