@@ -10,6 +10,7 @@ import Signup from './Signup';
 
 function LoginShow(props){
   console.log("LoginShow:", props);
+  console.log("isLogin:", props.state.isLogin)
   if (props.state.isLogin === false){
     return <Route exact path="/login" render={routerProps => <Login {...routerProps} state={props}/>} />;
   }

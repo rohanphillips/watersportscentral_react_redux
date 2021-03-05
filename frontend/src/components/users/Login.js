@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import {Redirect} from "react-router-dom";
 import { loginUser } from '../../actions/siteActions';
 
 class Login extends Component {  
@@ -12,6 +11,7 @@ class Login extends Component {
       username: '',
       password: '',
       message: '',
+      navigate: false
     }
   }
 
@@ -40,11 +40,22 @@ class Login extends Component {
     // }
   }
 
-  
+  signup = () => {
+    console.log("sendToSignUp:");
+    this.setState({
+      navigate: true
+    })
+    // ;
+    console.log("After:")
+  }
 
   render() {
     const { message } = this.state;
-   
+    const {navigate } = this.state;
+    if (navigate) {
+      return <Redirect to="/signup" />
+    }
+    console.log("login render:")
     return (
       <div>
          <form onSubmit={this.handleOnSubmit}>
@@ -62,7 +73,9 @@ class Login extends Component {
             required />
 
           <button type="submit">Log In</button>
-        </form>
+          <button onClick={this.signup}>Sign Up</button>
+        </form>  
+              
       </div>
     )
   }
