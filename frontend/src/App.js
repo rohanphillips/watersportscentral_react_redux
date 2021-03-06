@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './App.css';
+import ProtectedRoute from './components/sessions/ProtectedRoute'
 import NavBar from './components/NavBar'
 import Home from './components/Home';
 import Events from './components/Events';
@@ -38,9 +39,9 @@ class App extends Component {
                 <Events />
               </Route>
               <Route path="/locations" render={routerProps => <LocationsContainer {...routerProps} locations={this.props.state.locations}/>}/>
-              <Route exact path="/sports">
+              <ProtectedRoute exact path="/sports">
                 <Sports />
-              </Route>
+              </ProtectedRoute>
               <Route path="/users" render={routerProps => <UsersContainer {...routerProps} state={this.props.state}/>}/>        
               <Route path="/login" render={routerProps => <SessionsContainer {...routerProps} state={this.props.state}/>}/>
               <Route path="/signup" render={routerProps => <SessionsContainer {...routerProps} state={this.props.state}/>}/>

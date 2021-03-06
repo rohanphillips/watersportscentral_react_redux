@@ -11,7 +11,7 @@ class Logout extends Component {
 
   logout = () => {
     console.log("logoutOnClick:")
-    localStorage.clear("token");
+    localStorage.clear("jwt");
     this.setState({
       navigate: true
     })

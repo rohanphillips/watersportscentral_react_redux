@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       time = Time.now + 24.hours.to_i
       render json: { token: token, time: time , user: @user}, status: :ok
     else
-      render json: {:error => @user.errors.messages}
+      render json: {:error => {message: "User not found"}}
     end 
   end
 
