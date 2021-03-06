@@ -10,8 +10,10 @@ class Logout extends Component {
   };
 
   logout = () => {
-    console.log("logoutOnClick:")
+    console.log("Logout:", "logoutOnClick:")
+    console.log("Logout:", localStorage.getItem("jwt"));
     localStorage.clear("jwt");
+    console.log("Logout:", localStorage.getItem("jwt"));
     this.setState({
       navigate: true
     })
