@@ -14,8 +14,10 @@ const initialState = {
 }
 
 const siteReducer = (state = initialState, action) => {
+  console.log("siteReducer:", "called", action);
   switch (action.type) {
     case 'CREATE_USER':
+      console.log("siteReducer:", "CREATE_USER");
       return {
         ...state,
         isLogin: true,
@@ -28,6 +30,7 @@ const siteReducer = (state = initialState, action) => {
         }
       }
     case 'CREATE_USER_ERROR':
+      console.log("siteReducer:", "CREATE_USER_ERROR");
       return {
         ...state,
         isLogin: false,
@@ -35,7 +38,8 @@ const siteReducer = (state = initialState, action) => {
         errors: {...action.error},
       }
     case 'USER_LOGIN':
-    return {
+      console.log("siteReducer:", "USER_LOGIN");
+      return {
         ...state, 
         isLogin: true,
         user: {
@@ -49,7 +53,7 @@ const siteReducer = (state = initialState, action) => {
         }
       }
     case 'USER_LOGOUT':
-      console.log("Logout:")
+      console.log("siteReducer:", "USER_LOGOUT");
       return {
         ...state,
         isLogin: false,

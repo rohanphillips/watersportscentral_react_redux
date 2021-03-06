@@ -25,20 +25,20 @@ class Login extends Component {
     e.preventDefault();
     const {username, password} = this.state;
     const {loginUser} = this.props;
-    console.log("startlogin:")
-    await loginUser({
+    console.log("Login:","startlogin:")
+    loginUser({
       username, password
     })
-    console.log("endlogin:")
+    console.log("Login:","endlogin:")
   }
 
   signup = () => {
-    console.log("sendToSignUp:");
+    console.log("Login:","sendToSignUp:");
     this.setState({
       navigate: true
     })
     // ;
-    console.log("After:")
+    console.log("Login:","After:")
   }
 
   render() {
@@ -47,7 +47,7 @@ class Login extends Component {
     if (navigate) {
       return <Redirect to="/signup" />
     }
-    console.log("login render:")
+    console.log("Login:","login render:")
     return (
       <div>
          <h1>Log In</h1>

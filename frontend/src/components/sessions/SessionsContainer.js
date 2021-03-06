@@ -7,8 +7,8 @@ import Login from './Login';
 import Signup from './Signup';
 
 function LoginShow(props){
-  console.log("LoginShow:", props);
-  console.log("isLogin:", props.state.isLogin)
+  console.log("SessionsContainer:","LoginShow:", props);
+  console.log("SessionsContainer:","isLogin:", props.state.isLogin);
   if (props.state.isLogin === false){
     return <Route exact path="/login" render={routerProps => <Login {...routerProps} state={props}/>} />;
   }
@@ -16,12 +16,12 @@ function LoginShow(props){
 }
 
 const UsersContainer = ({ match, state}) => {
-  console.log("UsersContainerState:", state);
+  console.log("SessionsContainer:","State:", state);
   return (
     <Router>
       <div>
-        {console.log("UsersContainer:", match.url)}
-        {console.log("UsersContainerState:",state)}
+        {console.log("SessionsContainer:","MatchURL:", match.url)}
+        {console.log("SessionsContainer:","state:",state)}
         <LoginShow state={state} />
         <Route exact path="/signup" render={routerProps => <Signup {...routerProps} state={state}/>} />
       </div>

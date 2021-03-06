@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import Logout from './sessions/Logout'
 
 function Signup(data){
-  console.log("Signup:", data.isLogin);
+  console.log("NavBar:","Signup:", data.isLogin);
   if (data.isLogin === false){
     return <li><NavLink to="/signup">Sign Up</NavLink></li>;
   }
@@ -11,7 +11,7 @@ function Signup(data){
 }
 
 function Login(data){
-  console.log("Login:", data.login);
+  console.log("NavBar:","Login:", data.login);
   if (data.login === false){
     return <li><NavLink to="/login">Log In</NavLink></li>;
   }   
@@ -19,7 +19,7 @@ function Login(data){
 }
 
 function Signout(data){
-  console.log("Logout:", data.login);
+  console.log("NavBar:","Logout:", data.login);
   if (data.login){
     return <li><Logout/></li>;
   }
@@ -35,7 +35,7 @@ function DisplayUsers(data){
 }
 
 function Profile(data){
-  console.log("ProfileData:", data.data);
+  console.log("NavBar:","ProfileData:", data.data);
   // console.log("Profile:", data.data.state.isLogin);  
   if (data.data.isLogin){
     const {id} = data.data.user;
@@ -46,7 +46,7 @@ function Profile(data){
 }
 
 const NavBar = (props) => {  
-  console.log("NavBarState:", props.state)
+  console.log("NavBar:","State:", props.state)
   return (
     <div className="navbar">
       {

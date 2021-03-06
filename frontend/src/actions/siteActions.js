@@ -28,32 +28,36 @@ const createUser = newUser => async (dispatch) => {
 export {createUser}
 
 const loginUser = loginUser => async (dispatch) => {
+  console.log("siteAction:", "called");
   try {
-    console.log("loginUser:", loginUser)    
+    console.log("siteAction:", "loginUser:", loginUser)    
     const response = await axios({
       method: 'POST',
       url: LOGIN_USER_URL,
       data: {user: loginUser},
       crossdomain: true,
     })    
-    console.log("loginResponse:", response.data)
+    console.log("siteAction:", "loginResponse:", response.data)
     const { token } = response.data;
     const { user } = response.data;
-    console.log("loginUser:", response)
+    console.log("siteAction:", "loginUser:", response)
     if (response.data.error){
+      console.log("siteAction:", "loginUserError:")
       const error = response.data.error;
       dispatch({type: 'CREATE_USER_ERROR', error});
     } else {
-      localStorage.setItem('jwt', token);}
-      dispatch({type: 'USER_LOGIN', ...user});
+      console.log("siteAction:", "will login user:")
+      localStorage.setItem('jwt', token);
+      dispatch({type: 'USER_LOGIN', ...user});}
   } catch {
+    console.log("siteAction:", "errorcatch");
     dispatch({type: 'CREATE_USER_ERROR'});
   }
 }
 export {loginUser}
 
 const logoutUser = logoutUser => (dispatch) =>{
-  console.log("logoutUserAction:")
+  console.log("siteAction:", "logoutUserAction:")
   dispatch({type: 'USER_LOGOUT'});
 }
 export {logoutUser};

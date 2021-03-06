@@ -39,9 +39,9 @@ class App extends Component {
                 <Events />
               </Route>
               <Route path="/locations" render={routerProps => <LocationsContainer {...routerProps} locations={this.props.state.locations}/>}/>
-              <ProtectedRoute exact path="/sports">
+              <Route exact path="/sports">
                 <Sports />
-              </ProtectedRoute>
+              </Route>
               <Route path="/users" render={routerProps => <UsersContainer {...routerProps} state={this.props.state}/>}/>        
               <Route path="/login" render={routerProps => <SessionsContainer {...routerProps} state={this.props.state}/>}/>
               <Route path="/signup" render={routerProps => <SessionsContainer {...routerProps} state={this.props.state}/>}/>
