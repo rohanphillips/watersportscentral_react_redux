@@ -61,3 +61,9 @@ const logoutUser = logoutUser => (dispatch) =>{
   dispatch({type: 'USER_LOGOUT'});
 }
 export {logoutUser};
+
+const getUsers = getUsers => async (dispatch) => {
+  console.log("siteAction:", "getUsers");
+ 
+}
+export {getUsers}

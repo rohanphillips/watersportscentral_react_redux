@@ -1,12 +1,28 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import {getUsers} from '../../actions/siteActions'
 
-const Users = ({ state}) => {
-  console.log("Users", "State:", state);
-  return (
-    <div> 
-        <h1>Users List</h1>     
-    </div>
-  );
+class Users extends React.Component {
+  componentDidMount(){
+    console.log("Users", "Component mounted")
+    const {getUsers} = this.props;
+    getUsers();
+  }
+  render() {
+    console.log("Users", "State:", this.props.state);
+    return (
+      <div> 
+          <h1>Users List</h1>     
+      </div>
+    );
+  }
 };
 
-export default Users;
+const mapStateToProps = state => {
+  return {state}
+}
+const mapDispatchToProps = dispatch => ({
+	getUsers: action => dispatch(getUsers(action)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Users);

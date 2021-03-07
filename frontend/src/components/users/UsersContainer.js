@@ -5,6 +5,7 @@ import {
   Switch,
   Route 
 } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Users from '../users/Users';
 
 function header() {
@@ -24,4 +25,8 @@ const UsersContainer = ({ match, state}) => {
   );
 };
 
-export default UsersContainer;
+const mapStateToProps = state => {
+  return {state}
+}
+
+export default connect(mapStateToProps)(UsersContainer);
