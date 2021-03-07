@@ -47,7 +47,7 @@ const loginUser = loginUser => async (dispatch) => {
       dispatch({type: 'CREATE_USER_ERROR', error});
     } else {
       console.log("siteAction:", "will login user:")
-      localStorage.setItem('jwt', token);
+      localStorage.setItem('loggedin', token);
       dispatch({type: 'USER_LOGIN', ...user});}
   } catch {
     console.log("siteAction:", "errorcatch");

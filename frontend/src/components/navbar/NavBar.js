@@ -36,9 +36,10 @@ function DisplayUsers(data){
 
 function Profile(data){
   console.log("NavBar:","ProfileData:", data.data);
-  // console.log("Profile:", data.data.state.isLogin);  
+  console.log("Profile:", data.data.isLogin);  
   if (data.data.isLogin){
     const {id} = data.data.user;
+    console.log("NavBar", "id:", id)
     const link = `/users/${id}`
     return <li><NavLink to={`${link}`}>Profile</NavLink></li>;
   }
