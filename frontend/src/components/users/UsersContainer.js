@@ -5,14 +5,12 @@ import {
 } from 'react-router-dom';
 
 const UsersContainer = ({ match, state}) => {
-  console.log("UsersContainerState:", state);
+  console.log("UsersContainer", "State:", state);
   return (
     <div>
       <h1>Users</h1>
     </div>
   );
 };
-
-
 
 export default UsersContainer;
