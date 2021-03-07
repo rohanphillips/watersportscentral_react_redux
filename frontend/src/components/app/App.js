@@ -5,17 +5,16 @@ import {
   Route
 } from 'react-router-dom';
 import { connect } from 'react-redux';
-import './App.css';
-import ProtectedRoute from './components/sessions/ProtectedRoute'
-import NavBar from './components/NavBar'
-import Home from './components/Home';
-import Events from './components/Events';
-import LocationsContainer from './components/locations/LocationsContainer';
-import SessionsContainer from './components/sessions/SessionsContainer';
-import UsersContainer from './components/users/UsersContainer';
+import './app.css';
+import ProtectedRoute from '../sessions/ProtectedRoute'
+import NavBar from '../navbar/NavBar'
+import Home from '../home/Home';
+import Events from '../events/Events';
+import LocationsContainer from '../locations/LocationsContainer';
+import SessionsContainer from '../sessions/SessionsContainer';
+import UsersContainer from '../users/UsersContainer';
 
-import Sports from './components/Sports';
-import Users from './components/Users';
+import Sports from '../sports/Sports';
 
 // const App = (props) => {
 class App extends Component {
