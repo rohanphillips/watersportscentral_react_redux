@@ -6,7 +6,7 @@ const UserFlat = (data) => {
     <div>
       <p>
         {data.user.first_name} {data.user.last_name} 
-        <button>Edit</button>  <button>Delete</button>    
+        <button>View</button> <button>Edit</button>  <button>Delete</button>    
       </p>
     </div>
   )
