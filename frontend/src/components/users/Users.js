@@ -21,12 +21,17 @@ class Users extends Component {
         url: USERS_URL,
         headers: headers,
         crossdomain: true,
-        }) 
-        console.log("Users", "getUsers", response)
-        this.setState({users: response.data.users})
+          }) 
+        this.setState({
+          users: response.data.users,
+          fetched: true
+        })
       }
     
-    getUsers();
+    if (this.state.fetched === false)  {
+      getUsers();
+    }
+      
   }
   render() {
     console.log("Users", "PropsState:", this.props.state);
@@ -38,9 +43,5 @@ class Users extends Component {
     );
   }
 };
-
-// const mapStateToProps = state => {
-//   return {state}
-// }
 
 export default (Users);
