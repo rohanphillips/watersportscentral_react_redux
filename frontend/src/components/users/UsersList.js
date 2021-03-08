@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import {USERS_URL} from '../../actions/siteActions'
+import UserFlat from './UserFlat'
 
 class UsersList extends Component {  
   constructor(props) {
@@ -38,7 +39,12 @@ class UsersList extends Component {
     console.log("Users", "State:", this.state);
     return (
       <div> 
-          <h1>Users List</h1>     
+          <h1>Users List</h1>
+          {
+            this.state.users.map(user => (
+              <UserFlat user={user} />
+            ))
+          }     
       </div>
     );
   }
