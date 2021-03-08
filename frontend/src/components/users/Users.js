@@ -6,7 +6,7 @@ class Users extends React.Component {
   componentDidMount(){
     console.log("Users", "Component mounted")
     const {getUsers} = this.props;
-    getUsers();
+    getUsers(this.props.state.user);
   }
   render() {
     console.log("Users", "State:", this.props.state);

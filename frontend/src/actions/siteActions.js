@@ -3,7 +3,7 @@ import axios from 'axios';
 const CREATE_USER = 'CREATE_USER';
 const CREATE_USER_ERROR = 'CREATE_USER_ERROR';
 const SITE_URL = 'http://localhost:3001'
-const NEW_USER_URL = `${SITE_URL}/users`
+const USERS_URL = `${SITE_URL}/users`
 const LOGIN_USER_URL = `${SITE_URL}/sessions`
 
 const createUser = newUser => async (dispatch) => {
@@ -11,7 +11,7 @@ const createUser = newUser => async (dispatch) => {
     dispatch({type: 'CREATE_USER', ...newUser});
     const response = await axios({
       method: 'POST',
-      url: NEW_USER_URL,
+      url: USERS_URL,
       data: {user: newUser},
       crossdomain: true,
     })
@@ -64,6 +64,18 @@ export {logoutUser};
 
 const getUsers = getUsers => async (dispatch) => {
   console.log("siteAction:", "getUsers");
- 
+  console.log("siteAction:", getUsers);
+  const headers = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')}
+  const response = await axios({
+    method: 'GET',
+    url: USERS_URL,
+    headers: headers,
+    crossdomain: true,
+  }) 
+  console.log("siteAction:", "loginResponse:", response.data)
+  const { token } = response.data;
+  const { user } = response.data;
+  console.log("siteAction:", "loginUser:", response)
 }
+
 export {getUsers}

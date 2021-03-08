@@ -7,7 +7,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    # byebug
     @user = User.new(user_params)    
     if @user.save
       token = encode_token(user_id: @user.id)
@@ -47,10 +46,14 @@ class UsersController < ApplicationController
   end
 
   def index
-    if is_admin
-      @users = User.all
+    # byebug
+    if logged_in_user.admin
+      @users = User.all;
+      # token = encode_token(user_id: logged_in_user.id)
+      # time = Time.now + 24.hours.to_i
+      render json: {users: @users }, status: :ok
     else
-      redirect_to not_admin_user_url
+      render json: {:error => 'Not Authorized'}
     end
   end
 
