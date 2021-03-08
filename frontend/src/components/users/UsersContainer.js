@@ -6,11 +6,8 @@ import {
   Route 
 } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Users from '../users/Users';
+import UsersList from './UsersList';
 
-function header() {
-  return <h1>Users List</h1>
-}
 
 const UsersContainer = ({ match, state}) => {
   console.log("UsersContainer", "State:", state);
@@ -18,7 +15,7 @@ const UsersContainer = ({ match, state}) => {
     <div>
       {/* <HasAccess component={() => header() }/> */} 
       <Switch>
-        <HasAccess component={() =><Route exact path="/users" render={routerProps => <Users {...routerProps} state={state}/>}/>}/>
+        <HasAccess component={() =><Route exact path="/users" render={routerProps => <UsersList {...routerProps} state={state}/>}/>}/>
       </Switch>
       
     </div>

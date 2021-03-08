@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import {USERS_URL} from '../../actions/siteActions'
 
-class Users extends Component {  
+class UsersList extends Component {  
   constructor(props) {
     super(props);
     this.state = {
@@ -44,4 +44,4 @@ class Users extends Component {
   }
 };
 
-export default (Users);
+export default (UsersList);
