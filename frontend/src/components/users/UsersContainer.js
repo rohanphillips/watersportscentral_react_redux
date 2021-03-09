@@ -1,25 +1,77 @@
-import React from 'react';
+import React, { Component } from 'react';
 import HasAccess from '../sessions/HasAccess'
 import {
   BrowserRouter as Router,
   Switch,
   Route 
 } from 'react-router-dom';
+import axios from 'axios';
+import {USERS_URL} from '../../actions/siteActions'
 import { connect } from 'react-redux';
 import UsersList from './UsersList';
+const headers = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')}; 
 
+class UsersContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fetched: false,
+      users: []
+    }
+    this.deleteUser = this.deleteUser.bind(this)
+  }
 
-const UsersContainer = ({ match, state}) => {
-  console.log("UsersContainer", "State:", state);
-  return (
-    <div>
-      {/* <HasAccess component={() => header() }/> */} 
-      <Switch>
-        <HasAccess component={() =><Route exact path="/users" render={routerProps => <UsersList {...routerProps} state={state}/>}/>}/>
-      </Switch>
-      
-    </div>
-  );
+  componentDidMount(){
+    console.log("UsersContainer", "Component mounted", headers)  
+    const getUsers = async () =>
+      {          
+        const response = await axios({
+        method: 'GET',
+        url: USERS_URL,
+        headers: headers,
+        crossdomain: true,
+          }) 
+        this.setState({
+          users: response.data.users,
+          fetched: true
+        })
+      }  
+    console.log("UsersContainer", "componentDidMount", this.state.fetched)
+    if (this.state.fetched === false)  {
+      getUsers();
+    }      
+  }
+
+  deleteUser (id) {
+    console.log("UsersContainer", "deleteUser", id)
+    console.log("UsersContainer", "this.State", this)
+    const headers = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
+    const deleteUser = async () =>{
+      const response = await axios({
+        method: 'DELETE',
+        url:  `${USERS_URL}/${id}`,
+        headers: headers,
+        crossdomain: true,
+      })
+      this.setState({
+        users: this.state.users.filter(user => user.id != id)
+      })
+    }
+    deleteUser();   
+  }
+
+  render (){
+    console.log("UsersContainer", "State:", this.props.state);
+    return (
+      <div>
+        {/* <HasAccess component={() => header() }/> */} 
+        <Switch>
+          <HasAccess component={() =><Route exact path="/users" render={routerProps => <UsersList {...routerProps} state={this.props.state} users={this.state.users} deleteUser={this.deleteUser}/>}/>}/>
+        </Switch>
+        
+      </div>
+    )
+  };
 };
 
 const mapStateToProps = state => {
