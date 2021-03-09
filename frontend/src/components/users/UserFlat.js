@@ -1,12 +1,15 @@
 import React from 'react'
 
 const UserFlat = (data) => {
-  console.log("UserFlat", data)
+  console.log("UserFlat", "data", data)
+  console.log("UserFlat", "deleteUser", data.deleteUser)
+  const {user} = data;
+
   return (
     <div>
       <p>
-        {data.user.first_name} {data.user.last_name} 
-        <button>View</button> <button>Edit</button>  <button>Delete</button>    
+        {user.first_name} {user.last_name} 
+        <button>View</button> <button>Edit</button>  <button id={`${user.id}`} onClick={() => data.deleteUser(user.id)} >Delete</button>    
       </p>
     </div>
   )

@@ -10,10 +10,11 @@ class UsersList extends Component {
       fetched: false,
       users: []
     }
+    this.deleteUser = this.deleteUser.bind(this)
   }
 
   componentDidMount(){
-    console.log("Users", "Component mounted")
+    console.log("Users", "Component mounted")     
     const getUsers = async () =>
       {  
         const headers = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')}
@@ -27,13 +28,21 @@ class UsersList extends Component {
           users: response.data.users,
           fetched: true
         })
-      }
-    
+      }  
+    console.log("UsersList", "componentDidMount", this.state.fetched)
     if (this.state.fetched === false)  {
       getUsers();
-    }
-      
+    }      
   }
+
+  deleteUser (id) {
+    console.log("UsersList", "deleteUser", id)
+    console.log("UsersList", "this.State", this)
+    this.setState({
+      users: this.state.users.filter(user => user.id != id)
+    })
+  }
+
   render() {
     console.log("Users", "PropsState:", this.props.state);
     console.log("Users", "State:", this.state);
@@ -42,7 +51,7 @@ class UsersList extends Component {
           <h1>Users List</h1>
           {
             this.state.users.map(user => (
-              <UserFlat user={user} />
+              <UserFlat user={user} deleteUser={this.deleteUser}/>
             ))
           }     
       </div>
