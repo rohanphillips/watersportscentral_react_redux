@@ -24,7 +24,7 @@ class App extends Component {
       <Router>
         {
           <div>
-            <NavBar state={this.props.state}/>
+            <NavBar/>
             <Switch>
               <Route exact path="/">
                 <Home />
@@ -32,13 +32,13 @@ class App extends Component {
               <Route exact path="/events">
                 <Events />
               </Route>
-              <Route path="/locations" render={routerProps => <LocationsContainer {...routerProps} locations={this.props.state.locations}/>}/>
+              <Route path="/locations" render={routerProps => <LocationsContainer {...routerProps}/>}/>
               <Route exact path="/sports">
                 <Sports />
               </Route>
-              <Route path="/users" render={routerProps => <UsersContainer {...routerProps} state={this.props.state}/>}/>        
-              <Route path="/login" render={routerProps => <SessionsContainer {...routerProps} state={this.props.state}/>}/>
-              <Route path="/signup" render={routerProps => <SessionsContainer {...routerProps} state={this.props.state}/>}/>
+              <Route path="/users" render={routerProps => <UsersContainer {...routerProps}/>}/>        
+              <Route path="/login" render={routerProps => <SessionsContainer {...routerProps}/>}/>
+              <Route path="/signup" render={routerProps => <SessionsContainer {...routerProps}/>}/>
             </Switch>
           </div>
         }
@@ -47,7 +47,7 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {state}
-}
-export default connect(mapStateToProps) (App);
+// const mapStateToProps = state => {
+//   return {state}
+// }
+export default App;

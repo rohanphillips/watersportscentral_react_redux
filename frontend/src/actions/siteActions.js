@@ -5,6 +5,7 @@ const CREATE_USER_ERROR = 'CREATE_USER_ERROR';
 const SITE_URL = 'http://localhost:3001'
 export const USERS_URL = `${SITE_URL}/users`
 const LOGIN_USER_URL = `${SITE_URL}/sessions`
+const headers = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
 
 const createUser = newUser => async (dispatch) => {
   try {
@@ -61,3 +62,21 @@ const logoutUser = logoutUser => (dispatch) =>{
   dispatch({type: 'USER_LOGOUT'});
 }
 export {logoutUser}; 
+
+const getUsers = () => async (dispatch) => {          
+  console.log("siteAction:", "getUsers:", getUsers);
+  try {
+    const response = await axios({
+      method: 'GET',
+      url: USERS_URL,
+      headers: headers,
+      crossdomain: true,
+    })
+    console.log("getUsers:", "response:", response)
+    dispatch({type: 'GET_USERS', users: response.data.users})
+  } catch {
+
+  }
+  
+}  
+export {getUsers};

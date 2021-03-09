@@ -3,14 +3,14 @@ import HasAccess from '../sessions/HasAccess'
 import {
   BrowserRouter as Router,
   Route,
-  useParams
 } from 'react-router-dom';
 import axios from 'axios';
 import {USERS_URL} from '../../actions/siteActions'
 import { connect } from 'react-redux';
 import UsersList from './UsersList';
 import User from './User';
-const headers = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')}; 
+import {getUsers} from '../../actions/siteActions'
+ 
 
 class UsersContainer extends Component {
   constructor(props) {
@@ -23,24 +23,8 @@ class UsersContainer extends Component {
   }
 
   componentDidMount(){
-    console.log("UsersContainer", "Component mounted", headers) 
-    const getUsers = async () =>
-      {          
-        const response = await axios({
-        method: 'GET',
-        url: USERS_URL,
-        headers: headers,
-        crossdomain: true,
-          }) 
-        this.setState({
-          users: response.data.users,
-          fetched: true
-        })
-      }  
-    console.log("UsersContainer", "componentDidMount", this.state.fetched)
-    if (this.state.fetched === false)  {
-      getUsers();
-    }      
+    console.log("UsersContainer", "Component mounted") 
+    this.props.getUsers(); 
   }
 
   deleteUser (id) {
@@ -77,4 +61,10 @@ const mapStateToProps = state => {
   return {state}
 }
 
-export default connect(mapStateToProps)(UsersContainer);
+const mapDispatchToProps = dispatch => {
+  return {
+    getUsers: payload => dispatch(getUsers(payload))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);

@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import Logout from '../sessions/Logout'
+import { connect } from 'react-redux';
 
 function Signup(data){
   console.log("NavBar:","Signup:", data.isLogin);
@@ -46,36 +47,42 @@ function Profile(data){
   return null;
 }
 
-const NavBar = (props) => {  
-  console.log("NavBar:","State:", props.state)
-  return (
-    <div className="navbar">
-      {
-        <nav>
-          <ul>
-            <li>
-              <NavLink to="/">Home</NavLink>              
-            </li>           
-            <li>
-              <NavLink to="/locations">Locations</NavLink>
-            </li>
-            <li>
-              <NavLink to="/sports">Sports</NavLink>
-            </li>
-            <li>
-              <NavLink to="/events">Events</NavLink>
-            </li>
-            <DisplayUsers displayusers={props.state} />
-            <Login login={props.state.isLogin} />
-            <Signout login={props.state.isLogin} />
-            <Signup login={props.state.isLogin} />   
-            <Profile data={props.state} />         
-          </ul>
-        </nav>
-      }
-    </div>
-  );
+class NavBar extends Component{  
+  render(){
+    console.log("NavBar:","State:", this.props.state)
+    const {isLogin} = this.props.state;
+    return (
+      <div className="navbar">
+        {
+          <nav>
+            <ul>
+              <li>
+                <NavLink to="/">Home</NavLink>              
+              </li>           
+              <li>
+                <NavLink to="/locations">Locations</NavLink>
+              </li>
+              <li>
+                <NavLink to="/sports">Sports</NavLink>
+              </li>
+              <li>
+                <NavLink to="/events">Events</NavLink>
+              </li>
+              <DisplayUsers displayusers={this.props.state} />
+              <Login login={isLogin} />
+              <Signout login={isLogin} />
+              <Signup login={isLogin} />   
+              <Profile data={this.props.state} />         
+            </ul>
+          </nav>
+        }
+      </div>
+    );
+  }  
 };
 
+const mapStateToProps = state => {
+  return {state}
+}
 
-export default NavBar;
+export default connect(mapStateToProps) (NavBar);
