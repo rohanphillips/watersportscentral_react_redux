@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import HasAccess from '../sessions/HasAccess'
 import {
   BrowserRouter as Router,
-  Switch,
-  Route 
+  Route,
+  useParams
 } from 'react-router-dom';
 import axios from 'axios';
 import {USERS_URL} from '../../actions/siteActions'
 import { connect } from 'react-redux';
 import UsersList from './UsersList';
+import User from './User';
 const headers = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')}; 
 
 class UsersContainer extends Component {
@@ -22,7 +23,7 @@ class UsersContainer extends Component {
   }
 
   componentDidMount(){
-    console.log("UsersContainer", "Component mounted", headers)  
+    console.log("UsersContainer", "Component mounted", headers) 
     const getUsers = async () =>
       {          
         const response = await axios({
@@ -61,14 +62,12 @@ class UsersContainer extends Component {
   }
 
   render (){
-    console.log("UsersContainer", "State:", this.props.state);
+    console.log("UsersContainer", "Props:", this.props);
     return (
       <div>
         {/* <HasAccess component={() => header() }/> */} 
-        <Switch>
           <HasAccess component={() =><Route exact path="/users" render={routerProps => <UsersList {...routerProps} state={this.props.state} users={this.state.users} deleteUser={this.deleteUser}/>}/>}/>
-        </Switch>
-        
+          <HasAccess component={() =><Route path="/users/:id" render={routerProps => <User {...routerProps} state={this.props.state} users={this.state.users} deleteUser={this.deleteUser}/>}/>}/>
       </div>
     )
   };

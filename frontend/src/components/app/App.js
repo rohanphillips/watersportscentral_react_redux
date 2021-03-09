@@ -18,11 +18,6 @@ import Sports from '../sports/Sports';
 
 // const App = (props) => {
 class App extends Component {
-
-  location = () => {
-    return "test";
-  }
-
   render() {
     console.log("AppProps:", this.props);
     return (
