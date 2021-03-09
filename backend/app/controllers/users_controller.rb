@@ -57,6 +57,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    if logged_in_user.admin
+      @user = User.find(params[:id]);
+      @user.destroy
+      render json: {}, status: :ok
+    else
+      render json: {:error => 'Not Authorized'}
+    end
+    
+  end
+
   def active
     @users = User.all.active
   end

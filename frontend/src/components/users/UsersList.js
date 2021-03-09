@@ -3,6 +3,8 @@ import axios from 'axios';
 import {USERS_URL} from '../../actions/siteActions'
 import UserFlat from './UserFlat'
 
+const headers = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
+
 class UsersList extends Component {  
   constructor(props) {
     super(props);
@@ -16,8 +18,7 @@ class UsersList extends Component {
   componentDidMount(){
     console.log("Users", "Component mounted")     
     const getUsers = async () =>
-      {  
-        const headers = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')}
+      {          
         const response = await axios({
         method: 'GET',
         url: USERS_URL,
@@ -38,9 +39,18 @@ class UsersList extends Component {
   deleteUser (id) {
     console.log("UsersList", "deleteUser", id)
     console.log("UsersList", "this.State", this)
-    this.setState({
-      users: this.state.users.filter(user => user.id != id)
-    })
+    const deleteUser = async () =>{
+      const response = await axios({
+        method: 'DELETE',
+        url:  `${USERS_URL}/${id}`,
+        headers: headers,
+        crossdomain: true,
+      })
+      this.setState({
+        users: this.state.users.filter(user => user.id != id)
+      })
+    }
+    deleteUser();   
   }
 
   render() {
