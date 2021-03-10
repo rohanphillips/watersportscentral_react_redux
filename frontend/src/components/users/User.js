@@ -10,9 +10,11 @@ const User = (data) => {
   return (
     <div>
       <p>
-        {user.first_name} {user.last_name}
-        <button>Edit</button>  <button>Delete</button>    
+        {user.first_name} <br></br> 
+        {user.last_name}
+           
       </p>
+      <button>Edit</button>  <button>Delete</button> 
     </div>
   )
 }
