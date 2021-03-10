@@ -41,7 +41,7 @@ class UsersContainer extends Component {
       <div>
         {/* <HasAccess component={() => header() }/> */} 
           <HasAccess component={() =><Route exact path="/users" render={routerProps => <UsersList {...routerProps}/>}/>}/>
-          <HasAccess component={() =><Route path="/users/:id" render={routerProps => <User {...routerProps} state={this.props.state} />}/>}/>
+          <Route path="/users/:id" render={routerProps => <User {...routerProps} state={this.props.state} />}/>
       </div>
     )
   };
