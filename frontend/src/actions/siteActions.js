@@ -33,6 +33,7 @@ export {createUser}
 
 const loginUser = loginUser => async (dispatch) => {
   console.log("siteAction:", "called");
+  localStorage.clear("loggedin");
   try {
     console.log("siteAction:", "loginUser:", loginUser)    
     const response = await axios({

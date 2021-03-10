@@ -13,7 +13,6 @@ const initialUser = {
 		firstName: '',
 		lastName: '',
 		email: '',
-		password: '',
 	}
 }
 const initialState = {	

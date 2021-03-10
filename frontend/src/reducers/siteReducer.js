@@ -4,7 +4,6 @@ const initialUser = {
     firstName: '',
     lastName: '',
     email: '',
-    password: '',
   }
 };
 
