@@ -22,7 +22,6 @@ class App extends Component {
   getUser (){
     if (localStorage.loggedin){
       const decoded = jwt_decode(localStorage.getItem("loggedin"))
-      console.log("App:", "getUser:", decoded);
       this.props.getUser(decoded.user_id);
     }
   }

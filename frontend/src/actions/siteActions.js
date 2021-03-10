@@ -104,8 +104,7 @@ const deleteUser = (id) => async (dispatch) => {
 }  
 export {deleteUser};
 
-const getUser = () => async (dispatch) => {          
-  console.log("siteAction:", "getUser:", getUser);
+const getUser = () => async (dispatch) => {
   try {
     const response = await axios({
       method: 'GET',
@@ -113,11 +112,9 @@ const getUser = () => async (dispatch) => {
       headers: headers,
       crossdomain: true,
     })
-    console.log("getUser:", "response:", response)
     dispatch({type: 'USER_LOGIN', ...response.data.user})
   } catch {
 
-  }
-  
+  }  
 }  
 export {getUser};
