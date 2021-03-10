@@ -10,7 +10,8 @@ const initialUser = {
 
 const initialState = {
   isLogin: false,
-  ...initialUser
+  ...initialUser,
+  users: []
 }
 
 const siteReducer = (state = initialState, action) => {
@@ -64,6 +65,13 @@ const siteReducer = (state = initialState, action) => {
       return {
         ...state,
         users: action.users,
+      }
+    case 'DELETE_USER':
+      console.log("siteReducer:", "DELETE_USER", action)
+      console.log("siteReducer:", "DELETE_USER:", state)
+      return {
+        ...state,
+        users: state.users.filter(user => user.id !== action.id),
       }
     default: return state;
   }

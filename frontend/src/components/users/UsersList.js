@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import UserFlat from './UserFlat'
+import { connect } from 'react-redux';
+import {deleteUser} from '../../actions/siteActions'
 
 class UsersList extends Component {  
   
@@ -11,7 +13,7 @@ class UsersList extends Component {
       <div> 
           <h1>Users List</h1>
           {
-            this.props.users.map(user => (
+            this.props.state.users.map(user => (
               <UserFlat user={user} deleteUser={this.props.deleteUser}/>
             ))
           }     
@@ -20,4 +22,14 @@ class UsersList extends Component {
   }
 };
 
-export default (UsersList);
+const mapStateToProps = state => {
+  return {state}
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    deleteUser: id => dispatch(deleteUser(id))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps) (UsersList);

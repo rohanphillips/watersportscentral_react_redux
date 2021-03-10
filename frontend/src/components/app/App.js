@@ -4,9 +4,7 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-import { connect } from 'react-redux';
 import './app.css';
-import ProtectedRoute from '../sessions/ProtectedRoute'
 import NavBar from '../navbar/NavBar'
 import Home from '../home/Home';
 import Events from '../events/Events';

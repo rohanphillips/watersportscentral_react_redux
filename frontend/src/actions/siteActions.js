@@ -80,3 +80,21 @@ const getUsers = () => async (dispatch) => {
   
 }  
 export {getUsers};
+
+const deleteUser = (id) => async (dispatch) => {          
+  console.log("siteAction:", "deleteUser:", deleteUser);
+  try {
+    const response = await axios({
+      method: 'DELETE',
+      url: `${USERS_URL}/${id}`,
+      headers: headers,
+      crossdomain: true,
+    })
+    console.log("deleteUser:", "response:", response)
+    dispatch({type: 'DELETE_USER', id: id})
+  } catch {
+
+  }
+  
+}  
+export {deleteUser};

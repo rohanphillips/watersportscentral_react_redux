@@ -2,7 +2,7 @@ import React from 'react'
 
 const UserFlat = (data) => {
   console.log("UserFlat", "data", data)
-  console.log("UserFlat", "deleteUser", data.deleteUser)
+  // console.log("UserFlat", "deleteUser", data.deleteUser)
   const {user} = data;
 
   return (
