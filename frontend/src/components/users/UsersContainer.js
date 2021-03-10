@@ -5,7 +5,9 @@ import {
 } from 'react-router-dom';
 import { connect } from 'react-redux';
 import UsersList from './UsersList';
+import User from './User'
 import {getUsers} from '../../actions/siteActions'
+import {deleteUser} from '../../actions/siteActions'
  
 
 class UsersContainer extends Component {
@@ -39,7 +41,7 @@ class UsersContainer extends Component {
       <div>
         {/* <HasAccess component={() => header() }/> */} 
           <HasAccess component={() =><Route exact path="/users" render={routerProps => <UsersList {...routerProps}/>}/>}/>
-          {/* <HasAccess component={() =><Route path="/users/:id" render={routerProps => <User {...routerProps} />}/>}/> */}
+          <HasAccess component={() =><Route path="/users/:id" render={routerProps => <User {...routerProps} state={this.props.state} />}/>}/>
       </div>
     )
   };
@@ -51,7 +53,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getUsers: users => dispatch(getUsers(users))
+    getUsers: users => dispatch(getUsers(users)),
+    deleteUser: id => dispatch(deleteUser(id))
   }
 }
 

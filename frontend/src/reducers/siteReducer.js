@@ -61,7 +61,7 @@ const siteReducer = (state = initialState, action) => {
       return {
         ...state,
         isLogin: false,
-        ...initialUser,
+        ...initialUser,        
       }
     case 'GET_USERS':
       console.log("siteReducer:", "GET_USERS");
