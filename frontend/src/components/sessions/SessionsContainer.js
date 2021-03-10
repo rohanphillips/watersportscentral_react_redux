@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route 
 } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Login from './Login';
 import Signup from './Signup';
 
@@ -15,7 +16,7 @@ function LoginShow(props){
   return null;
 }
 
-const UsersContainer = ({ match, state}) => {
+const SessionsContainer = ({ match, state}) => {
   console.log("SessionsContainer:","State:", state);
   return (
     <Router>
@@ -29,6 +30,8 @@ const UsersContainer = ({ match, state}) => {
   );
 };
 
+const mapStateToProps = state => {
+  return {state}
+}
 
-
-export default UsersContainer;
+export default connect(mapStateToProps)(SessionsContainer);
