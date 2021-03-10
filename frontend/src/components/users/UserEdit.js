@@ -1,14 +1,16 @@
 import React from 'react'
 
-const User = (data) => {
-  console.log("User", "data", data)
-  console.log("User", "deleteUser", data.deleteUser)
-  console.log("User", "Users", data.match.params.id)
+const UserEdit = (data) => {
+  console.log("UserEdit", "data", data)
+  console.log("UserEdit", "deleteUser", data.deleteUser)
+  console.log("UserEdit", "Users", data.match.params.id)
   const id = parseInt(data.match.params.id)
   const user = data.state.users.find(user => user.id === id);
+  console.log("UserEdit", "user", user.first_name)
   return (
     <div>
       <p>
+        User Edit
         {user.first_name} <br></br> 
         {user.last_name}
            
@@ -18,4 +20,4 @@ const User = (data) => {
   )
 }
 
-export default User
+export default UserEdit

@@ -6,6 +6,7 @@ import {
 import { connect } from 'react-redux';
 import UsersList from './UsersList';
 import User from './User'
+import UserEdit from './UserEdit'
 import {getUsers} from '../../actions/siteActions'
 import {deleteUser} from '../../actions/siteActions'
  
@@ -42,6 +43,7 @@ class UsersContainer extends Component {
         {/* <HasAccess component={() => header() }/> */} 
           <HasAccess component={() =><Route exact path="/users" render={routerProps => <UsersList {...routerProps}/>}/>}/>
           <Route path="/users/:id" render={routerProps => <User {...routerProps} state={this.props.state} />}/>
+          <Route path="/users/:id/edit" render={routerProps => <UserEdit {...routerProps} state={this.props.state} />}/>
       </div>
     )
   };
