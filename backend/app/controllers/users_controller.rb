@@ -39,10 +39,12 @@ class UsersController < ApplicationController
   end
 
   def show    
-    @user = User.find(params[:id])
-    if params[:id] != current_user.id.to_s && is_admin == false
-      redirect_to not_admin_user_url
-    end
+    if logged_in_user then
+      @user = User.find(params[:id])
+      if params[:id] != current_user.id.to_s && is_admin == false
+        redirect_to not_admin_user_url
+      end
+    end;
   end
 
   def index

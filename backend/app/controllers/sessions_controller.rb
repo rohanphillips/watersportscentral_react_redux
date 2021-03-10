@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(username: params[:user][:username])  
     if @user && @user.authenticate(params[:user][:password])
-      token = encode_token(user_id: @user.id, user: @user.to_json)
+      token = encode_token(user_id: @user.id)
       time = Time.now + 24.hours.to_i
       render json: { token: token, time: time , user: @user}, status: :ok
     else
@@ -27,6 +27,12 @@ class SessionsController < ApplicationController
    
     session[:user_id] = @user.id
     redirect_to '/welcome'
+  end
+
+  def getuser
+    if logged_in_user then 
+      render json: {user: logged_in_user}, status: :ok
+    end
   end
 
   def page_requires_login
