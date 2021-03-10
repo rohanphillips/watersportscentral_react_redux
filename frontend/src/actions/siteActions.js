@@ -9,7 +9,7 @@ const headers = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
 
 const createUser = newUser => async (dispatch) => {
   try {
-    dispatch({type: 'CREATE_USER', ...newUser});
+    
     const response = await axios({
       method: 'POST',
       url: USERS_URL,
@@ -17,10 +17,13 @@ const createUser = newUser => async (dispatch) => {
       crossdomain: true,
     })
     const { token } = response.data;
+    console.log("Create User Response:", response)
     if (response.data.error){
       const error = response.data.error;
       dispatch({type: 'CREATE_USER_ERROR', error});
     } else {
+      const user = {...newUser, id: response.data.id}
+      dispatch({type: 'CREATE_USER', ...response.data.user});
       localStorage.setItem('jwt', token);}
   } catch {
     dispatch({type: 'CREATE_USER_ERROR'});
