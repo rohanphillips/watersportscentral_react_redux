@@ -46,7 +46,7 @@ class UserEdit extends Component {
     if (this.state.isLoaded === false){
       this.setState({
         ...this.state,
-        user: user,
+        user: {...user},
         isLoaded: true
       })
     }    

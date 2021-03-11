@@ -26,21 +26,8 @@ class UsersContainer extends Component {
     console.log("UsersContainer:", "componentDidMount")
     this.props.getUsers()
   }
-
-  isAuthorized(){
-    const decoded = jwt_decode(localStorage.getItem("loggedin"))
-    const id = parseInt(this.props.match.params.id)
-    // debugger
-    return decoded.user_id = id || this.props.state.user.admin
-  }
-  render (){
-    console.log("UsersContainer", "Props:", this.props);
-    const {usersFetched} = this.props.state
-    console.log("usersFetched", usersFetched)
-    console.log("isAuthorized", this.isAuthorized())
-    // if (usersFetched === false || this.isAuthorized() === false){
-    //   return null
-    // }
+  
+  render (){    
     return (
       <div>
         {/* <HasAccess component={() => header() }/> */} 
