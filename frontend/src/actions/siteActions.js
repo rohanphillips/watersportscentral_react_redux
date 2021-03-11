@@ -122,3 +122,20 @@ const getUser = () => async (dispatch) => {
   }  
 }  
 export {getUser};
+
+const updateUser = (user) => async (dispatch) => {
+  const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
+  try {
+    const response = await axios({
+      method: 'POST',
+      url: `${USERS_URL}/${user.id}`,
+      headers: header,
+      crossdomain: true,
+    })
+    console.log("siteActions:", "updateUserResponse", response)
+    // dispatch({type: 'USER_LOGIN', ...response.data.user})
+  } catch {
+
+  }  
+}  
+export {updateUser};
