@@ -25,7 +25,7 @@ const createUser = newUser => async (dispatch) => {
     } else {
       const user = {...newUser, id: response.data.id}
       dispatch({type: 'CREATE_USER', ...response.data.user});
-      localStorage.setItem('jwt', token);}
+      localStorage.setItem('loggedin', token);}
   } catch {
     dispatch({type: 'CREATE_USER_ERROR'});
   }

@@ -30,7 +30,9 @@ const siteReducer = (state = initialState, action) => {
           password: action.password,
           admin: action.admin,
           active: action.active
-        }
+        },
+        users: [],
+        usersFetched: false,
       }
     case 'CREATE_USER_ERROR':
       console.log("siteReducer:", "CREATE_USER_ERROR");
@@ -64,7 +66,8 @@ const siteReducer = (state = initialState, action) => {
         ...state,
         isLogin: false,
         ...initialUser,   
-        users: []     
+        users: [],
+        usersFetched: false,  
       }
     case 'GET_USERS':
       console.log("siteReducer:", "GET_USERS", action);
