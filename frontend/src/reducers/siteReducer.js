@@ -53,19 +53,24 @@ const siteReducer = (state = initialState, action) => {
           email: action.email,
           admin: action.admin,
           active: action.active,
-        }
+        },
+        usersFetched: false,
+        users: []
+
       }
     case 'USER_LOGOUT':
       console.log("siteReducer:", "USER_LOGOUT");
       return {
         ...state,
         isLogin: false,
-        ...initialUser,        
+        ...initialUser,   
+        users: []     
       }
     case 'GET_USERS':
-      console.log("siteReducer:", "GET_USERS");
+      console.log("siteReducer:", "GET_USERS", action);
       return {
         ...state,
+        usersFetched: true,
         users: action.users,
       }
     case 'DELETE_USER':

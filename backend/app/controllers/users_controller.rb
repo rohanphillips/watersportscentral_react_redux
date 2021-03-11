@@ -49,7 +49,7 @@ class UsersController < ApplicationController
 
   def index
     # byebug
-    if logged_in_user.admin
+    if logged_in_user
       @users = User.all;
       # token = encode_token(user_id: logged_in_user.id)
       # time = Time.now + 24.hours.to_i

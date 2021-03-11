@@ -23,6 +23,7 @@ const initialState = {
 		2: { id: 2, title: 'Cedar River' },
 		3: { id: 3, title: 'Bull Shoals' }
 	},
+	usersFetched: false,
 	users: []
 };
 const store = createStore(siteReducer, initialState, applyMiddleware(thunk))

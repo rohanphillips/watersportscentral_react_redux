@@ -12,32 +12,31 @@ import {deleteUser} from '../../actions/siteActions'
  
 
 class UsersContainer extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      fetched: false,
-    }
-  }
-
+  
   componentDidMount(){
-    console.log("UsersContainer", "Component mounted") 
-    if (this.state.fetched === false) {
-      this.props.getUsers();
-    }
-    this.setState({
-      fetched: true
-    })
-    console.log("this.state", this.state)
+    // console.log("UsersContainer", "Component mounted", this.props.state.usersFetched !== true) 
+    // if (this.props.state.usersFetched !== true) {
+    //   this.props.getUsers();
+    // }
+    
   }
   
   componentWillUnmount(){
-    this.setState({
-      fetched: false
-    })
+    // this.props.state.users = [];
+    // this.props.state.usersFetched = false;
+    
+  }
+  getUsersLocal() {
+    console.log("getUsers", this.props.state.usersFetched)
+    if (this.props.state.usersFetched === false) {
+      console.log("will call")
+      this.props.getUsers();
+    }
   }
 
   render (){
-    console.log("UsersContainer", "Props:", this.state);
+    console.log("UsersContainer", "Props:", this.props.state);
+    this.getUsersLocal("");
     return (
       <div>
         {/* <HasAccess component={() => header() }/> */} 
@@ -55,7 +54,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getUsers: users => dispatch(getUsers(users)),
+    getUsers: data => dispatch(getUsers(data)),
     deleteUser: id => dispatch(deleteUser(id))
   }
 }
