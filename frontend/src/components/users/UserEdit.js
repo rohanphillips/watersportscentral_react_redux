@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {updateUser} from '../../actions/siteActions'
+import './user.css'
 
 class UserEdit extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      username: '',
+      user: {username: '',
       first_name: '',
       last_name: '',
       email: '',
       password: '',
-      admin: false,
-      active: false,
+      admin: '',
+      active: ''},
       message: '',
+      isLoaded: false
     }
   }
 
@@ -34,31 +37,80 @@ class UserEdit extends Component {
     console.log("Login:","endlogin:")
   }
 
-  render(){
-    console.log("UserEdit", "deleteUser", this.props)
-    console.log("UserEdit", "Users", this.props.match.params.id)
+  hasAccess = () =>{
     const id = parseInt(this.props.match.params.id)
     const user = this.props.props.state.users.find(user => user.id === id);
     if (user === undefined){
-      return <p>No Access</p>
+      return false;
     }
+    if (this.state.isLoaded === false){
+      this.setState({
+        ...this.state,
+        user: user,
+        isLoaded: true
+      })
+    }    
+    return user.id === id
+  }
+
+  render(){
     const { message } = this.state;
+    console.log("userEdit:", "this.props", this.props)
+    //console.log("hasAccess:", this.hasAccess())
+    if (this.hasAccess() === false){
+      return (
+        <div>
+          <p>No Access</p>
+        </div>
+      )
+    }
     return (
-      <div>
+      <div className="form-part">
         <p>
-          User Edit
-          {user.first_name} <br></br> 
-          {user.last_name}
-            
+          User Edit            
         </p>
         <form onSubmit={this.handleOnSubmit}>
-        <h1>{message}</h1>
-        <input onChange={this.handleChange}
-          type="text"
-          name="username"
-          value={this.state.username}
-        />
-          
+          <h1>{message}</h1>
+          <label>
+            Username:        
+            <input onChange={this.handleChange}
+              type="text"
+              name="username"
+              value={this.state.user.username}
+            />
+          </label>
+          <label>
+            First Name:        
+            <input onChange={this.handleChange}
+              type="text"
+              name="first_name"
+              value={this.state.user.first_name}
+            />
+          </label>  
+          <label>
+            Last Name:        
+            <input onChange={this.handleChange}
+              type="text"
+              name="last_name"
+              value={this.state.user.last_name}
+            />
+          </label>
+          <label>
+            Email:        
+            <input onChange={this.handleChange}
+              type="text"
+              name="email"
+              value={this.state.user.email}
+            />
+          </label>
+          <label>
+          Password:        
+          <input onChange={this.handleChange}
+            type="password"
+            name="password"
+            value={this.state.user.password}
+          />
+        </label>
         </form>
       </div>
     )
