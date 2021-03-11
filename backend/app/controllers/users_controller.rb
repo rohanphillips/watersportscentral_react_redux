@@ -50,7 +50,11 @@ class UsersController < ApplicationController
   def index
     # byebug
     if logged_in_user
-      @users = User.all;
+      if logged_in_user.admin then
+        @users = User.all;
+      else        
+        @users = User.select{|user| user.id === logged_in_user.id}
+      end
       # token = encode_token(user_id: logged_in_user.id)
       # time = Time.now + 24.hours.to_i
       render json: {users: @users }, status: :ok

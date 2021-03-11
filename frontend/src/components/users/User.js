@@ -8,7 +8,7 @@ const User = (data) => {
   const user = data.state.users.find(user => user.id === id);
   console.log("user", user === null)
   if (user === undefined){
-    return <p>Loading profile...</p>
+    return <p>No Access</p>
   }
   return (
     <div>
