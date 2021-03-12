@@ -1,7 +1,4 @@
 import axios from 'axios';
-
-const CREATE_USER = 'CREATE_USER';
-const CREATE_USER_ERROR = 'CREATE_USER_ERROR';
 const SITE_URL = 'http://localhost:3001'
 export const USERS_URL = `${SITE_URL}/users`
 const LOGIN_USER_URL = `${SITE_URL}/sessions`
@@ -23,7 +20,6 @@ const createUser = newUser => async (dispatch) => {
       const error = response.data.error;
       dispatch({type: 'CREATE_USER_ERROR', error});
     } else {
-      const user = {...newUser, id: response.data.id}
       dispatch({type: 'CREATE_USER', ...response.data.user});
       localStorage.setItem('loggedin', token);}
   } catch {
