@@ -26,7 +26,7 @@ class Login extends Component {
     const {username, password} = this.state;
     const {loginUser} = this.props;
     console.log("Login:","startlogin:")
-    loginUser({
+    this.props.loginUser({
       username, password
     })
     console.log("Login:","endlogin:")

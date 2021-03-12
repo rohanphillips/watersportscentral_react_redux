@@ -76,6 +76,19 @@ class UserEdit extends Component {
     return user.id === id
   }
 
+  handleOnSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Update Requested")
+    this.props.updateUser(this.state.user)
+    // const {username, password} = this.state;
+    // const {loginUser} = this.props;
+    // console.log("Login:","startlogin:")
+    // this.props.loginUser({
+    //   username, password
+    // })
+    // console.log("Login:","endlogin:")
+  }
+
   render(){
     const { message } = this.state;
     console.log("userEdit:", "this.props", this.props)
@@ -157,7 +170,7 @@ class UserEdit extends Component {
               />
             </label>
           </HasAccess>
-          <button>Update</button>
+          <button onClick={this.handleOnSubmit}>Update</button>
         </form>
       </div>
     )
