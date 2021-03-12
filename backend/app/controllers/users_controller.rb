@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)    
+    @user = User.new(user_params)        
     if @user.save
       token = encode_token(user_id: @user.id)
       time = Time.now + 24.hours.to_i
@@ -17,17 +17,21 @@ class UsersController < ApplicationController
     end
   end
 
-  def
-
   def edit
     @user = User.find(params[:id])
   end
 
   def update
+    byebug
     if logged_in_user then
       @user = User.find(params[:id])
       if @user.valid?   
+        
+        if user_params[:password].nil?
+            user_params.delete(:password)
+        end
         @user.update(user_params)  
+        byebug
         render json: {user: @user}, status: :ok
       else
         render json: {:error => @user.errors.messages}

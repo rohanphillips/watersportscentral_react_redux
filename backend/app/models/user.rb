@@ -11,17 +11,10 @@ class User < ApplicationRecord
   validates :email, :presence => true, 
                     :uniqueness => true, 
                     email: true
-  validates :password,  :presence => true, 
-                    :allow_blank => true,
-                    :allow_nil => true,
-                    :on => [:update]
-  validates :password,  :presence => true, 
-                        :confirmation => true,
-                        :length => {:within => 4..40},
-                        :on => :create
   
-  
-  has_secure_password validations: false
+  has_secure_password 
+  validates :password, presence: {on: :create}, confirmation: {case_sensitive: true}, length: {minimum: 4}
+  # validates :password_confirmation, presence: true
 
   scope :active, -> { where(active: true) }
   scope :inactive, -> { where(active: false) }
