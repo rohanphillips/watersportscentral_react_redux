@@ -42,6 +42,25 @@ const siteReducer = (state = initialState, action) => {
         ...initialUser,
         errors: {...action.error},
       }
+      case 'UPDATE_USER':
+        console.log("siteReducer:", "UPDATE_USER");
+        return {
+          ...state,
+          isLogin: true,
+          user: {
+            id: action.id,
+            username: action.username,
+            firstName: action.first_name,
+            lastName: action.last_name,
+            email: action.email,
+            password: action.password,
+            admin: action.admin,
+            active: action.active
+          },
+          users: [],
+          usersFetched: false,
+          userUpdated: true,
+        }
     case 'USER_LOGIN':
       console.log("siteReducer:", "USER_LOGIN");
       return {

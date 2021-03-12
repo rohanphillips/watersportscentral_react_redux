@@ -130,7 +130,7 @@ const updateUser = (payload) => async (dispatch) => {
       crossdomain: true,
     })
     console.log("siteActions:", "updateUserResponse", response)
-    dispatch({type: 'CREATE_USER', ...response.data.user});
+    dispatch({type: 'UPDATE_USER', ...response.data.user});
   } catch {
 
   }  

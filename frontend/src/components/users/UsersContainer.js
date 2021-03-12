@@ -4,7 +4,6 @@ import {
   Route,
 } from 'react-router-dom';
 import { connect } from 'react-redux';
-import jwt_decode from "jwt-decode";
 import UsersList from './UsersList';
 import User from './User'
 import UserEdit from './UserEdit'

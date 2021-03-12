@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import HasAccess from '../sessions/HasAccess'
 import {updateUser} from '../../actions/siteActions'
+import {getUsers} from '../../actions/siteActions'
 import './user.css'
 
 class UserEdit extends Component {
@@ -30,6 +31,11 @@ class UserEdit extends Component {
     console.log("UserEdit:", "componentDidUpdate")
     this.loadState()
     console.log("componentDidUpdate:", "this.state", this.state)
+    if (this.props.props.state.userUpdated){
+      this.props.props.state.userUpdated = false;
+      this.props.getUsers();
+      console.log("wants to get users")
+    }
   }
 
   loadState = () => {
@@ -192,6 +198,7 @@ class UserEdit extends Component {
 
 const mapDispatchToProps = dispatch => ({
 	updateUser: payload => dispatch(updateUser(payload)),
+  getUsers: data => dispatch(getUsers(data)),
 });
 
 export default connect(null, mapDispatchToProps) (UserEdit)
