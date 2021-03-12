@@ -14,7 +14,7 @@ class HasAccess extends React.Component {
         // console.log("HasAccess", "isAuthenticated:", isAuthenticated);
         // console.log("HasAccess", "props", this.props);
         return isAuthenticated ? (
-            Component ? (Component) : (element)
+            this.props.children
         ) : (
             null
         );

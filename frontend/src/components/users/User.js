@@ -21,7 +21,16 @@ const User = (data) => {
         {user.last_name}
            
       </p>
-      <Link to={`/users/${user.id}/edit`}><button>Edit</button></Link>  <HasAccess element={<button id={`${user.id}`} onClick={() => data.props.deleteUser(user.id)}>Delete</button>}/> 
+      <Link to={`/users/${user.id}/edit`}>
+          <button>Edit</button>
+      </Link> 
+      <HasAccess>
+        <button id={`${user.id}`} 
+          onClick={() => data.props.deleteUser(user.id)
+        }>
+          Delete
+        </button>
+      </HasAccess>
     </div>
   )
 }

@@ -26,12 +26,14 @@ class UsersContainer extends Component {
     console.log("UsersContainer:", "componentDidMount")
     this.props.getUsers()
   }
-  
+
   render (){    
     return (
       <div>
         {/* <HasAccess component={() => header() }/> */} 
-          <HasAccess component={() =><Route exact path="/users" render={routerProps => <UsersList {...routerProps}/>}/>}/>
+          <HasAccess>
+            <Route exact path="/users" render={routerProps => <UsersList {...routerProps}/>}></Route>
+          </HasAccess>            
           <Route exact path="/users/:id" render={routerProps => <User {...routerProps} props={this.props} />}/>
           <Route exact path="/users/:id/edit" render={routerProps => <UserEdit {...routerProps} props={this.props} />}/>
       </div>
