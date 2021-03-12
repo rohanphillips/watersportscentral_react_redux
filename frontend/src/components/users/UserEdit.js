@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import HasAccess from '../sessions/HasAccess'
 import {updateUser} from '../../actions/siteActions'
 import './user.css'
 
 class UserEdit extends Component {
   constructor(props) {
     super(props);
-
+    this.hasAccess = this.hasAccess.bind(this)
     this.state = {
       user: {username: '',
       first_name: '',
@@ -17,6 +18,30 @@ class UserEdit extends Component {
       active: ''},
       message: '',
       isLoaded: false
+    }
+  }
+
+  componentDidMount(){
+    console.log("UserEdit:", "componentDidMount")
+    this.loadState()
+  }
+
+  componentDidUpdate(){
+    console.log("UserEdit:", "componentDidUpdate")
+    this.loadState()
+    console.log("componentDidUpdate:", "this.state", this.state)
+  }
+
+  loadState = () => {
+    if (this.props.props.state.usersFetched && this.state.isLoaded === false){
+      if (this.state.isLoaded === false){
+        const {user} = this.user();
+        this.setState({
+          ...this.state,
+          user: {...user},
+          isLoaded: true
+          })
+      }   
     }
   }
 
@@ -37,27 +62,28 @@ class UserEdit extends Component {
     console.log("Login:","endlogin:")
   }
 
-  hasAccess = () =>{
+  user = () => {
     const id = parseInt(this.props.match.params.id)
-    const user = this.props.props.state.users.find(user => user.id === id);
+    return {user: this.props.props.state.users.find(user => user.id === id), id: id};    
+  }
+
+  hasAccess = () =>{
+    const {user, id} = this.user() 
+    console.log("hasAccess", "user:", user)
     if (user === undefined){
       return false;
-    }
-    if (this.state.isLoaded === false){
-      this.setState({
-        ...this.state,
-        user: {...user},
-        isLoaded: true
-      })
-    }    
+    }        
     return user.id === id
   }
 
   render(){
     const { message } = this.state;
     console.log("userEdit:", "this.props", this.props)
-    //console.log("hasAccess:", this.hasAccess())
-    if (this.hasAccess() === false){
+    if (this.props.props.state.usersFetched === false){
+      return (
+        <p>Loading...</p>
+      )
+    } else if (this.hasAccess() === false){
       return (
         <div>
           <p>No Access</p>
@@ -104,13 +130,34 @@ class UserEdit extends Component {
             />
           </label>
           <label>
-          Password:        
-          <input onChange={this.handleChange}
-            type="password"
-            name="password"
-            value={this.state.user.password}
-          />
-        </label>
+            Password:        
+            <input onChange={this.handleChange}
+              type="password"
+              name="password"
+              value={this.state.user.password === null ? "" : this.state.user.password}
+            />
+          </label>
+          <HasAccess>
+            <label>
+              Admin:        
+              <input onChange={this.handleChange}
+                type="checkbox"
+                name="admin"
+                value={this.state.user.admin}
+              />
+            </label>
+          </HasAccess>
+          <HasAccess>
+            <label>
+              Active:        
+              <input onChange={this.handleChange}
+                type="checkbox"
+                name="active"
+                value={this.state.user.active}
+              />
+            </label>
+          </HasAccess>
+          <button>Update</button>
         </form>
       </div>
     )

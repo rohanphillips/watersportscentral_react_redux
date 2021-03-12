@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import HasAccess from '../sessions/HasAccess'
 import {
   Route,
-  useParams,
 } from 'react-router-dom';
 import { connect } from 'react-redux';
 import jwt_decode from "jwt-decode";
