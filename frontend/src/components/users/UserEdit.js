@@ -15,8 +15,8 @@ class UserEdit extends Component {
       last_name: '',
       email: '',
       password: '',
-      admin: '',
-      active: ''},
+      admin: false,
+      active: false},
       message: '',
       isLoaded: false
     }
@@ -42,6 +42,7 @@ class UserEdit extends Component {
     if (this.props.props.state.usersFetched && this.state.isLoaded === false){
       if (this.state.isLoaded === false){
         const {user} = this.user();
+        console.log("loadState", "user:", user)
         this.setState({
           ...this.state,
           user: {...user},
@@ -51,11 +52,20 @@ class UserEdit extends Component {
     }
   }
 
-  handleChange = (e) => {
+  handleChange = (e) => {    
+    let saved;
+    switch (e.target.type){
+      case 'checkbox':
+        saved = e.target.checked;
+        break;
+      default:
+        saved = e.target.value;
+    }
+    console.log("saved:", saved)
     this.setState({
       user: {
         ...this.state.user,
-        [e.target.name]: e.target.value,
+        [e.target.name]: saved,
       }
     })
   }
@@ -86,7 +96,9 @@ class UserEdit extends Component {
   }
 
   createPayload = () => {    
+    console.log("createPayload", "this.state", this.state);   
     let user = {...this.state.user}
+    console.log("createPayload", "user", user);
     delete user.id
     delete user.password_digest
     delete user.created_at
@@ -175,7 +187,7 @@ class UserEdit extends Component {
               <input onChange={this.handleChange}
                 type="checkbox"
                 name="admin"
-                value={this.state.user.admin}
+                checked={this.state.user.admin}
               />
             </label>
           </HasAccess>
@@ -185,7 +197,7 @@ class UserEdit extends Component {
               <input onChange={this.handleChange}
                 type="checkbox"
                 name="active"
-                value={this.state.user.active}
+                checked={this.state.user.active}
               />
             </label>
           </HasAccess>

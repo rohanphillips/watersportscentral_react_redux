@@ -121,6 +121,7 @@ export {getUser};
 
 const updateUser = (payload) => async (dispatch) => {
   const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
+  console.log("updateUser", "payload:", payload);
   try {
     const response = await axios({
       method: 'PATCH',
