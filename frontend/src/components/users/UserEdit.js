@@ -76,10 +76,20 @@ class UserEdit extends Component {
     return user.id === id
   }
 
+  createPayload = () => {    
+    let user = {...this.state.user}
+    delete user.id
+    delete user.password_digest
+    delete user.created_at
+    delete user.updated_at
+    const payLoad = {id: this.state.user.id, user: user}
+    return payLoad
+  }
+
   handleOnSubmit = async (e) => {
     e.preventDefault();
     console.log("Update Requested")
-    this.props.updateUser(this.state.user)
+    this.props.updateUser(this.createPayload())
     // const {username, password} = this.state;
     // const {loginUser} = this.props;
     // console.log("Login:","startlogin:")
@@ -178,7 +188,7 @@ class UserEdit extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-	updateUser: user => dispatch(updateUser(user)),
+	updateUser: payload => dispatch(updateUser(payload)),
 });
 
 export default connect(null, mapDispatchToProps) (UserEdit)

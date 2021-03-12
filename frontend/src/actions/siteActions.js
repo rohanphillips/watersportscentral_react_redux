@@ -123,14 +123,14 @@ const getUser = () => async (dispatch) => {
 }  
 export {getUser};
 
-const updateUser = (user) => async (dispatch) => {
+const updateUser = (payload) => async (dispatch) => {
   const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
   try {
     const response = await axios({
       method: 'PATCH',
-      url: `${USERS_URL}/${user.id}`,
+      url: `${USERS_URL}/${payload.id}`,
       headers: header,
-      data: {user: user},
+      data: {user: payload.user},
       crossdomain: true,
     })
     console.log("siteActions:", "updateUserResponse", response)
