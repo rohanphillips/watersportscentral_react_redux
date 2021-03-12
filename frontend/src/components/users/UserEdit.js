@@ -47,7 +47,10 @@ class UserEdit extends Component {
 
   handleChange = (e) => {
     this.setState({
-      [e.target.name]: e.target.value,
+      user: {
+        ...this.state.user,
+        [e.target.name]: e.target.value,
+      }
     })
   }
 

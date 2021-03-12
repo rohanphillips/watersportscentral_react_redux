@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :authorized, only: [:auto_login]
+  before_action :authorized, only: [:auto_login]  
 
   def new
     @user = User.new
@@ -24,19 +24,17 @@ class UsersController < ApplicationController
   end
 
   def update
-    byebug
-    # @user = User.find(params[:id])
-    # if @user.valid?      
-    #   if params[:commit] != "Edit"
-    #     @user.update(user_params)        
-        
-    #     redirect_to user_url
-    #   else
-    #     redirect_to edit_user_url
-    #   end
-    # else
-    #   render :new
-    # end
+    if logged_in_user then
+      @user = User.find(params[:id])
+      if @user.valid?   
+        @user.update(user_params)  
+        render json: {user: @user}, status: :ok
+      else
+        render json: {:error => @user.errors.messages}
+      end
+    else
+      render json: {:error => {message: "Invalid user"}}
+    end
   end
 
   def show    

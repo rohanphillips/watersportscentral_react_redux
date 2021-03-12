@@ -1,5 +1,4 @@
-class User < ApplicationRecord
-  
+class User < ApplicationRecord  
   has_many :events
   has_many :locations, through: :events
   has_many :sports, through: :events
@@ -14,7 +13,7 @@ class User < ApplicationRecord
                     email: true
   validates :password,  :presence => true, 
                     :allow_blank => true,
-                    :length => {:within => 4..40},
+                    :allow_nil => true,
                     :on => [:update]
   validates :password,  :presence => true, 
                         :confirmation => true,
@@ -22,7 +21,7 @@ class User < ApplicationRecord
                         :on => :create
   
   
-  has_secure_password
+  has_secure_password validations: false
 
   scope :active, -> { where(active: true) }
   scope :inactive, -> { where(active: false) }
