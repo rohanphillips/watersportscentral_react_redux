@@ -1,7 +1,7 @@
 import React, { Component} from 'react';
 import LocationFlat from './LocationFlat'
 import {connect} from 'react-redux';
-import {deleteLcoation} from '../../actions/siteActions'
+import {deleteLocation} from '../../actions/siteActions'
  
 class LocationsList extends Component {
  
@@ -18,5 +18,15 @@ class LocationsList extends Component {
     )
   };
 };
+
+const mapStateToProps = (state) => {
+  return {state}
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    deleteLocation: id => dispatch(deleteLocation(id))
+  }
+}
  
-export default LocationsList;
+export default connect(mapStateToProps, mapDispatchToProps)(LocationsList);
