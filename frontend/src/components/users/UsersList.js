@@ -3,8 +3,7 @@ import UserFlat from './UserFlat'
 import { connect } from 'react-redux';
 import {deleteUser} from '../../actions/siteActions'
 
-class UsersList extends Component {  
-  
+class UsersList extends Component {   
 
   render() {
     console.log("UsersList", "Props:", this.props);
