@@ -1,16 +1,22 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component} from 'react';
+import LocationFlat from './LocationFlat'
+import {connect} from 'react-redux';
+import {deleteLcoation} from '../../actions/siteActions'
  
-const LocationsList = ({ locations }) => {
-  // const renderLocations = Object.keys(locations).map(locationID =>
-  //   <Link key={locationID} to={`/locations/${locationID}`}>{locations[locationID].title}</Link>
-  // );
+class LocationsList extends Component {
  
-  return (
-    <div>
-      {/* {renderLocations} */}
+  render (){
+    return(
+      <div>
+        <h1>UsersList</h1>
+      {
+        this.props.state.locations.map( location => (
+          <LocationFlat location={location} deleteLocation={this.props.deleteLocation}/>
+        ))
+      }
     </div>
-  );
+    )
+  };
 };
  
 export default LocationsList;
