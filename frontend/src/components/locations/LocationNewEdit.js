@@ -1,8 +1,10 @@
 import React from 'react';
 
-class LocationEdit extends React.Component {
+class LocationNewEdit extends React.Component {
   state = {
-    title: ''
+    name: '',
+    description: '',
+
   }
 
   render() {
@@ -14,4 +16,4 @@ class LocationEdit extends React.Component {
   };
 }
  
-export default LocationEdit;
+export default LocationNewEdit;
