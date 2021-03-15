@@ -10,7 +10,7 @@ class LocationNewEdit extends React.Component {
   render() {
     return (
       <div>
-       
+        <p>Location Page</p>
       </div>
     );
   };

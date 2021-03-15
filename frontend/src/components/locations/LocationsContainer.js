@@ -1,25 +1,18 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {
-  BrowserRouter as Router,
   Route 
 } from 'react-router-dom';
-import LocationShow from './LocationShow';
-import LocationsList from './LocationsList';
-import LocationNewEdit from './LocationNewEdit'
+import Location from './Location'
 
-const LocationsContainer = ({ match, locations}) => {
-  return (
-    <Router>
-      <div>
-        {<h1>Locations Container</h1>}
-        <LocationsList locations={locations} />        
-        <Route exact path={match.url} render={() => <h3>Choose a location from the list </h3>}/>
-        <Route exact path={`${match.url}/:locationId/new`} render={routerProps => <LocationNewEdit {...routerProps}/>} />
-        <Route exact path={`${match.url}/:locationId`} render={routerProps => <LocationShow {...routerProps}/>} />
-        <Route exact path={`${match.url}/:locationId/edit`} render={routerProps => <LocationNewEdit {...routerProps}/>} />
-      </div>
-    </Router>
-  );
+class LocationsContainer extends Component {
+  render() {
+    return (
+        <div>
+          {<h1>Locations Container</h1>}
+          <Route exact path={`/locations/new`} render={routerProps => <Location {...routerProps}/>} />
+        </div>
+    );
+  }
 };
 
 export default LocationsContainer;
