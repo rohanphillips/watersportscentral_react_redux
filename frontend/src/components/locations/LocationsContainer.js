@@ -9,7 +9,8 @@ class LocationsContainer extends Component {
     return (
         <div>
           {<h1>Locations Container</h1>}
-          <Route exact path={`/locations/new`} render={routerProps => <Location {...routerProps}/>} />
+          <Route exact path={`/locations/create`} render={routerProps => <Location {...routerProps}/>} />
+          <Route exact path={`/locations/:id`} render={routerProps => <Location {...routerProps}/>} />
         </div>
     );
   }
