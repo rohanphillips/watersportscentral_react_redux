@@ -1,12 +1,10 @@
 class LocationsController < ApplicationController
   skip_before_action :authorized, only: [:index]
 
-  def new
-    @location = Location.new
-  end
-
   def create
+    byebug
     @location = Location.new(location_params)
+    
     if @location.save
       redirect_to location_url(@location.id)
     else
