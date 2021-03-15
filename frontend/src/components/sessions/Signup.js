@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { createUser } from '../../actions/siteActions';
 
@@ -46,11 +45,6 @@ class Signup extends Component {
   
 
   render() {
-    const useForm = () => {
-      return useForm();
-    }
-    const { register, errors, handleSubmit } = useForm;
-    const onSubmit = (data) => console.log(data);
     const { message } = this.state;
    
     return (

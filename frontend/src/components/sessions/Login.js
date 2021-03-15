@@ -24,7 +24,6 @@ class Login extends Component {
   handleOnSubmit = async (e) => {
     e.preventDefault();
     const {username, password} = this.state;
-    const {loginUser} = this.props;
     console.log("Login:","startlogin:")
     this.props.loginUser({
       username, password
