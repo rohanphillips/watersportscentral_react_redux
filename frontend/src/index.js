@@ -18,13 +18,9 @@ const initialUser = {
 const initialState = {	
 	isLogin: false,
 	...initialUser,
-	locations: {
-		1: { id: 1, title: 'Coralville Lake' },
-		2: { id: 2, title: 'Cedar River' },
-		3: { id: 3, title: 'Bull Shoals' }
-	},
 	usersFetched: false,
-	users: []
+	users: [],
+	locations: [],
 };
 const store = createStore(siteReducer, initialState, applyMiddleware(thunk))
 

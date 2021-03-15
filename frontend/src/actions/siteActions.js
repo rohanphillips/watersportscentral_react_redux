@@ -1,6 +1,8 @@
 import axios from 'axios';
 const SITE_URL = 'http://localhost:3001'
 export const USERS_URL = `${SITE_URL}/users`
+export const LOCATIONS_URL = `${SITE_URL}/locations`
+export const SPORTS_URL = `${SITE_URL}/sports`
 const LOGIN_USER_URL = `${SITE_URL}/sessions`
 const GET_USER_URL = `${SITE_URL}/getuser`
 
@@ -137,3 +139,22 @@ const updateUser = (payload) => async (dispatch) => {
   }  
 }  
 export {updateUser};
+
+const deleteLocation = (id) => async (dispatch) => {          
+  console.log("siteAction:", "deleteLocation:", deleteLocation);
+  const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
+  try {
+    const response = await axios({
+      method: 'DELETE',
+      url: `${LOCATIONS_URL}/${id}`,
+      headers: header,
+      crossdomain: true,
+    })
+    console.log("deleteLocation:", "response:", response)
+    dispatch({type: 'DELETE_LOCATION', id: id})
+  } catch {
+
+  }
+  
+}  
+export {deleteLocation};

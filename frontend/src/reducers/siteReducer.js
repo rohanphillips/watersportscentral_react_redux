@@ -102,6 +102,13 @@ const siteReducer = (state = initialState, action) => {
         ...state,
         users: state.users.filter(user => user.id !== action.id),
       }
+      case 'DELETE_LOCATION':
+        console.log("siteReducer:", "DELETE_LOCATION", action)
+        console.log("siteReducer:", "DELETE_LOCATION:", state)
+        return {
+          ...state,
+          locations: state.locations.filter(location => location.id !== action.id),
+        }
     default: return state;
   }
 }
