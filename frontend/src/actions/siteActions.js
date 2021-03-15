@@ -140,6 +140,28 @@ const updateUser = (payload) => async (dispatch) => {
 }  
 export {updateUser};
 
+const createLocation = newLocation => async (dispatch) => {
+  try {
+    
+    const response = await axios({
+      method: 'POST',
+      url: LOCATIONS_URL,
+      data: {location: newLocation},
+      crossdomain: true,
+    })
+    console.log("Create Location Response:", response)
+    if (response.data.error){
+      const error = response.data.error;
+      dispatch({type: 'CREATE_LOCATION_ERROR', error});
+    } else {
+      dispatch({type: 'CREATE_LOCATION', ...response.data.location});
+    }
+  } catch {
+    dispatch({type: 'CREATE_LOCATION_ERROR'});
+  }
+}
+export {createLocation}
+
 const deleteLocation = (id) => async (dispatch) => {          
   console.log("siteAction:", "deleteLocation:", deleteLocation);
   const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import {createLocation} from '../../actions/siteActions'
 
 class LocationCreate extends Component {
   state = {
@@ -23,15 +25,24 @@ class LocationCreate extends Component {
     })
   }
 
+  handleOnSubmit = async (e) => {
+    e.preventDefault();
+    const {name, description, info} = this.state;
+    const {newLocation} = this.props;
+    await newLocation({
+      name, description, info
+    })
+  }  
+
   render() {
     console.log("LocationAddEdit:", "props", this.props)
     return (
       <div className="form-part">
         <p>Location Create</p>
-        <form>
+        <form onSubmit={this.handleOnSubmit}>
           <label>
             Location Name:
-            <input 
+            <input onChange={this.handleChange}
               type="text"
               name="name"
               value={this.state.name}
@@ -39,7 +50,7 @@ class LocationCreate extends Component {
           </label>
           <label>
             Short Description:
-            <input 
+            <input onChange={this.handleChange}
               type="text"
               name="description"
               value={this.state.description}
@@ -47,17 +58,21 @@ class LocationCreate extends Component {
           </label>
           <label>
             Location Info:
-            <input 
+            <input onChange={this.handleChange}
               type="text"
               name="info"
-              value={this.state.name}
+              value={this.state.info}
             />
           </label>
-          <button>Create Location</button>
+          <button type="submit">Create Location</button>
         </form>
       </div>
     );
   };
 }
+
+const mapDispatchToProps = dispatch => ({
+  newLocation: payload => dispatch(createLocation(payload))
+})
  
-export default LocationCreate;
+export default connect(null, mapDispatchToProps)(LocationCreate);
