@@ -40,9 +40,7 @@ class Signup extends Component {
         message: 'welcome',
       })
     }
-  }
-
-  
+  }  
 
   render() {
     const { message } = this.state;
