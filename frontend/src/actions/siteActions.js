@@ -142,10 +142,11 @@ export {updateUser};
 
 const createLocation = newLocation => async (dispatch) => {
   try {
-    
+    const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
     const response = await axios({
       method: 'POST',
       url: LOCATIONS_URL,
+      header: header,
       data: {location: newLocation},
       crossdomain: true,
     })

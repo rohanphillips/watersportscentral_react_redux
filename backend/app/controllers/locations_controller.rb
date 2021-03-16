@@ -1,5 +1,6 @@
 class LocationsController < ApplicationController
-  skip_before_action :authorized, only: [:index]
+  skip_before_action :verify_authenticity_token
+  before_action :authorized, only: [:auto_login] 
 
   def create
     byebug

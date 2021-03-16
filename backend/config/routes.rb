@@ -17,9 +17,9 @@ Rails.application.routes.draw do
     end
   end
   resources :users, only: [:index, :show, :new, :create, :edit, :update] do
-    resources :locations, only: [:show, :index, :new, :edit]
-    resources :sports, only: [:show, :index, :new, :edit]
-    resources :events, only: [:show, :index, :new, :edit]
+    resources :locations, only: [:show, :index, :create, :edit]
+    resources :sports, only: [:show, :index, :create, :edit]
+    resources :events, only: [:show, :index, :create, :edit]
   end
   
   resources :sessions, only:[:new, :create, :destroy]
