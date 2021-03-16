@@ -115,8 +115,7 @@ const siteReducer = (state = initialState, action) => {
       return {
         ...state,
         location: action.location,
-        locations: [],
-        locationsFetched: false,
+        locations: action.locations,
       }
     case 'DELETE_LOCATION':
       console.log("siteReducer:", "DELETE_LOCATION", action)

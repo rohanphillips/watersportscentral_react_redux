@@ -5,7 +5,8 @@ class LocationsController < ApplicationController
   def create    
     @location = Location.new(location_params)
     if @location.save
-      render json: {location: @location}, status: :ok
+      @locations = Location.all
+      render json: {location: @location, locations: @locations}, status: :ok
     else
       render json: {error: {message: "Location creation error", errors: @location.errors}}
     end
