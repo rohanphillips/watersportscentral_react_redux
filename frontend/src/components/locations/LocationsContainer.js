@@ -2,11 +2,30 @@ import React, {Component} from 'react';
 import {
   Route 
 } from 'react-router-dom';
+import { connect } from 'react-redux';
 import HasAccess from '../sessions/HasAccess'
 import LocationCreate from './LocationCreate'
+import {getLocations, deleteLocation} from '../../actions/siteActions'
 
 class LocationsContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: ''
+    }
+  }
+
+  componentDidMount(){
+    console.log("LocationsContainer:", "componentDidMount")
+    this.props.getLocations()
+  }
+
+  componendDidUpdate(){
+    console.log("LocationsContainer:", "componendDidUpdate")
+  }
   render() {
+    console.log("LocationsContainer", "locationsFetched", this.props.state.locationsFetched)
+    
     return (
         <div>
           {<h1>Locations Container</h1>}
@@ -18,4 +37,15 @@ class LocationsContainer extends Component {
   }
 };
 
-export default LocationsContainer;
+const mapStateToProps = state => {
+  return {state}
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    getLocations: data => dispatch(getLocations(data)),
+    deleteLocation: id => dispatch(deleteLocation(id))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LocationsContainer);

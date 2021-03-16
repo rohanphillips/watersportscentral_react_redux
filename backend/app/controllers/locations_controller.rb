@@ -37,10 +37,11 @@ class LocationsController < ApplicationController
   end
 
   def index
-    if params[:user_id]
-      @locations = User.find(params[:user_id]).locations
-    else
+    if logged_in_user
       @locations = Location.all
+      render json: {locations: @locations}, status: :ok
+    else
+      render json: {error: {message: "Not logged in"}}
     end
   end
  

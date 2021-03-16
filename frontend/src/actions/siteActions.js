@@ -140,6 +140,26 @@ const updateUser = (payload) => async (dispatch) => {
 }  
 export {updateUser};
 
+const getLocations = () => async (dispatch) => {          
+  console.log("siteAction:", "getLocations:", getLocations);
+  const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
+  console.log("headers", header)
+  try {
+    const response = await axios({
+      method: 'GET',
+      url: LOCATIONS_URL,
+      headers: header,
+      crossdomain: true,
+    })
+    console.log("getLocations:", "response:", response)
+    dispatch({type: 'GET_LOCATIONS', locations: response.data.locations})
+  } catch {
+    console.log("getLocations Error:", USERS_URL)
+  }
+  
+}  
+export {getLocations};
+
 const createLocation = newLocation => async (dispatch) => {
   try {
     const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
