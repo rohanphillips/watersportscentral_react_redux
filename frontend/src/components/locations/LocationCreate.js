@@ -6,7 +6,7 @@ class LocationCreate extends Component {
   state = {
     name: '',
     description: '',
-    info: ''
+    location_info: ''
 
   }
 
@@ -27,10 +27,10 @@ class LocationCreate extends Component {
 
   handleOnSubmit = async (e) => {
     e.preventDefault();
-    const {name, description, info} = this.state;
+    const {name, description, location_info} = this.state;
     const {newLocation} = this.props;
     await newLocation({
-      name, description, info
+      name, description, location_info
     })
   }  
 
@@ -60,8 +60,8 @@ class LocationCreate extends Component {
             Location Info:
             <input onChange={this.handleChange}
               type="text"
-              name="info"
-              value={this.state.info}
+              name="location_info"
+              value={this.state.location_info}
             />
           </label>
           <button type="submit">Create Location</button>

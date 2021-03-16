@@ -2,14 +2,12 @@ class LocationsController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :authorized, only: [:auto_login] 
 
-  def create
-    byebug
+  def create    
     @location = Location.new(location_params)
-    
     if @location.save
-      redirect_to location_url(@location.id)
+      render json: {location: @location}, status: :ok
     else
-      render :new
+      render json: {error: {message: "Location creation error", errors: @location.errors}}
     end
   end
 
