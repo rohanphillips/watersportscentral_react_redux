@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {Redirect} from 'react-router-dom'
 import {createLocation} from '../../actions/siteActions'
 
 class LocationCreate extends Component {
   state = {
     name: '',
     description: '',
-    location_info: ''
-
+    location_info: '',
+    isAccepted: false
   }
 
   handleChange = (e) => {    
@@ -32,10 +33,22 @@ class LocationCreate extends Component {
     await newLocation({
       name, description, location_info
     })
+    if (this.props.state.location !== undefined){
+      this.setState({
+        isAccepted: true,
+      })
+    }
+    console.log("newLocation", "after submit");
   }  
 
   render() {
-    console.log("LocationAddEdit:", "props", this.props)
+    console.log("LocationCreate:", "props", this.props)
+    if (this.state.isAccepted){
+      const {id} = this.props.state.location;
+      return (
+        <Redirect to={`/locations/${id}`}/>
+      )
+    }
     return (
       <div className="form-part">
         <p>Location Create</p>
@@ -71,8 +84,12 @@ class LocationCreate extends Component {
   };
 }
 
+const mapStateToProps = (state) => {
+  return {state}
+}
+
 const mapDispatchToProps = dispatch => ({
   newLocation: payload => dispatch(createLocation(payload))
 })
  
-export default connect(null, mapDispatchToProps)(LocationCreate);
+export default connect(mapStateToProps, mapDispatchToProps)(LocationCreate);

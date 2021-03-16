@@ -155,7 +155,9 @@ const createLocation = newLocation => async (dispatch) => {
       const error = response.data.error;
       dispatch({type: 'CREATE_LOCATION_ERROR', error});
     } else {
-      dispatch({type: 'CREATE_LOCATION', ...response.data.location});
+      dispatch({type: 'CREATE_LOCATION', location: response.data.location});
+      const {id} = response.data.location;
+      console.log("will show location for user", `${LOCATIONS_URL}/${id}`);
     }
   } catch {
     dispatch({type: 'CREATE_LOCATION_ERROR'});
