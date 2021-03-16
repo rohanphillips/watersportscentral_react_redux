@@ -1,15 +1,15 @@
 import React from 'react'
-import { connect } from 'react-redux';
+import { connect,
+Redirect} from 'react-redux';
 
 class HasAccess extends React.Component {
 
     render() {
-        const isAdmin = this.props.state.user.admin;
-        const isAuthenticated = localStorage.getItem('loggedin') != null && isAdmin;
+        const isAuthenticated = localStorage.getItem('loggedin') != null;
         return isAuthenticated ? (
             this.props.children
         ) : (
-            null
+            <Redirect to="/login" />
         );
     }
 }

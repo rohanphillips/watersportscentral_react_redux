@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import HasAccess from '../sessions/HasAccess'
+import AdminAccess from '../sessions/AdminAccess'
 import {
   Route,
 } from 'react-router-dom';
@@ -28,10 +28,9 @@ class UsersContainer extends Component {
   render (){    
     return (
       <div>
-        {/* <HasAccess component={() => header() }/> */} 
-          <HasAccess>
+          <AdminAccess>
             <Route exact path="/users" render={routerProps => <UsersList {...routerProps}/>}></Route>
-          </HasAccess>            
+          </AdminAccess>            
           <Route exact path="/users/:id" render={routerProps => <User {...routerProps} props={this.props} />}/>
           <Route exact path="/users/:id/edit" render={routerProps => <UserEdit {...routerProps} props={this.props} />}/>
       </div>

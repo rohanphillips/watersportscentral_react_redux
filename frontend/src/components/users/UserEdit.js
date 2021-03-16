@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import HasAccess from '../sessions/HasAccess'
+import AdminAccess from '../sessions/AdminAccess'
 import {updateUser} from '../../actions/siteActions'
 import {getUsers} from '../../actions/siteActions'
 import './user.css'
@@ -181,7 +181,7 @@ class UserEdit extends Component {
               value={this.state.user.password === null ? "" : this.state.user.password}
             />
           </label>
-          <HasAccess>
+          <AdminAccess>
             <label>
               Admin:        
               <input onChange={this.handleChange}
@@ -190,8 +190,8 @@ class UserEdit extends Component {
                 checked={this.state.user.admin}
               />
             </label>
-          </HasAccess>
-          <HasAccess>
+          </AdminAccess>
+          <AdminAccess>
             <label>
               Active:        
               <input onChange={this.handleChange}
@@ -200,7 +200,7 @@ class UserEdit extends Component {
                 checked={this.state.user.active}
               />
             </label>
-          </HasAccess>
+          </AdminAccess>
           <button onClick={this.handleOnSubmit}>Update</button>
         </form>
       </div>

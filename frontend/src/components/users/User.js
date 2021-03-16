@@ -2,7 +2,7 @@ import React from 'react'
 import {
   Link,
 } from 'react-router-dom';
-import HasAccess from '../sessions/HasAccess'
+import AdminAccess from '../sessions/AdminAccess'
 
 const User = (data) => {
   console.log("User", "data", data)
@@ -24,13 +24,13 @@ const User = (data) => {
       <Link to={`/users/${user.id}/edit`}>
           <button>Edit</button>
       </Link> 
-      <HasAccess>
+      <AdminAccess>
         <button id={`${user.id}`} 
           onClick={() => data.props.deleteUser(user.id)
         }>
           Delete
         </button>
-      </HasAccess>
+      </AdminAccess>
     </div>
   )
 }
