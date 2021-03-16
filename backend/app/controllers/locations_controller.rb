@@ -4,7 +4,6 @@ class LocationsController < ApplicationController
 
   def create    
     @location = Location.new(location_params)
-    byebug
     if @location.save
       render json: {location: @location}, status: :ok
     else
@@ -48,7 +47,7 @@ class LocationsController < ApplicationController
   private
  
   def location_params
-    params.require(:location).permit(:name, :description, :location_info).merge(user_id: session[:user_id])
+    params.require(:location).permit(:name, :description, :location_info).merge(user_id: logged_in_user.id)
   end
 
   def comment_params

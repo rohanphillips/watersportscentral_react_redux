@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {
   Route 
 } from 'react-router-dom';
+import HasAccess from '../sessions/HasAccess'
 import LocationCreate from './LocationCreate'
 
 class LocationsContainer extends Component {
@@ -9,7 +10,9 @@ class LocationsContainer extends Component {
     return (
         <div>
           {<h1>Locations Container</h1>}
-          <Route exact path={`/locations/create`} render={routerProps => <LocationCreate {...routerProps}/>} />
+          <HasAccess>
+            <Route exact path={`/locations/create`} render={routerProps => <LocationCreate {...routerProps}/>} />
+          </HasAccess>
         </div>
     );
   }

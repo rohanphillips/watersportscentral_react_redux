@@ -22,7 +22,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    byebug
     if logged_in_user then
       @user = User.find(params[:id])
       if @user.valid?   

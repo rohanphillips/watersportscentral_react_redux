@@ -146,7 +146,7 @@ const createLocation = newLocation => async (dispatch) => {
     const response = await axios({
       method: 'POST',
       url: LOCATIONS_URL,
-      header: header,
+      headers: header,
       data: {location: newLocation},
       crossdomain: true,
     })
