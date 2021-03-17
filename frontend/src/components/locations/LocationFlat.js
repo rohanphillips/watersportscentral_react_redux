@@ -3,21 +3,22 @@ import {
   Link,
 } from 'react-router-dom'
 
-const LocationFlat = (data) => {
-  const {location} = data;
+const LocationFlat = (location) => {
+  const {data} = location;
+  console.log("LocationFlat", "location", data)
   return (
     <div>
       <p>
-        name, descrption, location info
-        {location.name}
-        {location.descrption}
-        <Link to={`/locations/${location.id}`}>
+        {/* name, descrption, location info */}
+        {data.name}
+        {data.descrption}
+        <Link to={`/locations/${data.id}`}>
           <button>View</button>
         </Link>
-        <Link to={`/locations/${location.id}/edit`}>
+        <Link to={`/locations/${data.id}/edit`}>
           <button>Edit</button>
         </Link>
-        <button id={`${location.id}`} onClick={() => data.deleteLocation(location.id)}>Delete</button>
+        <button id={`${data.id}`} onClick={() => data.deleteLocation(data.id)}>Delete</button>
       </p>
     </div>
   )
