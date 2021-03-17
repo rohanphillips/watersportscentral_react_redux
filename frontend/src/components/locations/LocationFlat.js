@@ -18,7 +18,7 @@ const LocationFlat = (location) => {
         <Link to={`/locations/${data.id}/edit`}>
           <button>Edit</button>
         </Link>
-        <button id={`${data.id}`} onClick={() => data.deleteLocation(data.id)}>Delete</button>
+        <button id={`${data.id}`} onClick={() => location.deleteLocation(data.id)}>Delete</button>
       </p>
     </div>
   )
