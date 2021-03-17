@@ -38,7 +38,7 @@ class LocationsContainer extends Component {
           </HasAccess>
           <Route exact path={`/locations/`} render={routerProps => <LocationsList {...routerProps}/>} />
           <Route exact path={`/locations/:id`} render={routerProps => <Location {...routerProps} props={this.props}/>} />
-          <Route exact path={`/locations/:id`} render={routerProps => <LocationEdit {...routerProps} props={this.props}/>} />
+          <Route exact path={`/locations/:id/edit`} render={routerProps => <LocationEdit {...routerProps} props={this.props}/>} />
         </div>
     );
   }
