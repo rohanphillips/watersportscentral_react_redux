@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import HasAccess from '../sessions/HasAccess'
 import LocationCreate from './LocationCreate'
 import LocationsList from './LocationsList'
+import Location from './Location'
 import {getLocations, deleteLocation} from '../../actions/siteActions'
 
 class LocationsContainer extends Component {
@@ -35,6 +36,7 @@ class LocationsContainer extends Component {
             <Route exact path={`/locations/create`} render={routerProps => <LocationCreate {...routerProps}/>} />
           </HasAccess>
           <Route exact path={`/locations/`} render={routerProps => <LocationsList {...routerProps}/>} />
+          <Route exact path={`/locations/:id`} render={routerProps => <Location {...routerProps} props={this.props}/>} />
         </div>
     );
   }
