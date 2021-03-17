@@ -7,6 +7,7 @@ import HasAccess from '../sessions/HasAccess'
 import LocationCreate from './LocationCreate'
 import LocationsList from './LocationsList'
 import Location from './Location'
+import LocationEdit from './LocationEdit'
 import {getLocations, deleteLocation} from '../../actions/siteActions'
 
 class LocationsContainer extends Component {
@@ -37,6 +38,7 @@ class LocationsContainer extends Component {
           </HasAccess>
           <Route exact path={`/locations/`} render={routerProps => <LocationsList {...routerProps}/>} />
           <Route exact path={`/locations/:id`} render={routerProps => <Location {...routerProps} props={this.props}/>} />
+          <Route exact path={`/locations/:id`} render={routerProps => <LocationEdit {...routerProps} props={this.props}/>} />
         </div>
     );
   }
