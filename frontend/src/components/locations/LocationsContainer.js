@@ -5,7 +5,6 @@ import {
 import { connect } from 'react-redux';
 import LocationsList from './LocationsList'
 import Location from './Location'
-import LocationCreate from './LocationCreate'
 import {getLocations, deleteLocation} from '../../actions/siteActions'
 
 class LocationsContainer extends Component {

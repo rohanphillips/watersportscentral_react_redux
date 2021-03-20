@@ -1,6 +1,6 @@
 import React from 'react'
 import LocationShow from './LocationShow'
-import LocationCreate from './LocationCreate'
+import LocationCreateEdit from './LocationCreateEdit'
 
 const Location = (data) => {
   console.log("Location:", "data", data)
@@ -8,7 +8,7 @@ const Location = (data) => {
   if (conditions.some(st => data.routerProps.location.pathname.includes(st))) {
     return (
       <div>
-        {<LocationCreate data={data}/>}
+        {<LocationCreateEdit data={data}/>}
       </div>
     )
   }
