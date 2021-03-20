@@ -11,6 +11,18 @@ class LocationCreate extends Component {
     isAccepted: false
   }
 
+  componentDidMount(){
+    console.log("LocationCreate:", "componentDidMount")
+    if (this.editMode()) {
+      const location = this.props.data.state.locations.find(location => location.id === this.locationID())
+      this.setState({
+        name: location.name,
+        description: location.description,
+        location_info: location.location_info,
+      })
+    }
+  }
+
   handleChange = (e) => {    
     let saved;
     switch (e.target.type){
@@ -26,26 +38,48 @@ class LocationCreate extends Component {
     })
   }
 
-  handleOnSubmit = async (e) => {
+  handleOnSubmit = async (e, edit) => {
     e.preventDefault();
     const {name, description, location_info} = this.state;
     const {newLocation} = this.props;
-    await newLocation({
-      name, description, location_info
-    })
-    if (this.props.data.state.location !== undefined){
-      this.setState({
-        isAccepted: true,
+    if (this.editMode() === false){
+      await newLocation({
+        name, description, location_info
       })
+      if (this.props.data.state.location !== undefined){
+        this.setState({
+          isAccepted: true,
+        })
+      }
     }
     console.log("newLocation", "after submit");
-  }  
+  } 
+
+  locationID = () => {
+    return parseInt(this.props.data.routerProps.match.params.id)
+  }
+
+  editMode = () => {
+    return isNaN(this.locationID()) === false
+  }
+  
+  formFunction = () => {
+    if (this.editMode()){
+      return "Edit"
+    } else {
+      return "Create"
+    }
+  }
+
+  buttonFunction = () => {
+    if (this.editMode()){
+      return "Save Location"
+    } else {
+      return "Create Location"
+    }
+  }
   
   render() {
-    console.log("LocationCreateEdit:", "props", this.props)
-    // const id = parseInt(this.props.match.params.id)
-    // const editMode = isNaN(parseInt(this.props.match.params.id)) === false
-    // console.log("LocationCreate:", "editMode", editMode)
     if (this.state.isAccepted){
       const {id} = this.props.data.state.location;
       return (
@@ -54,7 +88,7 @@ class LocationCreate extends Component {
     }
     return (
       <div className="form-part">
-        <p>Location Create</p>
+        <p>Location {this.formFunction()}</p>
         <form onSubmit={this.handleOnSubmit}>
           <label>
             Location Name:
@@ -80,7 +114,7 @@ class LocationCreate extends Component {
               value={this.state.location_info}
             />
           </label>
-          <button type="submit">Create Location</button>
+          <button type="submit">{this.buttonFunction()}</button>
         </form>
       </div>
     );
