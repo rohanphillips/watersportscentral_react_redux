@@ -33,7 +33,7 @@ class LocationCreate extends Component {
     await newLocation({
       name, description, location_info
     })
-    if (this.props.state.location !== undefined){
+    if (this.props.data.state.location !== undefined){
       this.setState({
         isAccepted: true,
       })
@@ -42,12 +42,12 @@ class LocationCreate extends Component {
   }  
   
   render() {
-    console.log("LocationCreate:", "props", this.props)
+    console.log("LocationCreateEdit:", "props", this.props)
     // const id = parseInt(this.props.match.params.id)
     // const editMode = isNaN(parseInt(this.props.match.params.id)) === false
     // console.log("LocationCreate:", "editMode", editMode)
     if (this.state.isAccepted){
-      const {id} = this.props.state.location;
+      const {id} = this.props.data.state.location;
       return (
         <Redirect to={`/locations/${id}`}/>
       )
@@ -87,12 +87,8 @@ class LocationCreate extends Component {
   };
 }
 
-const mapStateToProps = (state) => {
-  return {state}
-}
-
 const mapDispatchToProps = dispatch => ({
   newLocation: payload => dispatch(createLocation(payload))
 })
  
-export default connect(mapStateToProps, mapDispatchToProps)(LocationCreate);
+export default connect(null, mapDispatchToProps)(LocationCreate);

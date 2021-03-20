@@ -3,11 +3,12 @@ import LocationShow from './LocationShow'
 import LocationCreate from './LocationCreate'
 
 const Location = (data) => {
+  console.log("Location:", "data", data)
   const conditions = ["create", "edit"]
-  if (conditions.some(st => data.location.pathname.includes(st))) {
+  if (conditions.some(st => data.routerProps.location.pathname.includes(st))) {
     return (
       <div>
-        {<LocationCreate props={data}/>}
+        {<LocationCreate data={data}/>}
       </div>
     )
   }

@@ -4,9 +4,9 @@ import AdminAccess from '../sessions/AdminAccess'
 
 const LocationShow = (data) => {
   console.log("LocationShow:", "data:", data)
-  const id = parseInt(data.data.match.params.id)
+  const id = parseInt(data.data.routerProps.match.params.id)
   console.log("LocationShow:", "id:", id)
-  const location = data.data.props.state.locations.find(location => location.id === id);
+  const location = data.data.state.locations.find(location => location.id === id);
   console.log("LocationShow:", "location", location)
   
   return (
