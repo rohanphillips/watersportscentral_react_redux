@@ -4,10 +4,11 @@ import LocationCreate from './LocationCreate'
 
 const Location = (data) => {
   const id = parseInt(data.match.params.id)
+  console.log("Location", "id", isNaN(id))
   const location = data.props.state.locations.find(location => location.id === id);
   console.log("Location:", "location", location)
   console.log("Location:", "data", data)
-  if (location === undefined) {
+  if (isNaN(id)) {
     return (
       <div>
         {<LocationCreate/>}

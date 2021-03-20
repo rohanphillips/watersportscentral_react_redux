@@ -3,8 +3,6 @@ import {
   Route 
 } from 'react-router-dom';
 import { connect } from 'react-redux';
-import HasAccess from '../sessions/HasAccess'
-import LocationCreate from './LocationCreate'
 import LocationsList from './LocationsList'
 import Location from './Location'
 import LocationEdit from './LocationEdit'
@@ -28,8 +26,15 @@ class LocationsContainer extends Component {
     console.log("LocationsContainer:", "componendDidUpdate")
   }
   render() {
-    console.log("LocationsContainer", "locationsFetched", this.props.state.locationsFetched)
-    
+    const {locationsFetched} = this.props.state
+    console.log("LocationsContainer", "locationsFetched", locationsFetched)
+    if (locationsFetched !== true){
+      return (
+        <div>
+          Loading...
+        </div>
+      )
+    }
     return (
         <div>
           {<h1>Locations Container</h1>}
