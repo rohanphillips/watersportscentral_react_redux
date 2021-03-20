@@ -40,9 +40,12 @@ class LocationCreate extends Component {
     }
     console.log("newLocation", "after submit");
   }  
-
+  
   render() {
     console.log("LocationCreate:", "props", this.props)
+    // const id = parseInt(this.props.match.params.id)
+    // const editMode = isNaN(parseInt(this.props.match.params.id)) === false
+    // console.log("LocationCreate:", "editMode", editMode)
     if (this.state.isAccepted){
       const {id} = this.props.state.location;
       return (

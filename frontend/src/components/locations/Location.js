@@ -3,15 +3,11 @@ import LocationShow from './LocationShow'
 import LocationCreate from './LocationCreate'
 
 const Location = (data) => {
-  const id = parseInt(data.match.params.id)
-  console.log("Location", "id", isNaN(id))
-  const location = data.props.state.locations.find(location => location.id === id);
-  console.log("Location:", "location", location)
-  console.log("Location:", "data", data)
-  if (isNaN(id)) {
+  const conditions = ["create", "edit"]
+  if (conditions.some(st => data.location.pathname.includes(st))) {
     return (
       <div>
-        {<LocationCreate/>}
+        {<LocationCreate props={data}/>}
       </div>
     )
   }

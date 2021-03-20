@@ -5,7 +5,7 @@ import {
 import { connect } from 'react-redux';
 import LocationsList from './LocationsList'
 import Location from './Location'
-import LocationEdit from './LocationEdit'
+import LocationCreate from './LocationCreate'
 import {getLocations, deleteLocation} from '../../actions/siteActions'
 
 class LocationsContainer extends Component {
@@ -39,8 +39,7 @@ class LocationsContainer extends Component {
         <div>
           {<h1>Locations Container</h1>}
           <Route exact path={`/locations/`} render={routerProps => <LocationsList {...routerProps}/>} />
-          <Route exact path={`/locations/:id`} render={routerProps => <Location {...routerProps} props={this.props}/>} />
-          <Route exact path={`/locations/:id/edit`} render={routerProps => <LocationEdit {...routerProps} props={this.props}/>} />
+          <Route path={`/locations/:id`} render={routerProps => <Location {...routerProps} props={this.props}/>} />
         </div>
     );
   }

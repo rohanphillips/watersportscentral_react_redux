@@ -14,7 +14,7 @@ const LocationShow = (data) => {
       <p>
         {location.name} <br></br>
       </p>
-      <Link to={`/users/${location.id}/edit`}>
+      <Link to={`/locations/${location.id}/edit`}>
           <button>Edit</button>
       </Link> 
       <AdminAccess>
