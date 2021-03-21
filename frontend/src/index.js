@@ -5,7 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import './index.css';
 import App from './components/app/App';
-import siteReducer from './reducers/siteReducer'
+import siteReducers from './reducers/siteReducers'
 // import reportWebVitals from './reportWebVitals';
 const initialUser = {
 	user: {
@@ -22,7 +22,7 @@ const initialState = {
 	users: [],
 	locations: [],
 };
-const store = createStore(siteReducer, initialState, applyMiddleware(thunk))
+const store = createStore(siteReducers, initialState, applyMiddleware(thunk))
 
 ReactDOM.render(
   <Provider store={store}>

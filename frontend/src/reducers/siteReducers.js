@@ -13,7 +13,7 @@ const initialState = {
   users: []
 }
 
-const siteReducer = (state = initialState, action) => {
+const siteReducers = (state = initialState, action) => {
   console.log("siteReducer:", "called", action);
   switch (action.type) {
     case 'CREATE_USER':
@@ -135,4 +135,4 @@ const siteReducer = (state = initialState, action) => {
   }
 }
 
-export default siteReducer;
+export default siteReducers;
