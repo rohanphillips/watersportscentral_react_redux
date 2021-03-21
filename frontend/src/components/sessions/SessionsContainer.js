@@ -9,8 +9,8 @@ import Signup from './Signup';
 
 function LoginShow(props){
   console.log("SessionsContainer:","LoginShow:", props);
-  console.log("SessionsContainer:","isLogin:", props.state.isLogin);
-  if (props.state.isLogin === false){
+  console.log("SessionsContainer:","isLogin:", props.state.site.isLogin);
+  if (props.state.site.isLogin === false){
     return <Route exact path="/login" render={routerProps => <Login {...routerProps} state={props}/>} />;
   }
   return null;

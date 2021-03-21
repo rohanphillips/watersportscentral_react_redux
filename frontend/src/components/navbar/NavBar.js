@@ -28,7 +28,8 @@ function Signout(data){
 }
 
 function DisplayUsers(data){
-  const {admin} = data.displayusers.user;
+  console.log("NavBar:","Display Users:", data);
+  const {admin} = data.state.users.user;
   if (admin){
     return <li><NavLink to="/users">Users</NavLink></li>;
   }
@@ -36,10 +37,10 @@ function DisplayUsers(data){
 }
 
 function Profile(data){
-  console.log("NavBar:","ProfileData:", data.data);
-  console.log("Profile:", data.data.isLogin);  
-  if (data.data.isLogin){
-    const {id} = data.data.user;
+  console.log("NavBar:","ProfileData:", data);
+  console.log("Profile:", data.login);  
+  if (data.login){
+    const {id} = data.state.users.user;
     console.log("NavBar", "id:", id)
     const link = `/users/${id}`
     return <li><NavLink to={`${link}`}>Profile</NavLink></li>;
@@ -50,7 +51,7 @@ function Profile(data){
 class NavBar extends Component{  
   render(){
     console.log("NavBar:","State:", this.props.state)
-    const {isLogin} = this.props.state;
+    const {isLogin} = this.props.state.site;
     return (
       <div className="navbar">
         {
@@ -68,11 +69,11 @@ class NavBar extends Component{
               <li>
                 <NavLink to="/events">Events</NavLink>
               </li>
-              <DisplayUsers displayusers={this.props.state} />
+              <DisplayUsers state={this.props.state} />
               <Login login={isLogin} />
               <Signout login={isLogin} />
               <Signup login={isLogin} />   
-              <Profile data={this.props.state} />         
+              <Profile state={this.props.state} login={isLogin}/>         
             </ul>
           </nav>
         }

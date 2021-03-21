@@ -12,7 +12,7 @@ class UsersList extends Component {
       <div> 
           <h1>Users List</h1>
           {
-            this.props.state.users.map(user => (
+            this.props.state.users.users.map(user => (
               <UserFlat user={user} deleteUser={this.props.deleteUser}/>
             ))
           }     

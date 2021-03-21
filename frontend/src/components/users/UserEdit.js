@@ -83,7 +83,7 @@ class UserEdit extends Component {
 
   user = () => {
     const id = parseInt(this.props.match.params.id)
-    return {user: this.props.props.state.users.find(user => user.id === id), id: id};    
+    return {user: this.props.props.state.users.users.find(user => user.id === id), id: id};    
   }
 
   hasAccess = () =>{

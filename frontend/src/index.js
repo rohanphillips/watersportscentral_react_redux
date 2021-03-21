@@ -1,28 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import './index.css';
 import App from './components/app/App';
 import siteReducers from './reducers/siteReducers'
+import userReducers from './reducers/userReducers'
+import locationReducers from './reducers/locationReducers'
 // import reportWebVitals from './reportWebVitals';
-const initialUser = {
-	user: {
-		username: '',
-		firstName: '',
-		lastName: '',
-		email: '',
-	}
-}
-const initialState = {	
-	isLogin: false,
-	...initialUser,
-	usersFetched: false,
-	users: [],
-	locations: [],
-};
-const store = createStore(siteReducers, initialState, applyMiddleware(thunk))
+
+const rootReducer = combineReducers({site: siteReducers, users: userReducers, locations: locationReducers});
+const store = createStore(rootReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
   <Provider store={store}>
