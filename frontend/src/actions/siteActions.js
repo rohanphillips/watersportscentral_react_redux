@@ -185,6 +185,25 @@ const createLocation = newLocation => async (dispatch) => {
 }
 export {createLocation}
 
+const updateLocation = (payload) => async (dispatch) => {
+  const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
+  console.log("updateLocation", "payload:", payload);
+  try {
+    const response = await axios({
+      method: 'PATCH',
+      url: `${LOCATIONS_URL}/${payload.id}`,
+      headers: header,
+      data: {user: payload.user},
+      crossdomain: true,
+    })
+    console.log("siteActions:", "updateLocationResponse", response)
+    dispatch({type: 'UPDATE_LOCATION', ...response.data.locations});
+  } catch {
+
+  }  
+}  
+export {updateLocation};
+
 const deleteLocation = (id) => async (dispatch) => {          
   console.log("siteAction:", "deleteLocation:", deleteLocation);
   const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};

@@ -109,6 +109,12 @@ const siteReducer = (state = initialState, action) => {
         locationsFetched: true,
         locations: action.locations,
       }
+    case 'UPDATE_LOCATION':
+      console.log("siteReducer:", "UPDATE_LOCATION", action)
+      return {
+        ...state,
+        locations: action.locations
+      }
     case 'CREATE_LOCATION':
       console.log("siteReducer:", "CREATE_LOCATION", action)
       console.log("siteReducer:", "Location", action.location)
