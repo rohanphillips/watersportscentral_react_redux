@@ -193,11 +193,11 @@ const updateLocation = (payload) => async (dispatch) => {
       method: 'PATCH',
       url: `${LOCATIONS_URL}/${payload.id}`,
       headers: header,
-      data: {user: payload.user},
+      data: {location: payload},
       crossdomain: true,
     })
     console.log("siteActions:", "updateLocationResponse", response)
-    dispatch({type: 'UPDATE_LOCATION', ...response.data.locations});
+    dispatch({type: 'UPDATE_LOCATION', ...response.data});
   } catch {
 
   }  

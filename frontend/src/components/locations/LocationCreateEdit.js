@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Redirect} from 'react-router-dom'
-import {createLocation} from '../../actions/siteActions'
+import {createLocation, updateLocation} from '../../actions/siteActions'
 
 class LocationCreate extends Component {
   state = {
@@ -40,9 +40,9 @@ class LocationCreate extends Component {
 
   handleOnSubmit = async (e, edit) => {
     e.preventDefault();
-    const {name, description, location_info} = this.state;
-    const {newLocation} = this.props;
+    const {name, description, location_info} = this.state;    
     if (this.editMode() === false){
+      const {newLocation} = this.props;
       await newLocation({
         name, description, location_info
       })
@@ -51,6 +51,11 @@ class LocationCreate extends Component {
           isAccepted: true,
         })
       }
+    } else {
+      const {updateLocation} = this.props
+      await updateLocation({
+        id: this.locationID(), name, description, location_info
+      })
     }
     console.log("newLocation", "after submit");
   } 
@@ -122,7 +127,8 @@ class LocationCreate extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  newLocation: payload => dispatch(createLocation(payload))
+  newLocation: payload => dispatch(createLocation(payload)),
+  updateLocation: payload => dispatch(updateLocation(payload))
 })
  
 export default connect(null, mapDispatchToProps)(LocationCreate);

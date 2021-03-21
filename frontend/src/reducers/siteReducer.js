@@ -113,6 +113,7 @@ const siteReducer = (state = initialState, action) => {
       console.log("siteReducer:", "UPDATE_LOCATION", action)
       return {
         ...state,
+        location: action.location,
         locations: action.locations
       }
     case 'CREATE_LOCATION':

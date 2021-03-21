@@ -17,19 +17,19 @@ class LocationsController < ApplicationController
   end
 
   def update
-    @location = Location.find(params[:id])
-    if @location.valid?   
-      if params[:commit] == "Create Comment"
-        @comment = @location.comments.create(comment_params)
-        redirect_to location_url
-      elsif params[:commit] != "Edit"
-        @location.update(location_params)
-        redirect_to location_url
+    if logged_in_user then
+      @location = Location.find(params[:id])
+      byebug
+      if @location.valid?   
+        if @location.update(location_params)
+          @locations = Location.all
+          render json: {location: @location, locations: @locations}, status: :ok
+        else
+          render json: {error: {message: "Location update error", errors: @location.errors}}
+        end
       else
-        redirect_to edit_location_url
+        render json: {error: {message: "Location not found"}}
       end
-    else
-      render :new
     end
   end
 
