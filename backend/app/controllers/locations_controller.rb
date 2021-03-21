@@ -19,7 +19,6 @@ class LocationsController < ApplicationController
   def update
     if logged_in_user then
       @location = Location.find(params[:id])
-      byebug
       if @location.valid?   
         if @location.update(location_params)
           @locations = Location.all

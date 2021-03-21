@@ -56,6 +56,11 @@ class LocationCreate extends Component {
       await updateLocation({
         id: this.locationID(), name, description, location_info
       })
+      if (this.props.data.state.location !== undefined){
+        this.setState({
+          isAccepted: true,
+        })
+      }
     }
     console.log("newLocation", "after submit");
   } 
