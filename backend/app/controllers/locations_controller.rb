@@ -44,6 +44,17 @@ class LocationsController < ApplicationController
       render json: {error: {message: "Not logged in"}}
     end
   end
+
+  def destroy
+    byebug
+    if logged_in_user
+      @location = Location.find(params[:id]);
+      @location.destroy
+      render json: {}, status: :ok
+    else
+      render json: {:error => 'Not Authorized'}
+    end    
+  end
  
   private
  

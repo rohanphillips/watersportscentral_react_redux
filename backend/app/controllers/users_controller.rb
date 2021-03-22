@@ -72,8 +72,7 @@ class UsersController < ApplicationController
       render json: {}, status: :ok
     else
       render json: {:error => 'Not Authorized'}
-    end
-    
+    end    
   end
 
   def active
