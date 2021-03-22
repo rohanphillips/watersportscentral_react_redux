@@ -4,7 +4,7 @@ import Logout from '../sessions/Logout'
 import { connect } from 'react-redux';
 
 function Signup(data){
-  console.log("NavBar:","Signup:", data.isLogin);
+  console.log("NavBar:","Signup:", data);
   if (data.isLogin === false){
     return <li><NavLink to="/signup">Sign Up</NavLink></li>;
   }
