@@ -46,7 +46,6 @@ class LocationsController < ApplicationController
   end
 
   def destroy
-    byebug
     if logged_in_user
       @location = Location.find(params[:id]);
       @location.destroy
