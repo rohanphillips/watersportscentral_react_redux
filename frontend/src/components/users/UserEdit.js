@@ -31,15 +31,15 @@ class UserEdit extends Component {
     console.log("UserEdit:", "componentDidUpdate")
     this.loadState()
     console.log("componentDidUpdate:", "this.state", this.state)
-    if (this.props.props.state.userUpdated){
-      this.props.props.state.userUpdated = false;
+    if (this.props.state.users.userUpdated){
+      this.props.state.users.userUpdated = false;
       this.props.getUsers();
       console.log("wants to get users")
     }
   }
 
   loadState = () => {
-    if (this.props.props.state.usersFetched && this.state.isLoaded === false){
+    if (this.props.state.users.usersFetched && this.state.isLoaded === false){
       if (this.state.isLoaded === false){
         const {user} = this.user();
         console.log("loadState", "user:", user)
@@ -83,7 +83,7 @@ class UserEdit extends Component {
 
   user = () => {
     const id = parseInt(this.props.match.params.id)
-    return {user: this.props.props.state.users.users.find(user => user.id === id), id: id};    
+    return {user: this.props.state.users.users.find(user => user.id === id), id: id};    
   }
 
   hasAccess = () =>{
@@ -123,7 +123,7 @@ class UserEdit extends Component {
   render(){
     const { message } = this.state;
     console.log("userEdit:", "this.props", this.props)
-    if (this.props.props.state.usersFetched === false){
+    if (this.props.state.users.usersFetched === false){
       return (
         <p>Loading...</p>
       )

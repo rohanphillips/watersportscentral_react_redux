@@ -52,7 +52,8 @@ const loginUser = loginUser => async (dispatch) => {
     } else {
       console.log("siteAction:", "will login user:", token)
       localStorage.setItem('loggedin', token);
-      dispatch({type: 'USER_LOGIN', ...user});}
+      dispatch({type: 'USER_LOGIN'});}
+      dispatch({type: 'CREATE_USER', ...user})
   } catch {
     console.log("siteAction:", "errorcatch");
     dispatch({type: 'CREATE_USER_ERROR'});
@@ -63,6 +64,7 @@ export {loginUser}
 const logoutUser = logoutUser => (dispatch) =>{
   console.log("siteAction:", "logoutUserAction:")
   dispatch({type: 'USER_LOGOUT'});
+  dispatch({type: 'RESET_USER'});
 }
 export {logoutUser}; 
 
@@ -114,7 +116,8 @@ const getUser = () => async (dispatch) => {
       headers: header,
       crossdomain: true,
     })
-    dispatch({type: 'USER_LOGIN', ...response.data.user})
+    dispatch({type: 'USER_LOGIN'})
+    dispatch({type: 'CREATE_USER', ...response.data.user})
   } catch {
 
   }  

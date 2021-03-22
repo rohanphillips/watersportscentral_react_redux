@@ -1,6 +1,8 @@
 const initialUser = {
 	user: {
-		username: '',
+		admin: false,
+    active: false,
+    username: '',
 		firstName: '',
 		lastName: '',
 		email: '',
@@ -15,20 +17,16 @@ const initialState = {
 
 const userReducers = (state = initialState, action) => {
   console.log("siteReducer:", "called", action);
-  const initialUser = {
-    user: {
-      username: '',
-      firstName: '',
-      lastName: '',
-      email: '',
-    }
-  };
+  
   switch (action.type) {
+    case 'RESET_USER':
+      return {
+        ...initialState,
+      }
     case 'CREATE_USER':
       console.log("siteReducer:", "CREATE_USER");
       return {
         ...state,
-        isLogin: true,
         user: {
           id: action.id,
           username: action.username,
@@ -46,7 +44,6 @@ const userReducers = (state = initialState, action) => {
       console.log("siteReducer:", "CREATE_USER_ERROR");
       return {
         ...state,
-        isLogin: false,
         ...initialUser,
         errors: {...action.error},
       }
@@ -54,7 +51,6 @@ const userReducers = (state = initialState, action) => {
         console.log("siteReducer:", "UPDATE_USER");
         return {
           ...state,
-          isLogin: true,
           user: {
             id: action.id,
             username: action.username,

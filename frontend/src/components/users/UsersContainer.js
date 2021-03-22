@@ -26,13 +26,14 @@ class UsersContainer extends Component {
   }
 
   render (){    
+    console.log("UsersContainer:", "render, this.props", this.props)
     return (
       <div>
           <AdminAccess>
             <Route exact path="/users" render={routerProps => <UsersList {...routerProps}/>}></Route>
           </AdminAccess>            
           <Route exact path="/users/:id" render={routerProps => <User {...routerProps} props={this.props} />}/>
-          <Route exact path="/users/:id/edit" render={routerProps => <UserEdit {...routerProps} props={this.props} />}/>
+          <Route exact path="/users/:id/edit" render={routerProps => <UserEdit {...routerProps} state={this.props.state} />}/>
       </div>
     )
   };
