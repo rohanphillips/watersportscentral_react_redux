@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import AdminAccess from '../sessions/AdminAccess'
+import IsOwner from '../sessions/IsOwner'
 
 const LocationShow = (data) => {
   console.log("LocationShow:", "data:", data)
@@ -15,9 +16,11 @@ const LocationShow = (data) => {
         {location.name} <br></br>
         {location.description}
       </p>
-      <Link to={`/locations/${location.id}/edit`}>
-          <button>Edit</button>
-      </Link> 
+      <IsOwner type="location" location={location}>
+        <Link to={`/locations/${location.id}/edit`}>
+            <button>Edit</button>
+        </Link> 
+      </IsOwner>
       <AdminAccess>
         <button id={`${location.id}`} 
           onClick={() => data.data.props.deleteUser(location.id)
