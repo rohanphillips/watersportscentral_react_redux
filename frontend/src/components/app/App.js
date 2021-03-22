@@ -30,27 +30,25 @@ class App extends Component {
   render() {
     this.getUser();
     return (
-      <Router>
-        {
-          <div>
-            <NavBar/>
-            <Switch>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route exact path="/events">
-                <Events />
-              </Route>
-              <Route path="/locations" render={routerProps => <LocationsContainer {...routerProps}/>}/>
-              <Route exact path="/sports">
-                <Sports />
-              </Route>
-              <Route path="/users" render={routerProps => <UsersContainer {...routerProps}/>}/>        
-              <Route path="/login" render={routerProps => <SessionsContainer {...routerProps}/>}/>
-              <Route path="/signup" render={routerProps => <SessionsContainer {...routerProps}/>}/>
-            </Switch>
-          </div>
-        }
+      <Router>        
+        <div>
+          <NavBar/>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/events">
+              <Events />
+            </Route>
+            <Route path="/locations" render={routerProps => <LocationsContainer {...routerProps}/>}/>
+            <Route exact path="/sports">
+              <Sports />
+            </Route>
+            <Route path="/users" render={routerProps => <UsersContainer {...routerProps}/>}/>        
+            <Route path="/login" render={routerProps => <SessionsContainer {...routerProps}/>}/>
+            <Route path="/signup" render={routerProps => <SessionsContainer {...routerProps}/>}/>
+          </Switch>
+        </div>        
       </Router>
     );
   }
