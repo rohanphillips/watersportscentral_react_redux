@@ -25,7 +25,7 @@ class LocationsContainer extends Component {
     console.log("LocationsContainer:", "componendDidUpdate")
   }
   render() {
-    const {locationsFetched} = this.props.state
+    const {locationsFetched} = this.props.state.locations
     console.log("LocationsContainer", "locationsFetched", locationsFetched)
     console.log("LocationsContainer", "props", this.props)
     if (locationsFetched !== true){

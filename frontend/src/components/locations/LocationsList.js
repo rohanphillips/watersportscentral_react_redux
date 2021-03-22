@@ -10,7 +10,7 @@ class LocationsList extends Component {
       <div>
         <h1>Locations List</h1>
       {
-        this.props.state.locations.map( location => (
+        this.props.state.locations.locations.map( location => (
           <LocationFlat data={location} deleteLocation={this.props.deleteLocation}/>
         ))
       }

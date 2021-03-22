@@ -14,7 +14,7 @@ class LocationCreate extends Component {
   componentDidMount(){
     console.log("LocationCreate:", "componentDidMount")
     if (this.editMode()) {
-      const location = this.props.data.state.locations.find(location => location.id === this.locationID())
+      const location = this.props.data.state.locations.locations.find(location => location.id === this.locationID())
       this.setState({
         name: location.name,
         description: location.description,
@@ -46,7 +46,7 @@ class LocationCreate extends Component {
       await newLocation({
         name, description, location_info
       })
-      if (this.props.data.state.location !== undefined){
+      if (this.props.data.state.locations.location !== undefined){
         this.setState({
           isAccepted: true,
         })
@@ -56,7 +56,7 @@ class LocationCreate extends Component {
       await updateLocation({
         id: this.locationID(), name, description, location_info
       })
-      if (this.props.data.state.location !== undefined){
+      if (this.props.data.state.locations.location !== undefined){
         this.setState({
           isAccepted: true,
         })
@@ -91,7 +91,7 @@ class LocationCreate extends Component {
   
   render() {
     if (this.state.isAccepted){
-      const {id} = this.props.data.state.location;
+      const {id} = this.props.data.state.locations.location;
       return (
         <Redirect to={`/locations/${id}`}/>
       )
