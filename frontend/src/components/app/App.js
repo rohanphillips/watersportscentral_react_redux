@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import { connect } from 'react-redux';
 import jwt_decode from "jwt-decode";
+import styled from 'styled-components'
 import './app.css';
 import NavBar from '../navbar/NavBar'
 import Home from '../home/Home';
@@ -16,7 +17,19 @@ import UsersContainer from '../users/UsersContainer';
 import {getUser} from '../../actions/siteActions'
 import Sports from '../sports/Sports';
 
-// const App = (props) => {
+export const Grid = styled.div`
+
+`;
+
+export const Row = styled.div`
+  display: flex;
+`;
+
+export const Col = styled.div`
+  flex: ${(props) => props.size}
+`;
+
+
 class App extends Component {
   
   getUser (){
@@ -31,23 +44,32 @@ class App extends Component {
     this.getUser();
     return (
       <Router>        
-        <div>
-          <NavBar/>
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/events">
-              <Events />
-            </Route>
-            <Route path="/locations" render={routerProps => <LocationsContainer {...routerProps}/>}/>
-            <Route exact path="/sports">
-              <Sports />
-            </Route>
-            <Route path="/users" render={routerProps => <UsersContainer {...routerProps}/>}/>        
-            <Route path="/login" render={routerProps => <SessionsContainer {...routerProps}/>}/>
-            <Route path="/signup" render={routerProps => <SessionsContainer {...routerProps}/>}/>
-          </Switch>
+        <div className="App">
+          <Grid>
+            <Row>
+              <Col size={1}>
+                Header
+              </Col>
+            </Row>
+          </Grid>
+          <div className="flex-container">
+            <NavBar/>
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route exact path="/events">
+                <Events />
+              </Route>
+              <Route path="/locations" render={routerProps => <LocationsContainer {...routerProps}/>}/>
+              <Route exact path="/sports">
+                <Sports />
+              </Route>
+              <Route path="/users" render={routerProps => <UsersContainer {...routerProps}/>}/>        
+              <Route path="/login" render={routerProps => <SessionsContainer {...routerProps}/>}/>
+              <Route path="/signup" render={routerProps => <SessionsContainer {...routerProps}/>}/>
+            </Switch>
+          </div>
         </div>        
       </Router>
     );
