@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 class IsOwner extends React.Component {
 
     render() {
-        // console.log("AdminAccess:", "props", this.props.state.users.user.admin)
+        console.log("IsOwner:", "props", this.props)
         let isOwner
         switch(this.props.type){
           case 'location':
