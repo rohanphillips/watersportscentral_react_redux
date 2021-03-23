@@ -48,40 +48,46 @@ class Signup extends Component {
     }
     return (
       <div>
-         <form onSubmit={this.handleOnSubmit}>
+         <p>Create Account</p>
+         <form class="flex-col" onSubmit={this.handleOnSubmit}>
           <h1>{message}</h1>
-          <input onChange={this.handleChange}
-            type="text"
-            name="username"
-            placeholder="Username"
-            required 
-          />
-
-          <input onChange={this.handleChange}
-            type="text"
-            name="firstName"
-            placeholder="Firstname"
-            required />
-
-          <input onChange={this.handleChange}
-            type="text"
-            name="lastName"
-            placeholder="Lastname"
+          <div class="py-2">
+            <input onChange={this.handleChange}
+              type="text"
+              name="username"
+              placeholder="Username"
+              required 
             />
-          
-          <input onChange={this.handleChange}
-            type="text"
-            name="email"
-            placeholder="Email"
-            required />
-          
-          <input onChange={this.handleChange}
-            type="text"
-            name="password"
-            placeholder="Password"
-            required />
-
-          <button type="submit">Create Account</button>
+          </div>
+          <div class="py-2">
+            <input onChange={this.handleChange}
+              type="text"
+              name="firstName"
+              placeholder="Firstname"
+              required />
+          </div>
+          <div class="py-2">
+            <input onChange={this.handleChange}
+              type="text"
+              name="lastName"
+              placeholder="Lastname"
+              />
+          </div>
+          <div class="py-2">
+            <input onChange={this.handleChange}
+              type="text"
+              name="email"
+              placeholder="Email"
+              required />
+          </div>
+          <div class="py-2">
+            <input onChange={this.handleChange}
+              type="text"
+              name="password"
+              placeholder="Password"
+              required />
+          </div>
+          <button class="btn-save" type="submit">Create Account</button>
         </form>
       </div>
     )

@@ -6,14 +6,14 @@ import './navbar.css'
 
 function Signup(data){
   if (data.login === false){
-    return <NavLink to="/signup"><button class="btn-blue">Sign Up</button></NavLink>;
+    return <NavLink to="/signup"><button class="btn-amber">Sign Up</button></NavLink>;
   }
   return null;
 }
 
 function Login(data){
   if (data.login === false){
-    return <NavLink to="/login"><button class="btn-blue">Log In</button></NavLink>;
+    return <NavLink to="/login"><button class="btn-amber">Log In</button></NavLink>;
   }   
   return null;
 }
@@ -28,7 +28,7 @@ function Signout(data){
 function DisplayUsers(data){
   const {admin} = data.state.users.user;
   if (admin){
-    return <NavLink to="/users"><button class="btn-blue">Users</button></NavLink>;
+    return <NavLink to="/users"><button class="btn-amber">Users</button></NavLink>;
   }
   return null;
 }
@@ -37,7 +37,7 @@ function Profile(data){
   if (data.login){
     const {id} = data.state.users.user;
     const link = `/users/${id}`
-    return <NavLink to={`${link}`}><button class="btn-blue">Profile</button></NavLink>;
+    return <NavLink to={`${link}`}><button class="btn-amber">Profile</button></NavLink>;
   }
   return null;
 }
@@ -48,8 +48,8 @@ class NavBar extends Component{
     return (
       <div class="flex-col border-red-800 ...">        
         {/* <nav > */}
-          <div class="flex items-center justify-center"><NavLink to="/"><button class="btn-blue">Home</button></NavLink></div>
-          <div class="flex items-center justify-right"><NavLink to="/locations"><button class="btn-blue">Locations</button></NavLink></div>
+          <div class="flex items-center justify-center"><NavLink to="/"><button class="btn-amber">Home</button></NavLink></div>
+          <div class="flex items-center justify-right"><NavLink to="/locations"><button class="btn-amber">Locations</button></NavLink></div>
           {/* <div><NavLink to="/sports">Sports</NavLink></div>
           <div><NavLink to="/events">Events</NavLink></div> */}
           <div class="flex items-center justify-center"><DisplayUsers state={this.props.state} /></div>
