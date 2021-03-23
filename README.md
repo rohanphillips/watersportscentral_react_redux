@@ -24,6 +24,18 @@ To contribute to WaterSportsCentral, follow these steps:
 
 Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
+## Initializing WaterSportsCentral Backend
+
+1. Navigate to backend folder - cd backend
+2. Initialize database - rails db:migrate
+3. Seed database - rails db:seed
+4. Start rails server - rails s -p 3001
+
+## Initializing WaterSportsCentral Frontend
+
+1. Navigate to the frontend folder - cd frontend
+2. Start development server - yard start
+
 ## Contributors
 
 Thanks to the following people who have contributed to this project:
