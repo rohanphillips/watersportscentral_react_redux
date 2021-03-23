@@ -8,6 +8,9 @@ module.exports = {
       gray: colors.coolGray,
       blue: colors.lightBlue,
       red: colors.rose,
+      amber: colors.orange,
+      black: colors.black,
+      white: colors.white,
     },
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],
@@ -31,8 +34,8 @@ module.exports = {
     },
     container: {
       center: true,
-      color: colors.trueGray,
-    }
+      padding: '2rem'
+    },
   },
   variants: {
     extend: {},

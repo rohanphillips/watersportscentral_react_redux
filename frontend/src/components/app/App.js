@@ -42,39 +42,34 @@ class App extends Component {
   render() {
     this.getUser();
     return (
-      <Router>        
-        <div className="container mx-auto">
-        <p className="text-blue-500">You have a new message!</p>
-          <Grid>
-            <Row>
-              <Col size={1}>
-                Water Sports Central
-              </Col>
-            </Row>
-            <Row>
-              <Col size={1}>
-                <NavBar/>
-              </Col>
-              <Col size={2}>
-                <Switch>
-                  <Route exact path="/">
-                    <Home />
-                  </Route>
-                  <Route exact path="/events">
-                    <Events />
-                  </Route>
-                  <Route path="/locations" render={routerProps => <LocationsContainer {...routerProps}/>}/>
-                  <Route exact path="/sports">
-                    <Sports />
-                  </Route>
-                  <Route path="/users" render={routerProps => <UsersContainer {...routerProps}/>}/>        
-                  <Route path="/login" render={routerProps => <SessionsContainer {...routerProps}/>}/>
-                  <Route path="/signup" render={routerProps => <SessionsContainer {...routerProps}/>}/>
-                </Switch>
-              </Col>
-            </Row>
-          </Grid>
-        </div>        
+      <Router> 
+        <div class="container lg bg-blue-100">
+          <div>
+            <p class="text-center text-7xl">Water Sports Central</p>
+          </div>
+          <div class="inline-flex grid-cols-2">
+            <div>
+              <NavBar/>
+            </div>
+            <div class="container">
+              <Switch>
+                <Route exact path="/">
+                  <Home />
+                </Route>
+                <Route exact path="/events">
+                  <Events />
+                </Route>
+                <Route path="/locations" render={routerProps => <LocationsContainer {...routerProps}/>}/>
+                <Route exact path="/sports">
+                  <Sports />
+                </Route>
+                <Route path="/users" render={routerProps => <UsersContainer {...routerProps}/>}/>        
+                <Route path="/login" render={routerProps => <SessionsContainer {...routerProps}/>}/>
+                <Route path="/signup" render={routerProps => <SessionsContainer {...routerProps}/>}/>
+              </Switch>
+            </div>
+          </div>
+        </div>     
       </Router>
     );
   }

@@ -6,14 +6,14 @@ import './navbar.css'
 
 function Signup(data){
   if (data.login === false){
-    return <NavLink to="/signup">Sign Up</NavLink>;
+    return <NavLink to="/signup"><button class="flex p-1 border-4 rounded-md bg-blue-400 text-white">Sign Up</button></NavLink>;
   }
   return null;
 }
 
 function Login(data){
   if (data.login === false){
-    return <NavLink to="/login">Log In</NavLink>;
+    return <NavLink to="/login"><button class="flex p-1 border-4 rounded-md bg-blue-400 text-white">Log In</button></NavLink>;
   }   
   return null;
 }
@@ -28,7 +28,7 @@ function Signout(data){
 function DisplayUsers(data){
   const {admin} = data.state.users.user;
   if (admin){
-    return <NavLink to="/users">Users</NavLink>;
+    return <NavLink to="/users"><button class="flex p-1 border-4 rounded-md bg-blue-400 text-white">Users</button></NavLink>;
   }
   return null;
 }
@@ -46,18 +46,18 @@ class NavBar extends Component{
   render(){
     const {isLogin} = this.props.state.site;
     return (
-      <div>
-        <nav>
-          <div><NavLink to="/">Home</NavLink></div>
-          <div><NavLink to="/locations">Locations</NavLink></div>
+      <div class="flex-col ...">        
+        {/* <nav > */}
+          <div class="flex items-center justify-center"><NavLink to="/"><button class="flex p-1 border-4 rounded-md bg-blue-400 text-white">Home</button></NavLink></div>
+          <div class="flex items-center justify-right"><NavLink to="/locations"><button class="flex p-1 border-4 rounded-md bg-blue-400 text-white">Locations</button></NavLink></div>
           {/* <div><NavLink to="/sports">Sports</NavLink></div>
           <div><NavLink to="/events">Events</NavLink></div> */}
-          <div><DisplayUsers state={this.props.state} /></div>
-          <div><Login login={isLogin} /></div>
-          <div><Signout login={isLogin} /></div>
-          <div><Signup login={isLogin} /></div>   
-          <div><Profile state={this.props.state} login={isLogin}/></div>  
-        </nav>
+          <div class="flex items-center justify-center"><DisplayUsers state={this.props.state} /></div>
+          <div class="flex items-center justify-center"><Login login={isLogin} /></div>
+          <div class="flex items-center justify-center"><Signout login={isLogin} /></div>
+          <div class="flex items-center justify-center"><Signup login={isLogin} /></div>   
+          <div class="flex items-center justify-center"><Profile state={this.props.state} login={isLogin}/></div>  
+        {/* </nav> */}
       </div>
     );
   }  
