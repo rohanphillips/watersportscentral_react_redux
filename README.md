@@ -46,4 +46,4 @@ You might want to consider using something like the [All Contributors](https://g
 
 ## Contact
 
-If you want to contact me you can reach me at <your_email@address.com>.
+If you want to contact me you can reach me at rohan@rohanphillipscoding.com
