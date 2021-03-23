@@ -23,6 +23,7 @@ const createUser = newUser => async (dispatch) => {
       dispatch({type: 'CREATE_USER_ERROR', error});
     } else {
       dispatch({type: 'CREATE_USER', ...response.data.user});
+      dispatch({type: 'USER_LOGIN'});
       localStorage.setItem('loggedin', token);}
   } catch {
     dispatch({type: 'CREATE_USER_ERROR'});
@@ -52,8 +53,9 @@ const loginUser = loginUser => async (dispatch) => {
     } else {
       console.log("siteAction:", "will login user:", token)
       localStorage.setItem('loggedin', token);
-      dispatch({type: 'USER_LOGIN'});}
+      dispatch({type: 'USER_LOGIN'});
       dispatch({type: 'CREATE_USER', ...user})
+    }      
   } catch {
     console.log("siteAction:", "errorcatch");
     dispatch({type: 'CREATE_USER_ERROR'});

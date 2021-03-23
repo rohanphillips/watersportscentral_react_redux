@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import  { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { createUser } from '../../actions/siteActions';
@@ -14,6 +15,7 @@ class Signup extends Component {
       email: '',
       password: '',
       message: '',
+      userCreated: false
     }
   }
 
@@ -32,19 +34,19 @@ class Signup extends Component {
     await newUser({
       username, email, password, first_name, last_name
     })
-    if(this.props.state.isLogin === true) {
-      const { history } = this.props;
-      history.push('/')
-    } else {
-      this.setState({
-        message: 'welcome',
-      })
-    }
+    this.setState({
+      userCreated: true
+    })
   }  
 
   render() {
     const { message } = this.state;
-   
+    console.log("SignUp", "props", this.props)
+    if(this.state.userCreated){
+      return(
+        <Redirect to="/"/>
+      )
+    }
     return (
       <div>
          <form onSubmit={this.handleOnSubmit}>
@@ -80,7 +82,7 @@ class Signup extends Component {
             placeholder="Password"
             required />
 
-          <button type="submit">Create Accout</button>
+          <button type="submit">Create Account</button>
         </form>
       </div>
     )
