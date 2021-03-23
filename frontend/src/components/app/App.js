@@ -48,7 +48,7 @@ class App extends Component {
           <Grid>
             <Row>
               <Col size={1}>
-                Header
+                Water Sports Central
               </Col>
             </Row>
             <Row>
