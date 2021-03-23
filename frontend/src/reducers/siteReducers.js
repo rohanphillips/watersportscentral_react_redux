@@ -2,15 +2,6 @@ const initialState = {
   isLogin: false,
 }
 
-const initialUser = {
-	user: {
-		username: '',
-		firstName: '',
-		lastName: '',
-		email: '',
-	}
-}
-
 const siteReducers = (state = initialState, action) => {
   console.log("siteReducer:", "called", action);
   console.log("siteReducer:", "state", state);
