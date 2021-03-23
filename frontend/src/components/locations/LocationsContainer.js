@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {
-  Route 
+  Route , 
 } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LocationsList from './LocationsList'
@@ -29,7 +29,7 @@ class LocationsContainer extends Component {
       )
     }
     return (
-        <div class="container border border-amber-200 w-full">
+        <div class="container border border-amber-200 w-full">          
           {<h1>Locations Data</h1>}
           <Route exact path={`/locations/`} render={routerProps => <LocationsList {...routerProps}/>} />
           <Route path={`/locations/:id`} render={routerProps => <Location routerProps={routerProps} props={this.props}/>} />

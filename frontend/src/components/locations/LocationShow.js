@@ -10,6 +10,11 @@ const LocationShow = (data) => {
   return (
     <div>
       <div>
+        <Link to="/locations">
+              <button class="btn-view w-32">Locations</button>
+        </Link>
+      </div>
+      <div>
         Name: {location.name} <br></br>
       </div>
       <div>
