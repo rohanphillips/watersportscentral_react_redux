@@ -1,6 +1,8 @@
 import React, { Component} from 'react';
+import { NavLink } from 'react-router-dom';
 import LocationFlat from './LocationFlat'
 import {connect} from 'react-redux';
+import LoggedIn from '../sessions/LoggedIn'
 import {deleteLocation} from '../../actions/siteActions'
  
 class LocationsList extends Component {
@@ -9,6 +11,11 @@ class LocationsList extends Component {
     return(
       <div>
         <h1>Locations List</h1>
+        <LoggedIn>
+         <NavLink to="/locations/create">
+           <button>Add Location</button>
+          </NavLink>
+        </LoggedIn>
       {
         this.props.state.locations.locations.map( location => (
           <LocationFlat data={location} deleteLocation={this.props.deleteLocation}/>

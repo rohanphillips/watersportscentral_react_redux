@@ -37,12 +37,8 @@ class LocationsController < ApplicationController
   end
 
   def index
-    if logged_in_user
-      @locations = Location.all
-      render json: {locations: @locations}, status: :ok
-    else
-      render json: {error: {message: "Not logged in"}}
-    end
+    @locations = Location.all
+    render json: {locations: @locations}, status: :ok
   end
 
   def destroy
