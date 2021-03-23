@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import Logout from '../sessions/Logout'
 import { connect } from 'react-redux';
+import './navbar.css'
 
 function Signup(data){
   console.log("NavBar:","Signup:", data);
@@ -14,7 +15,7 @@ function Signup(data){
 function Login(data){
   console.log("NavBar:","Login:", data.login);
   if (data.login === false){
-    return <li><NavLink to="/login">Log In</NavLink></li>;
+    return <NavLink to="/login">Log In</NavLink>;
   }   
   return null;
 }
@@ -22,7 +23,7 @@ function Login(data){
 function Signout(data){
   console.log("NavBar:","Logout:", data.login);
   if (data.login){
-    return <li><Logout/></li>;
+    return <Logout/>;
   }
   return null;
 }
@@ -31,7 +32,7 @@ function DisplayUsers(data){
   console.log("NavBar:","Display Users:", data);
   const {admin} = data.state.users.user;
   if (admin){
-    return <li><NavLink to="/users">Users</NavLink></li>;
+    return <NavLink to="/users">Users</NavLink>;
   }
   return null;
 }
@@ -43,7 +44,7 @@ function Profile(data){
     const {id} = data.state.users.user;
     console.log("NavBar", "id:", id)
     const link = `/users/${id}`
-    return <li><NavLink to={`${link}`}>Profile</NavLink></li>;
+    return <NavLink to={`${link}`}>Profile</NavLink>;
   }
   return null;
 }
@@ -53,30 +54,18 @@ class NavBar extends Component{
     console.log("NavBar:","State:", this.props.state)
     const {isLogin} = this.props.state.site;
     return (
-      <div className="navbar">
-        {
-          <nav>
-            <ul>
-              <li>
-                <NavLink to="/">Home</NavLink>              
-              </li>           
-              <li>
-                <NavLink to="/locations">Locations</NavLink>
-              </li>
-              <li>
-                <NavLink to="/sports">Sports</NavLink>
-              </li>
-              <li>
-                <NavLink to="/events">Events</NavLink>
-              </li>
-              <DisplayUsers state={this.props.state} />
-              <Login login={isLogin} />
-              <Signout login={isLogin} />
-              <Signup login={isLogin} />   
-              <Profile state={this.props.state} login={isLogin}/>         
-            </ul>
-          </nav>
-        }
+      <div className="Navbar">
+        <nav>
+          <div><NavLink to="/">Home</NavLink></div>
+          <div><NavLink to="/locations">Locations</NavLink></div>
+          <div><NavLink to="/sports">Sports</NavLink></div>
+          <div><NavLink to="/events">Events</NavLink></div>
+          <div><DisplayUsers state={this.props.state} /></div>
+          <div><Login login={isLogin} /></div>
+          <div><Signout login={isLogin} /></div>
+          <div><Signup login={isLogin} /></div>   
+          <div><Profile state={this.props.state} login={isLogin}/></div>  
+        </nav>
       </div>
     );
   }  
