@@ -5,7 +5,6 @@ import {Redirect} from 'react-router-dom'
 class HasAccess extends React.Component {
     render() {
         const isAuthenticated = localStorage.getItem('loggedin') != null;
-        console.log("HasAccess", isAuthenticated);
         return isAuthenticated ? (
             this.props.children
         ) : (

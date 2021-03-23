@@ -41,7 +41,6 @@ class Signup extends Component {
 
   render() {
     const { message } = this.state;
-    console.log("SignUp", "props", this.props)
     if(this.state.userCreated){
       return(
         <Redirect to="/"/>

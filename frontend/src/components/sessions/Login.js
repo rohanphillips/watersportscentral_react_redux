@@ -24,20 +24,15 @@ class Login extends Component {
   handleOnSubmit = async (e) => {
     e.preventDefault();
     const {username, password} = this.state;
-    console.log("Login:","startlogin:")
     this.props.loginUser({
       username, password
     })
-    console.log("Login:","endlogin:")
   }
 
   signup = () => {
-    console.log("Login:","sendToSignUp:");
     this.setState({
       navigate: true
     })
-    // ;
-    console.log("Login:","After:")
   }
 
   render() {
@@ -46,7 +41,6 @@ class Login extends Component {
     if (navigate) {
       return <Redirect to="/signup" />
     }
-    console.log("Login:","login render:")
     return (
       <div>
          <h1>Log In</h1>

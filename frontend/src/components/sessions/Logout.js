@@ -10,20 +10,15 @@ class Logout extends Component {
   };
 
   logout = () => {
-    console.log("Logout:", "logoutOnClick:")
-    console.log("Logout:", localStorage.getItem("loggedin"));
     localStorage.clear("loggedin");
-    console.log("Logout:", localStorage.getItem("loggedin"));
     this.setState({
       navigate: true
     })
-    console.log("logoutProps:", this.props)
     this.props.logOut({logout: true});
   }
 
   render() {
     const {navigate } = this.state;
-    console.log("LogoutNavigate:", navigate)
     if (navigate) {
       return <Redirect to="/" push={true}/>
     }

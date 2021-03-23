@@ -11,23 +11,16 @@ class LocationsContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: '',
-      
+      message: '',      
     }
   }
 
   componentDidMount(){
-    console.log("LocationsContainer:", "componentDidMount")
     this.props.getLocations()
   }
 
-  componendDidUpdate(){
-    console.log("LocationsContainer:", "componendDidUpdate")
-  }
   render() {
     const {locationsFetched} = this.props.state.locations
-    console.log("LocationsContainer", "locationsFetched", locationsFetched)
-    console.log("LocationsContainer", "props", this.props)
     if (locationsFetched !== true){      
       return (
         <div>

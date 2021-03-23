@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import './navbar.css'
 
 function Signup(data){
-  console.log("NavBar:","Signup:", data);
   if (data.login === false){
     return <NavLink to="/signup">Sign Up</NavLink>;
   }
@@ -13,7 +12,6 @@ function Signup(data){
 }
 
 function Login(data){
-  console.log("NavBar:","Login:", data.login);
   if (data.login === false){
     return <NavLink to="/login">Log In</NavLink>;
   }   
@@ -21,7 +19,6 @@ function Login(data){
 }
 
 function Signout(data){
-  console.log("NavBar:","Logout:", data.login);
   if (data.login){
     return <Logout/>;
   }
@@ -29,7 +26,6 @@ function Signout(data){
 }
 
 function DisplayUsers(data){
-  console.log("NavBar:","Display Users:", data);
   const {admin} = data.state.users.user;
   if (admin){
     return <NavLink to="/users">Users</NavLink>;
@@ -38,11 +34,8 @@ function DisplayUsers(data){
 }
 
 function Profile(data){
-  console.log("NavBar:","ProfileData:", data);
-  console.log("Profile:", data.login);  
   if (data.login){
     const {id} = data.state.users.user;
-    console.log("NavBar", "id:", id)
     const link = `/users/${id}`
     return <NavLink to={`${link}`}>Profile</NavLink>;
   }
@@ -51,7 +44,6 @@ function Profile(data){
 
 class NavBar extends Component{  
   render(){
-    console.log("NavBar:","State:", this.props.state)
     const {isLogin} = this.props.state.site;
     return (
       <div className="Navbar">

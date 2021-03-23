@@ -6,11 +6,9 @@ import IsOwner from '../sessions/IsOwner'
 
 const LocationFlat = (location) => {
   const {data} = location;
-  console.log("LocationFlat", "location", data)
   return (
     <div>
       <p>
-        {/* name, descrption, location info */}
         {data.name}
         {data.descrption}
         <Link to={`/locations/${data.id}`}>

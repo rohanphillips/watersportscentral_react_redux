@@ -12,7 +12,6 @@ class LocationCreate extends Component {
   }
 
   componentDidMount(){
-    console.log("LocationCreate:", "componentDidMount", this.props)
     if (this.editMode()) {
       const location = this.props.data.props.state.locations.locations.find(location => location.id === this.locationID())
       this.setState({
@@ -62,7 +61,6 @@ class LocationCreate extends Component {
         })
       }
     }
-    console.log("newLocation", "after submit");
   } 
 
   locationID = () => {

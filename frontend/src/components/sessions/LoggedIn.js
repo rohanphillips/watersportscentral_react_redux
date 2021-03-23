@@ -4,7 +4,6 @@ import { connect} from 'react-redux';
 class LoggedIn extends React.Component {
     render() {
         const isAuthenticated = localStorage.getItem('loggedin') != null;
-        console.log("HasAccess", isAuthenticated);
         return isAuthenticated ? (
             this.props.children
         ) : (
