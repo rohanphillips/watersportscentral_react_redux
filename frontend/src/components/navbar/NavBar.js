@@ -46,7 +46,7 @@ class NavBar extends Component{
   render(){
     const {isLogin} = this.props.state.site;
     return (
-      <div className="Navbar">
+      <div>
         <nav>
           <div><NavLink to="/">Home</NavLink></div>
           <div><NavLink to="/locations">Locations</NavLink></div>
