@@ -42,35 +42,37 @@ class App extends Component {
   render() {
     this.getUser();
     return (
-      <Router> 
-        <div class="container lg bg-blue-100">
-          <div>
-            <p class="text-center text-7xl">Water Sports Central</p>
-          </div>
-          <div class="inline-flex grid-cols-2">
+      <div >
+        <Router> 
+          <div class="container md bg-blue-100 bg h-screen">
             <div>
-              <NavBar/>
+              <p class="text-center text-7xl">Water Sports Central</p>
             </div>
-            <div class="container">
-              <Switch>
-                <Route exact path="/">
-                  <Home />
-                </Route>
-                <Route exact path="/events">
-                  <Events />
-                </Route>
-                <Route path="/locations" render={routerProps => <LocationsContainer {...routerProps}/>}/>
-                <Route exact path="/sports">
-                  <Sports />
-                </Route>
-                <Route path="/users" render={routerProps => <UsersContainer {...routerProps}/>}/>        
-                <Route path="/login" render={routerProps => <SessionsContainer {...routerProps}/>}/>
-                <Route path="/signup" render={routerProps => <SessionsContainer {...routerProps}/>}/>
-              </Switch>
+            <div class="inline-flex grid-cols-2">
+              <div>
+                <NavBar/>
+              </div>
+              <div class="container">
+                <Switch>
+                  <Route exact path="/">
+                    <Home />
+                  </Route>
+                  <Route exact path="/events">
+                    <Events />
+                  </Route>
+                  <Route path="/locations" render={routerProps => <LocationsContainer {...routerProps}/>}/>
+                  <Route exact path="/sports">
+                    <Sports />
+                  </Route>
+                  <Route path="/users" render={routerProps => <UsersContainer {...routerProps}/>}/>        
+                  <Route path="/login" render={routerProps => <SessionsContainer {...routerProps}/>}/>
+                  <Route path="/signup" render={routerProps => <SessionsContainer {...routerProps}/>}/>
+                </Switch>
+              </div>
             </div>
-          </div>
-        </div>     
-      </Router>
+          </div>     
+        </Router>
+        </div>
     );
   }
 }

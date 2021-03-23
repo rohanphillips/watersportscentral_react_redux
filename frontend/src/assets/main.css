@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .btn-blue {
+    @apply p-1 border-4 rounded-md bg-amber-400 text-white w-32 text-center content-center;
+  }
+}
