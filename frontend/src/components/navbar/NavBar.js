@@ -6,8 +6,8 @@ import './navbar.css'
 
 function Signup(data){
   console.log("NavBar:","Signup:", data);
-  if (data.isLogin === false){
-    return <li><NavLink to="/signup">Sign Up</NavLink></li>;
+  if (data.login === false){
+    return <NavLink to="/signup">Sign Up</NavLink>;
   }
   return null;
 }
@@ -58,8 +58,8 @@ class NavBar extends Component{
         <nav>
           <div><NavLink to="/">Home</NavLink></div>
           <div><NavLink to="/locations">Locations</NavLink></div>
-          <div><NavLink to="/sports">Sports</NavLink></div>
-          <div><NavLink to="/events">Events</NavLink></div>
+          {/* <div><NavLink to="/sports">Sports</NavLink></div>
+          <div><NavLink to="/events">Events</NavLink></div> */}
           <div><DisplayUsers state={this.props.state} /></div>
           <div><Login login={isLogin} /></div>
           <div><Signout login={isLogin} /></div>
