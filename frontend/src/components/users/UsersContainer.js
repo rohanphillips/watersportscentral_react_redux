@@ -28,7 +28,7 @@ class UsersContainer extends Component {
   render (){    
     console.log("UsersContainer:", "render, this.props", this.props)
     return (
-      <div>
+      <div class="container border border-amber-200 w-full">
           <AdminAccess>
             <Route exact path="/users" render={routerProps => <UsersList {...routerProps}/>}></Route>
           </AdminAccess>            

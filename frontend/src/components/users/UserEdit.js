@@ -201,7 +201,7 @@ class UserEdit extends Component {
               />
             </label>
           </AdminAccess>
-          <button onClick={this.handleOnSubmit}>Update</button>
+          <button class="btn-save" onClick={this.handleOnSubmit}>Update</button>
         </form>
       </div>
     )

@@ -13,7 +13,7 @@ class LocationsList extends Component {
         <h1>Locations List</h1>
         <LoggedIn>
          <NavLink to="/locations/create">
-           <button>Add Location</button>
+           <button class="btn-add">Add Location</button>
           </NavLink>
         </LoggedIn>
       {

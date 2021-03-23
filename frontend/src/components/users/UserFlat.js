@@ -8,11 +8,19 @@ const UserFlat = (data) => {
   // console.log("UserFlat", "deleteUser", data.deleteUser)
   const {user} = data;
   return (
-    <div>
-      <p>
-        {user.first_name} {user.last_name} 
-        <Link to={`/users/${user.id}`}><button>View</button></Link> <Link to={`/users/${user.id}/edit`}><button>Edit</button></Link>  <button id={`${user.id}`} onClick={() => data.deleteUser(user.id)} >Delete</button>    
-      </p>
+    <div class="flex-col p-2 my-2  border border-amber-200 w-max">
+      <div>
+        {user.first_name} {user.last_name}         
+      </div>
+      <div>
+        <Link to={`/users/${user.id}`}>
+          <button class="btn-view">View</button>
+        </Link> 
+        <Link to={`/users/${user.id}/edit`}>
+            <button class="btn-edit">Edit</button>
+        </Link>  
+        <button class="btn-delete" id={`${user.id}`} onClick={() => data.deleteUser(user.id)} >Delete</button>    
+      </div>
     </div>
   )
 }
