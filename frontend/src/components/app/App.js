@@ -7,7 +7,7 @@ import {
 import { connect } from 'react-redux';
 import jwt_decode from "jwt-decode";
 import styled from 'styled-components'
-import './app.css';
+import "tailwindcss/tailwind.css"
 import NavBar from '../navbar/NavBar'
 import Home from '../home/Home';
 import Events from '../events/Events';
@@ -44,7 +44,7 @@ class App extends Component {
     this.getUser();
     return (
       <Router>        
-        <div className="App">
+        <div className="container mx-auto">
           <Grid>
             <Row>
               <Col size={1}>
