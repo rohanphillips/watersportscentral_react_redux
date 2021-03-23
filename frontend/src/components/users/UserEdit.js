@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import AdminAccess from '../sessions/AdminAccess'
-import {updateUser} from '../../actions/siteActions'
-import {getUsers} from '../../actions/siteActions'
+import {updateUser} from '../../actions/userActions'
+import {getUsers} from '../../actions/userActions'
 import './user.css'
 
 class UserEdit extends Component {

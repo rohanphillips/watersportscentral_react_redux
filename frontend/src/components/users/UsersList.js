@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import UserFlat from './UserFlat'
 import { connect } from 'react-redux';
-import {deleteUser} from '../../actions/siteActions'
+import {deleteUser} from '../../actions/userActions'
 
 class UsersList extends Component {   
 

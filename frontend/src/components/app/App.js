@@ -14,7 +14,7 @@ import Events from '../events/Events';
 import LocationsContainer from '../locations/LocationsContainer';
 import SessionsContainer from '../sessions/SessionsContainer';
 import UsersContainer from '../users/UsersContainer';
-import {getUser} from '../../actions/siteActions'
+import {getUser} from '../../actions/userActions'
 import Sports from '../sports/Sports';
 
 export const Grid = styled.div`

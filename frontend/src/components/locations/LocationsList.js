@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import LocationFlat from './LocationFlat'
 import {connect} from 'react-redux';
 import LoggedIn from '../sessions/LoggedIn'
-import {deleteLocation} from '../../actions/siteActions'
+import {deleteLocation} from '../../actions/locationActions'
  
 class LocationsList extends Component {
  

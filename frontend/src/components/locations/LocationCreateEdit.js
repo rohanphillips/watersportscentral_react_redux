@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Redirect} from 'react-router-dom'
-import {createLocation, updateLocation} from '../../actions/siteActions'
+import {createLocation, updateLocation} from '../../actions/locationActions'
 
 class LocationCreate extends Component {
   state = {

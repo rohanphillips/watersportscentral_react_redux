@@ -7,8 +7,8 @@ import { connect } from 'react-redux';
 import UsersList from './UsersList';
 import User from './User'
 import UserEdit from './UserEdit'
-import {getUsers} from '../../actions/siteActions'
-import {deleteUser} from '../../actions/siteActions'
+import {getUsers} from '../../actions/userActions'
+import {deleteUser} from '../../actions/userActions'
 
 
 class UsersContainer extends Component {
