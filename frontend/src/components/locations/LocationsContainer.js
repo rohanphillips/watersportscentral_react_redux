@@ -28,7 +28,7 @@ class LocationsContainer extends Component {
     const {locationsFetched} = this.props.state.locations
     console.log("LocationsContainer", "locationsFetched", locationsFetched)
     console.log("LocationsContainer", "props", this.props)
-    if (locationsFetched !== true){
+    if (locationsFetched !== true){      
       return (
         <div>
           Loading...
@@ -39,7 +39,7 @@ class LocationsContainer extends Component {
         <div>
           {<h1>Locations</h1>}
           <Route exact path={`/locations/`} render={routerProps => <LocationsList {...routerProps}/>} />
-          <Route path={`/locations/:id`} render={routerProps => <Location routerProps={routerProps} state={this.props.state}/>} />
+          <Route path={`/locations/:id`} render={routerProps => <Location routerProps={routerProps} props={this.props}/>} />
         </div>
     );
   }

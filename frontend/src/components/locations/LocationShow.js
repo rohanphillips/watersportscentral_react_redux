@@ -7,7 +7,7 @@ const LocationShow = (data) => {
   console.log("LocationShow:", "data:", data)
   const id = parseInt(data.data.routerProps.match.params.id)
   console.log("LocationShow:", "id:", id)
-  const location = data.data.state.locations.locations.find(location => location.id === id);
+  const location = data.data.props.state.locations.locations.find(location => location.id === id);
   console.log("LocationShow:", "location", location)
   
   return (
@@ -23,7 +23,7 @@ const LocationShow = (data) => {
       </IsOwner>
       <AdminAccess>
         <button id={`${location.id}`} 
-          onClick={() => data.data.props.deleteUser(location.id)
+          onClick={() => data.data.props.deleteLocation(location.id)
         }>
           Delete
         </button>
