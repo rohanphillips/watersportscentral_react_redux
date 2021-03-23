@@ -7,22 +7,26 @@ import IsOwner from '../sessions/IsOwner'
 const LocationFlat = (location) => {
   const {data} = location;
   return (
-    <div>
-      <p>
-        {data.name}
-        {data.descrption}
+    <div class="flex-col p-2 my-2  border border-amber-200 w-max">
+      <div>
+        Name: {data.name}        
+      </div>
+      <div>
+        Description: {data.description}
+      </div>
+      <div>
         <Link to={`/locations/${data.id}`}>
-          <button>View</button>
+          <button class="btn-view">View</button>
         </Link>
         <IsOwner type="location" location={data}>
           <Link to={`/locations/${data.id}/edit`}>
-            <button>Edit</button>
+            <button class="btn-edit">Edit</button>
           </Link>
         </IsOwner>
         <IsOwner type="location" location={data}>
-          <button id={`${data.id}`} onClick={() => location.deleteLocation(data.id)}>Delete</button>
+          <button class="btn-delete" id={`${data.id}`} onClick={() => location.deleteLocation(data.id)}>Delete</button>
         </IsOwner>
-      </p>
+      </div>
     </div>
   )
 }

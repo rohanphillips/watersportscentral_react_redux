@@ -5,7 +5,8 @@ const Home = () => {
     <>
       <div class="container">
         <h1>Home</h1>
-        <p>Welcome to Water Sports Central</p>
+        <p>Welcome to Water Sports Central</p><br></br>
+        <p>This site is currently a work in progress...</p>
       </div>
     </>
   );

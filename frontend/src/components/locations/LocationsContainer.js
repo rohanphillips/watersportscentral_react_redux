@@ -29,8 +29,8 @@ class LocationsContainer extends Component {
       )
     }
     return (
-        <div>
-          {<h1>Locations</h1>}
+        <div class="container border border-amber-200 w-full">
+          {<h1>Locations Data</h1>}
           <Route exact path={`/locations/`} render={routerProps => <LocationsList {...routerProps}/>} />
           <Route path={`/locations/:id`} render={routerProps => <Location routerProps={routerProps} props={this.props}/>} />
         </div>

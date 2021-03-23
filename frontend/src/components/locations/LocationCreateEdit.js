@@ -122,7 +122,7 @@ class LocationCreate extends Component {
               value={this.state.location_info}
             />
           </label>
-          <button type="submit">{this.buttonFunction()}</button>
+          <button class="btn-save" type="submit">{this.buttonFunction()}</button>
         </form>
       </div>
     );

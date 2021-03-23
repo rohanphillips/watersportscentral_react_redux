@@ -9,17 +9,19 @@ const LocationShow = (data) => {
   
   return (
     <div>
-      <p>
-        {location.name} <br></br>
-        {location.description}
-      </p>
+      <div>
+        Name: {location.name} <br></br>
+      </div>
+      <div>
+        Description: {location.description}
+      </div>
       <IsOwner type="location" location={location}>
         <Link to={`/locations/${location.id}/edit`}>
-            <button>Edit</button>
+            <button class="btn-edit">Edit</button>
         </Link> 
       </IsOwner>
       <AdminAccess>
-        <button id={`${location.id}`} 
+        <button class="btn-delete" id={`${location.id}`} 
           onClick={() => data.data.props.deleteLocation(location.id)
         }>
           Delete

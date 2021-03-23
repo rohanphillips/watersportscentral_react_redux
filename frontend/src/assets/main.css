@@ -6,4 +6,20 @@
   .btn-blue {
     @apply p-1 border-4 rounded-md bg-amber-400 text-white w-32 text-center content-center;
   }
+
+  .btn-view {
+    @apply p-1 border-4 rounded-md bg-yellow-400 text-black w-16 text-center content-center;
+  }
+
+  .btn-edit {
+    @apply p-1 border-4 rounded-md bg-pink-400 text-black w-16 text-center content-center;
+  }
+
+  .btn-delete {
+    @apply p-1 border-4 rounded-md bg-red-800 text-black w-16 text-center content-center;
+  }
+
+  .btn-save {
+    @apply p-1 border-4 rounded-md bg-green-800 text-black w-32 text-center content-center;
+  }
 }
