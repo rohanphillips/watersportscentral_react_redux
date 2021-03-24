@@ -2,35 +2,15 @@ import axios from 'axios';
 import {SITE_URL} from './siteActions'
 const LOCATIONS_URL = `${SITE_URL}/locations`
 
-// const getLocations = () => async (dispatch) => {          
-//   console.log("siteAction:", "getLocations:", getLocations);
-//   const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
-//   console.log("headers", header)
-//   try {
-//     const response = await axios({
-//       method: 'GET',
-//       url: LOCATIONS_URL,
-//       headers: header,
-//       crossdomain: true,
-//     })
-//     console.log("getLocations:", "response:", response)
-//     dispatch({type: 'GET_LOCATIONS', locations: response.data.locations})
-//   } catch {
-//     // console.log("getLocations Error:", LOCATIONS_URL)
-//   }
-  
-// }  
-// export {getLocations};
-
 export const getLocations = () => {      
-  return (dispatch) => {
+  return async (dispatch) => {
     const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
     console.log("headers", header)
     return fetch(LOCATIONS_URL,{
       method: 'GET',
       headers: header,
       crossdomain: true,
-    }).then((response) => {
+    }).then(async(response) => {
       console.log("Response Received", response)
       if(response.ok){
         return response.json()
