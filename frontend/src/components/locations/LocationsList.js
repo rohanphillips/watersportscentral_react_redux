@@ -15,13 +15,15 @@ class LocationsList extends Component {
          <NavLink to="/locations/create">
            <button class="btn-add">Add Location</button>
           </NavLink>
-        </LoggedIn>
-      {
-        this.props.state.locations.locations.map( location => (
-          <LocationFlat data={location} deleteLocation={this.props.deleteLocation}/>
-        ))
-      }
-    </div>
+        </LoggedIn>        
+        {
+          this.props.state.locations.locations.map( location => (
+            <React.Fragment key={location.id}>
+              <LocationFlat data={location} deleteLocation={this.props.deleteLocation}/>
+            </React.Fragment>
+          ))
+        }        
+      </div>
     )
   };
 };
