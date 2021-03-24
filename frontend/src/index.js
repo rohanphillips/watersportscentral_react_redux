@@ -9,10 +9,11 @@ import App from './components/app/App';
 import siteReducers from './reducers/siteReducers'
 import userReducers from './reducers/userReducers'
 import locationReducers from './reducers/locationReducers'
+import { composeWithDevTools } from "redux-devtools-extension";
 // import reportWebVitals from './reportWebVitals';
 
 const rootReducer = combineReducers({site: siteReducers, users: userReducers, locations: locationReducers});
-const store = createStore(rootReducer, applyMiddleware(thunk))
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
 ReactDOM.render(
   <Provider store={store}>
