@@ -123,6 +123,7 @@ class LocationCreate extends Component {
               name="name"
               value={this.state.name}
             />
+            <span className="text-red-400">{this.state.errors.name}</span>
           </label>
           <label>
             Short Description:
@@ -131,7 +132,7 @@ class LocationCreate extends Component {
               name="description"
               value={this.state.description}
             />
-             <span className="text-red-400">{this.state.errors.description}</span>
+            <span className="text-red-400">{this.state.errors.description}</span>
           </label>
           <label>
             Location Info:
@@ -140,6 +141,7 @@ class LocationCreate extends Component {
               name="location_info"
               value={this.state.location_info}
             />
+            <span className="text-red-400">{this.state.errors.location_info}</span>
           </label>
           <button class="btn-save" type="submit">{this.buttonFunction()}</button>
         </form>

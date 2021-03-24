@@ -57,26 +57,7 @@ export const createLocation = (newLocation) => {
       return Promise.reject(error.errors)
     })
   }
-}  
-
-// const updateLocation = (payload) => async (dispatch) => {
-//   const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
-//   console.log("updateLocation", "payload:", payload);
-//   try {
-//     const response = await axios({
-//       method: 'PATCH',
-//       url: `${LOCATIONS_URL}/${payload.id}`,
-//       headers: header,
-//       data: {location: payload},
-//       crossdomain: true,
-//     })
-//     console.log("siteActions:", "updateLocationResponse", response)
-//     dispatch({type: 'UPDATE_LOCATION', ...response.data});
-//   } catch {
-
-//   }  
-// }  
-// export {updateLocation};
+} 
 
 export const updateLocation = (updateLocation) => {      
   return async (dispatch) => {
