@@ -44,15 +44,15 @@ class App extends Component {
     return (
       <div >
         <Router> 
-          <div class="container md bg-blue-100 bg h-screen">
+          <div className="container md bg-blue-100 bg h-screen">
             <div>
-              <p class="text-center text-7xl p-4">Water Sports Central</p>
+              <p className="text-center text-7xl p-4">Water Sports Central</p>
             </div>
-            <div class="inline-flex grid-cols-2 w-full">
+            <div className="inline-flex grid-cols-2 w-full">
               <div>
                 <NavBar/>
               </div>
-              <div class="container">
+              <div className="container">
                 <Switch>
                   <Route exact path="/">
                     <Home />
