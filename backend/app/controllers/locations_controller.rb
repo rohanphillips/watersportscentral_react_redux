@@ -38,7 +38,7 @@ class LocationsController < ApplicationController
 
   def index
     @locations = Location.all
-    render json: {locations: @locations}, status: :unprocessable_entity
+    render json: {locations: @locations}, status: :ok
   end
 
   def destroy
