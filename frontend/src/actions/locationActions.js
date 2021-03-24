@@ -2,25 +2,54 @@ import axios from 'axios';
 import {SITE_URL} from './siteActions'
 const LOCATIONS_URL = `${SITE_URL}/locations`
 
-const getLocations = () => async (dispatch) => {          
-  console.log("siteAction:", "getLocations:", getLocations);
-  const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
-  console.log("headers", header)
-  try {
-    const response = await axios({
+// const getLocations = () => async (dispatch) => {          
+//   console.log("siteAction:", "getLocations:", getLocations);
+//   const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
+//   console.log("headers", header)
+//   try {
+//     const response = await axios({
+//       method: 'GET',
+//       url: LOCATIONS_URL,
+//       headers: header,
+//       crossdomain: true,
+//     })
+//     console.log("getLocations:", "response:", response)
+//     dispatch({type: 'GET_LOCATIONS', locations: response.data.locations})
+//   } catch {
+//     // console.log("getLocations Error:", LOCATIONS_URL)
+//   }
+  
+// }  
+// export {getLocations};
+
+export const getLocations = () => {      
+  return (dispatch) => {
+    const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
+    console.log("headers", header)
+    return fetch(LOCATIONS_URL,{
       method: 'GET',
-      url: LOCATIONS_URL,
       headers: header,
       crossdomain: true,
+    }).then((response) => {
+      console.log("Response Received", response)
+      if(response.ok){
+        return response.json()
+      } else {
+        return response.json().then(errors => Promise.reject(errors))
+      }
+    }).then((data) => {    
+      console.log("Data Available", data)
+      dispatch({type: 'GET_LOCATIONS', locations: data.locations})
+      return data
+    }).catch((error) => {
+      console.log("Error Occurred", error.errors)
+      return error
+    }).finally(() => {
+      console.log("Finally")
     })
-    console.log("getLocations:", "response:", response)
-    dispatch({type: 'GET_LOCATIONS', locations: response.data.locations})
-  } catch {
-    // console.log("getLocations Error:", LOCATIONS_URL)
   }
-  
+  // dispatch({type: 'GET_LOCATIONS', locations: response.data.locations})
 }  
-export {getLocations};
 
 export const createLocation = newLocation => async (dispatch) => {
   try {

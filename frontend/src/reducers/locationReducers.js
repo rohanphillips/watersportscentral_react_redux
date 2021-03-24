@@ -6,7 +6,6 @@ const initialState = {
   }
 }
 const locationReducers = (state = initialState, action) => {
-  console.log("locationReducers:", "called", action);
   switch (action.type) {    
     case 'GET_LOCATIONS':
       console.log("locationReducers:", "GET_LOCATIONS", action);

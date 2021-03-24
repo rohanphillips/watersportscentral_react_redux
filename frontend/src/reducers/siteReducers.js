@@ -3,8 +3,6 @@ const initialState = {
 }
 
 const siteReducers = (state = initialState, action) => {
-  console.log("siteReducer:", "called", action);
-  console.log("siteReducer:", "state", state);
   switch (action.type){
     case 'USER_LOGIN':
       console.log("siteReducer:", "USER_LOGIN");
@@ -19,8 +17,7 @@ const siteReducers = (state = initialState, action) => {
         isLogin: false,
       }
     default: return state;
-  }
-  
+  }  
 }
 
 export default siteReducers;

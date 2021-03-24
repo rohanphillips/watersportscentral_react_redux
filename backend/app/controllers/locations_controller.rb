@@ -38,7 +38,7 @@ class LocationsController < ApplicationController
 
   def index
     @locations = Location.all
-    render json: {locations: @locations}, status: :ok
+    render json: {locations: @locations, errors:{message: "test error"}}, status: :ok
   end
 
   def destroy

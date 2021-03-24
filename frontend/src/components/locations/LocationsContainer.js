@@ -21,6 +21,7 @@ class LocationsContainer extends Component {
   }
 
   render() {
+    console.log("LocationsContainer")
     const {locationsFetched} = this.props.state.locations
     if (locationsFetched !== true){      
       return (
@@ -43,7 +44,7 @@ const mapStateToProps = state => {
   return {state}
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     getLocations: data => dispatch(getLocations(data)),
     deleteLocation: id => dispatch(deleteLocation(id))

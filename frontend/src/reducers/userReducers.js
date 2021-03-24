@@ -16,8 +16,6 @@ const initialState = {
 };
 
 const userReducers = (state = initialState, action) => {
-  console.log("userReducers:", "called", action);
-  
   switch (action.type) {
     case 'RESET_USER':
       return {
