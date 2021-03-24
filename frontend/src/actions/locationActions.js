@@ -20,41 +20,44 @@ export const getLocations = () => {
     }).then((data) => {    
       console.log("Data Available", data)
       dispatch({type: 'GET_LOCATIONS', locations: data.locations})
-      return data
     }).catch((error) => {
-      console.log("Error Occurred", error.errors)
-      console.log("Error Occurred, error:", error.errors)
       if(error.errors === undefined){
-        error.errors = ["Database connection error..."]
-      }
-      dispatch({type: 'LOCATION_ERRORS', errors: error.errors})
+        error.errors = {connection: ["Database Error"]}
+      }   
+      console.log("db error:", error.errors)   
+      return Promise.reject(error.errors)
     })
   }
 }  
 
-export const createLocation = newLocation => async (dispatch) => {
-  try {
+export const createLocation = (newLocation) => {      
+  return async (dispatch) => {
     const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
-    const response = await axios({
+    console.log("headers", header)
+    console.log("newLocation", newLocation);
+    return fetch(LOCATIONS_URL,{
       method: 'POST',
-      url: LOCATIONS_URL,
       headers: header,
-      data: {location: newLocation},
+      body: newLocation,
       crossdomain: true,
+    }).then(async(response) => {
+      console.log("Response Received", response)
+      if(response.ok){
+        return response.json()
+      } else {
+        return response.json().then(errors => Promise.reject(errors))
+      }
+    }).then((data) => {    
+      console.log("Data Available", data)
+      dispatch({type: 'CREATE_LOCATION', location: data.location, locations: data.locations})
+    }).catch((error) => {
+      if(error.errors === undefined){
+        error.errors = {connection: ["Database Error"]}
+      }      
+      return Promise.reject(error.errors)
     })
-    console.log("Create Location Response:", response)
-    if (response.data.error){
-      const error = response.data.error;
-      dispatch({type: 'CREATE_LOCATION_ERROR', error});
-    } else {
-      dispatch({type: 'CREATE_LOCATION', location: response.data.location, locations: response.data.locations});
-      const {id} = response.data.location;
-      console.log("will show location for user", `${LOCATIONS_URL}/${id}`);
-    }
-  } catch {
-    dispatch({type: 'CREATE_LOCATION_ERROR'});
   }
-}
+}  
 
 const updateLocation = (payload) => async (dispatch) => {
   const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};

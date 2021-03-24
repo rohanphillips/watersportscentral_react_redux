@@ -12,23 +12,34 @@ class LocationsContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: '',      
+      message: '', 
+      error: false,
+      errors: {}     
     }
   }
 
   componentDidMount(){
-    const load = this.props.getLocations()
-    console.log("componentDidMount load:", load)
+    const {getLocations} = this.props
+    getLocations()
+      .then(responseJson => {
+          console.log("componentDidMount", responseJson);
+        })
+        .catch(errors => {
+          console.log("componentDidMount errors", errors);
+          this.setState({
+            error: true,
+            errors
+          })
+        })
+    console.log("componentDidMount:")
   }
 
   render() {
     console.log("LocationsContainer", "props", this.props)
     const {locationsFetched} = this.props.state.locations
-    const {isLocationErrors} = this.props.state.locations
-    if(isLocationErrors){
-      const locationErrors = this.props.state.locations
+    if(this.state.error){
       return (
-        <ErrorsList errors={locationErrors}/>
+        <ErrorsList errors={this.state.errors}/>
       )
     }
     if (locationsFetched !== true){      

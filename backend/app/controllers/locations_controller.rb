@@ -2,13 +2,13 @@ class LocationsController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :authorized, only: [:auto_login] 
 
-  def create    
+  def create   
     @location = Location.new(location_params)
     if @location.save
       @locations = Location.all
       render json: {location: @location, locations: @locations}, status: :ok
     else
-      render json: {errors: {errors: @location.errors}}
+      render json: {errors: @location.errors}, status: :unprocessable_entity
     end
   end
 

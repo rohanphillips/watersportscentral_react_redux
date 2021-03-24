@@ -8,7 +8,7 @@ class LocationCreate extends Component {
     name: '',
     description: '',
     location_info: '',
-    isAccepted: false
+    errors: {}
   }
 
   componentDidMount(){
@@ -39,27 +39,42 @@ class LocationCreate extends Component {
 
   handleOnSubmit = async (e, edit) => {
     e.preventDefault();
-    const {name, description, location_info} = this.state;    
+    // const {name, description, location_info} = this.state;    
+    const form = e.target;
+    const body = new FormData();
+    body.append("location[name]", form.name.value);
+    body.append("location[description]", form.description.value);
+    body.append("location[location_info]", form.location_info.value)
     if (this.editMode() === false){
       const {newLocation} = this.props;
-      await newLocation({
-        name, description, location_info
-      })
-      if (this.props.data.props.state.locations.location !== undefined){
-        this.setState({
-          isAccepted: true,
+      newLocation(body)
+        .then(locationJson =>{
+          console.log("locationJson:", locationJson)
+          this.setState({
+            isAccepted: true
+          })
         })
-      }
+        .catch(errors => {
+          console.log("locationErrors", errors)
+          this.setState({
+            errors
+          })
+        })
     } else {
       const {updateLocation} = this.props
-      await updateLocation({
-        id: this.locationID(), name, description, location_info
-      })
-      if (this.props.data.props.state.locations.location !== undefined){
+      updateLocation(body)
+      .then(locationJson =>{
+        console.log("locationJson:", locationJson)
         this.setState({
-          isAccepted: true,
+          isAccepted: true
         })
-      }
+      })
+      .catch(errors => {
+        console.log("locationErrors", errors)
+        this.setState({
+          errors
+        })
+      })
     }
   } 
 
@@ -113,6 +128,7 @@ class LocationCreate extends Component {
               name="description"
               value={this.state.description}
             />
+             <span className="text-red-400">{this.state.errors.description}</span>
           </label>
           <label>
             Location Info:
