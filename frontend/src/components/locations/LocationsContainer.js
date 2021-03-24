@@ -4,6 +4,7 @@ import {
 } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LocationsList from './LocationsList'
+import ErrorsList from '../errors/ErrorsList'
 import Location from './Location'
 import {getLocations, deleteLocation} from '../../actions/locationActions'
 
@@ -23,6 +24,13 @@ class LocationsContainer extends Component {
   render() {
     console.log("LocationsContainer", "props", this.props)
     const {locationsFetched} = this.props.state.locations
+    const {isLocationErrors} = this.props.state.locations
+    if(isLocationErrors){
+      const locationErrors = this.props.state.locations
+      return (
+        <ErrorsList errors={locationErrors}/>
+      )
+    }
     if (locationsFetched !== true){      
       return (
         <div>
