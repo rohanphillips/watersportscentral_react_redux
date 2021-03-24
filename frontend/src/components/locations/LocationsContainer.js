@@ -16,7 +16,8 @@ class LocationsContainer extends Component {
   }
 
   componentDidMount(){
-    this.props.getLocations()
+    const load = this.props.getLocations()
+    console.log("componentDidMount load:", load)
   }
 
   render() {

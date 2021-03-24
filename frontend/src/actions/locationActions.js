@@ -16,13 +16,13 @@ const getLocations = () => async (dispatch) => {
     console.log("getLocations:", "response:", response)
     dispatch({type: 'GET_LOCATIONS', locations: response.data.locations})
   } catch {
-    console.log("getLocations Error:", LOCATIONS_URL)
+    // console.log("getLocations Error:", LOCATIONS_URL)
   }
   
 }  
 export {getLocations};
 
-const createLocation = newLocation => async (dispatch) => {
+export const createLocation = newLocation => async (dispatch) => {
   try {
     const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
     const response = await axios({
@@ -45,7 +45,6 @@ const createLocation = newLocation => async (dispatch) => {
     dispatch({type: 'CREATE_LOCATION_ERROR'});
   }
 }
-export {createLocation}
 
 const updateLocation = (payload) => async (dispatch) => {
   const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
