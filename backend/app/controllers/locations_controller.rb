@@ -24,10 +24,10 @@ class LocationsController < ApplicationController
           @locations = Location.all
           render json: {location: @location, locations: @locations}, status: :ok
         else
-          render json: {error: {message: "Location update error", errors: @location.errors}}
+          render json: {errors: @location.errors}, status: :unprocessable_entity
         end
       else
-        render json: {errors: @location.errors}
+        render json: {errors: @location.errors}, status: :unprocessable_entity
       end
     end
   end

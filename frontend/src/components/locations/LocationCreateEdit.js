@@ -42,6 +42,8 @@ class LocationCreate extends Component {
     // const {name, description, location_info} = this.state;    
     const form = e.target;
     const body = new FormData();
+    console.log("this.props", this.props)
+    body.append("location[id]", this.locationID());
     body.append("location[name]", form.name.value);
     body.append("location[description]", form.description.value);
     body.append("location[location_info]", form.location_info.value)
@@ -109,6 +111,7 @@ class LocationCreate extends Component {
         <Redirect to={`/locations/${id}`}/>
       )
     }
+    console.log("LocationCreateEdit:", "render props", this.props)
     return (
       <div className="form-part">
         <p>Location {this.formFunction()}</p>

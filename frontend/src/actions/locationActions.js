@@ -59,24 +59,56 @@ export const createLocation = (newLocation) => {
   }
 }  
 
-const updateLocation = (payload) => async (dispatch) => {
-  const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
-  console.log("updateLocation", "payload:", payload);
-  try {
-    const response = await axios({
-      method: 'PATCH',
-      url: `${LOCATIONS_URL}/${payload.id}`,
-      headers: header,
-      data: {location: payload},
-      crossdomain: true,
-    })
-    console.log("siteActions:", "updateLocationResponse", response)
-    dispatch({type: 'UPDATE_LOCATION', ...response.data});
-  } catch {
+// const updateLocation = (payload) => async (dispatch) => {
+//   const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
+//   console.log("updateLocation", "payload:", payload);
+//   try {
+//     const response = await axios({
+//       method: 'PATCH',
+//       url: `${LOCATIONS_URL}/${payload.id}`,
+//       headers: header,
+//       data: {location: payload},
+//       crossdomain: true,
+//     })
+//     console.log("siteActions:", "updateLocationResponse", response)
+//     dispatch({type: 'UPDATE_LOCATION', ...response.data});
+//   } catch {
 
-  }  
-}  
-export {updateLocation};
+//   }  
+// }  
+// export {updateLocation};
+
+export const updateLocation = (updateLocation) => {      
+  return async (dispatch) => {
+    const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
+    console.log("headers", header)
+    console.log("updateLocation", updateLocation);
+    console.log("dispatch", dispatch);
+    const id = updateLocation.get("location[id]")
+    console.log("id", id)
+    return fetch(`${LOCATIONS_URL}/${id}`,{
+      method: 'PATCH',
+      headers: header,
+      body: updateLocation,
+      crossdomain: true,
+    }).then(async(response) => {
+      console.log("Response Received", response)
+      if(response.ok){
+        return response.json()
+      } else {
+        return response.json().then(errors => Promise.reject(errors))
+      }
+    }).then((data) => {    
+      console.log("Data Available", data)
+      dispatch({type: 'UPDATE_LOCATION', location: data.location, locations: data.locations})
+    }).catch((error) => {
+      if(error.errors === undefined){
+        error.errors = {connection: ["Database Error"]}
+      }      
+      return Promise.reject(error.errors)
+    })
+  }
+} 
 
 const deleteLocation = (id) => async (dispatch) => {          
   console.log("siteAction:", "deleteLocation:", deleteLocation);
