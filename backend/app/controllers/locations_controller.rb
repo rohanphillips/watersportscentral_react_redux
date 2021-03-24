@@ -8,7 +8,7 @@ class LocationsController < ApplicationController
       @locations = Location.all
       render json: {location: @location, locations: @locations}, status: :ok
     else
-      render json: {error: {message: "Location creation error", errors: @location.errors}}
+      render json: {errors: {errors: @location.errors}}
     end
   end
 
@@ -27,7 +27,7 @@ class LocationsController < ApplicationController
           render json: {error: {message: "Location update error", errors: @location.errors}}
         end
       else
-        render json: {error: {message: "Location not found"}}
+        render json: {errors: @location.errors}
       end
     end
   end
@@ -38,7 +38,7 @@ class LocationsController < ApplicationController
 
   def index
     @locations = Location.all
-    render json: {locations: @locations, errors:{message: "test error"}}, status: :ok
+    render json: {locations: @locations, errors: {message: "test error"}}, status: :unprocessable_entity
   end
 
   def destroy

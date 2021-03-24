@@ -43,12 +43,9 @@ export const getLocations = () => {
       return data
     }).catch((error) => {
       console.log("Error Occurred", error.errors)
-      return error
-    }).finally(() => {
-      console.log("Finally")
+      dispatch({type: 'LOCATION_ERRORS', errors: error.errors})
     })
   }
-  // dispatch({type: 'GET_LOCATIONS', locations: response.data.locations})
 }  
 
 export const createLocation = newLocation => async (dispatch) => {

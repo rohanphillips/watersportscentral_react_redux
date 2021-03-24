@@ -21,7 +21,7 @@ class LocationsContainer extends Component {
   }
 
   render() {
-    console.log("LocationsContainer")
+    console.log("LocationsContainer", "props", this.props)
     const {locationsFetched} = this.props.state.locations
     if (locationsFetched !== true){      
       return (

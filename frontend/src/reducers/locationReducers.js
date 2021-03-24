@@ -13,6 +13,8 @@ const locationReducers = (state = initialState, action) => {
         ...state,
         locationsFetched: true,
         locations: action.locations,
+        isLocationErrors: false,
+        locationErrors: {}
       }
     case 'UPDATE_LOCATION':
       console.log("locationReducers:", "UPDATE_LOCATION", action)
@@ -35,6 +37,12 @@ const locationReducers = (state = initialState, action) => {
       return {
         ...state,
         locations: state.locations.filter(location => location.id !== action.id),
+      }
+    case 'LOCATION_ERRORS':
+      return {
+        ...state,
+        isLocationErrors: true,
+        locationErrors: action.errors
       }
     default: return state;
   }
