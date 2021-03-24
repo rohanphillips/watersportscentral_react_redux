@@ -43,6 +43,10 @@ export const getLocations = () => {
       return data
     }).catch((error) => {
       console.log("Error Occurred", error.errors)
+      console.log("Error Occurred, error:", error.errors)
+      if(error.errors === undefined){
+        error.errors = ["Database connection error..."]
+      }
       dispatch({type: 'LOCATION_ERRORS', errors: error.errors})
     })
   }
