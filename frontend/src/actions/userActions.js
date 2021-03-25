@@ -71,22 +71,49 @@ const deleteUser = (id) => async (dispatch) => {
 }  
 export {deleteUser};
 
-const getUser = () => async (dispatch) => {
-  const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
-  try {
-    const response = await axios({
+// const getUser = () => async (dispatch) => {
+//   const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
+//   try {
+//     const response = await axios({
+//       method: 'GET',
+//       url: `${GET_USER_URL}`,
+//       headers: header,
+//       crossdomain: true,
+//     })
+//     dispatch({type: 'USER_LOGIN'})
+//     dispatch({type: 'CREATE_USER', ...response.data.user})
+//   } catch {
+
+//   }  
+// }  
+// export {getUser};
+
+export const getUser = () => {      
+  return async (dispatch) => {
+    const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
+    return fetch(GET_USER_URL,{
       method: 'GET',
-      url: `${GET_USER_URL}`,
       headers: header,
       crossdomain: true,
+    }).then(async(response) => {
+      if(response.ok){
+        return response.json()
+      } else {
+        return response.json().then(errors => Promise.reject(errors))
+      }
+    }).then((data) => {   
+      console.log("getUser", data)
+      dispatch({type: 'USER_LOGIN'})
+      dispatch({type: 'CREATE_USER', ...data.user})
+      dispatch({type: 'GET_USERS', users: data.users})
+    }).catch((error) => {
+      if(error.errors === undefined){
+        error.errors = {connection: ["Database Error"]}
+      }   
+      return Promise.reject(error.errors)
     })
-    dispatch({type: 'USER_LOGIN'})
-    dispatch({type: 'CREATE_USER', ...response.data.user})
-  } catch {
-
-  }  
+  }
 }  
-export {getUser};
 
 const updateUser = (payload) => async (dispatch) => {
   const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};

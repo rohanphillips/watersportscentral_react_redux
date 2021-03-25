@@ -2,7 +2,10 @@ import React from 'react'
 
 const ErrorsList = (data) => {
   console.log("Error List:", data)
-  const errors = data.errors;
+  if(data.state.error === false){
+    return null
+  }
+  const errors = data.state.errors;
   return (
     <div>
       <p>The following error(s) occurred</p>

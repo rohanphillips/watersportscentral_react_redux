@@ -7,6 +7,7 @@ import {
 import { connect } from 'react-redux';
 import jwt_decode from "jwt-decode";
 import styled from 'styled-components'
+import ErrorsList from '../errors/ErrorsList'
 import NavBar from '../navbar/NavBar'
 import Home from '../home/Home';
 import Events from '../events/Events';
@@ -30,17 +31,37 @@ export const Col = styled.div`
 
 
 class App extends Component {
-  
+  constructor(props){
+    super(props);
+    this.state = {
+      error: false,
+      errors: {}
+    }
+  }
+
   getUser (){
     if (localStorage.loggedin){
       const decoded = jwt_decode(localStorage.getItem("loggedin"))
+      const getUser = this.props;
+      getUser()
+        .then(responseJson => {          
+        })
+        .catch(errors => {
+          this.setState({
+            error: true,
+            errors
+          })
+        })
       this.props.getUser(decoded.user_id);
     }
   }
 
 
   render() {
-    this.getUser();
+    console.log("App", "props", this.props)
+    if(this.props.state.site.isLogin === false){
+      this.getUser();
+    }   
     return (
       <div >
         <Router> 
@@ -53,9 +74,10 @@ class App extends Component {
                 <NavBar/>
               </div>
               <div className="container">
+                <ErrorsList state={this.state}/>
                 <Switch>
                   <Route exact path="/">
-                    <Home />
+                    <Home/>
                   </Route>
                   <Route exact path="/events">
                     <Events />
@@ -77,13 +99,13 @@ class App extends Component {
   }
 }
 
-// const mapStateToProps = state => {
-//   return {state}
-// }
+const mapStateToProps = state => {
+  return {state}
+}
 
 const mapDispatchToProps = dispatch => {
   return {
     getUser: user => dispatch(getUser(user))
   }
 }
-export default connect(null, mapDispatchToProps) (App);
+export default connect(mapStateToProps, mapDispatchToProps) (App);

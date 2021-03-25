@@ -39,7 +39,7 @@ class LocationsContainer extends Component {
     const {locationsFetched} = this.props.state.locations
     if(this.state.error){
       return (
-        <ErrorsList errors={this.state.errors}/>
+        <ErrorsList state={this.state}/>
       )
     }
     if (locationsFetched !== true){      
