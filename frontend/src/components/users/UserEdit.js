@@ -147,6 +147,7 @@ class UserEdit extends Component {
               name="username"
               value={this.state.user.username}
             />
+            <span className="text-red-400">{this.state.errors.username}</span>
           </label>
           <label>
             First Name:        
@@ -155,6 +156,7 @@ class UserEdit extends Component {
               name="first_name"
               value={this.state.user.first_name}
             />
+            <span className="text-red-400">{this.state.errors.first_name}</span>
           </label>  
           <label>
             Last Name:        
@@ -163,6 +165,7 @@ class UserEdit extends Component {
               name="last_name"
               value={this.state.user.last_name}
             />
+            <span className="text-red-400">{this.state.errors.last_name}</span>
           </label>
           <label>
             Email:        
@@ -171,6 +174,7 @@ class UserEdit extends Component {
               name="email"
               value={this.state.user.email}
             />
+            <span className="text-red-400">{this.state.errors.email}</span>
           </label>
           <label>
             Password:        
@@ -179,6 +183,7 @@ class UserEdit extends Component {
               name="password"
               value={this.state.user.password === null ? "" : this.state.user.password}
             />
+            <span className="text-red-400">{this.state.errors.password}</span>
           </label>
           <AdminAccess>
             <label>

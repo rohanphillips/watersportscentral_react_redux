@@ -88,7 +88,6 @@ export const getUser = () => {
       console.log("getUser", data)
       dispatch({type: 'USER_LOGIN'})
       dispatch({type: 'CREATE_USER', ...data.user})
-      dispatch({type: 'GET_USERS', users: data.users})
     }).catch((error) => {
       if(error.errors === undefined){
         error.errors = {connection: ["Database Error"]}
