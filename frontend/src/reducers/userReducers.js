@@ -22,7 +22,6 @@ const userReducers = (state = initialState, action) => {
         ...initialState,
       }
     case 'CREATE_USER':
-      console.log("userReducers:", "CREATE_USER");
       return {
         ...state,
         user: {
@@ -39,14 +38,12 @@ const userReducers = (state = initialState, action) => {
         usersFetched: false,
       }
     case 'CREATE_USER_ERROR':
-      console.log("userReducers:", "CREATE_USER_ERROR");
       return {
         ...state,
         ...initialUser,
         errors: {...action.error},
       }
       case 'UPDATE_USER':
-        console.log("userReducers:", "UPDATE_USER", action.id);
         return {
           ...state,
           user: {
@@ -64,15 +61,12 @@ const userReducers = (state = initialState, action) => {
           userUpdated: true,
         }    
     case 'GET_USERS':
-      console.log("userReducers:", "GET_USERS", action);
       return {
         ...state,
         usersFetched: true,
         users: action.users,
       }
     case 'DELETE_USER':
-      console.log("userReducers:", "DELETE_USER", action)
-      console.log("userReducers:", "DELETE_USER:", state)
       return {
         ...state,
         users: state.users.filter(user => user.id !== action.id),

@@ -22,14 +22,11 @@ class UsersContainer extends Component {
   
 
   componentDidMount(){
-    console.log("UsersContainer:", "componentDidMount")
     const {getUsers} = this.props;
     getUsers()
       .then(responseJson => {
-          console.log("componentDidMount", responseJson);
         })
         .catch(errors => {
-          console.log("componentDidMount errors", errors);
           this.setState({
             error: true,
             errors
@@ -37,8 +34,7 @@ class UsersContainer extends Component {
         })
   }
 
-  render (){    
-    console.log("UsersContainer:", "render, this.props", this.props)
+  render (){  
     return (
       <div class="container border border-amber-200 w-full">
           <AdminAccess>

@@ -4,8 +4,6 @@ import {
 } from 'react-router-dom';
 
 const UserFlat = (data) => {
-  console.log("UserFlat", "data", data)
-  // console.log("UserFlat", "deleteUser", data.deleteUser)
   const {user} = data;
   return (
     <div class="flex-col p-2 my-2  border border-amber-200 w-max">

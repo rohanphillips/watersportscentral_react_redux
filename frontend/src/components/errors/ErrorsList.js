@@ -10,7 +10,6 @@ const ErrorsList = (data) => {
       <p>The following error(s) occurred</p>
       <ul>
         {Object.keys(errors).map(error => {
-            console.log("e", error)
             return <li>{error} - {errors[error]}</li>
           }
         )}

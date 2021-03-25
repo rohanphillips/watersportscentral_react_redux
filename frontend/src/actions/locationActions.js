@@ -5,27 +5,23 @@ const LOCATIONS_URL = `${SITE_URL}/locations`
 export const getLocations = () => {      
   return async (dispatch) => {
     const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
-    console.log("headers", header)
     return fetch(LOCATIONS_URL,{
       method: 'GET',
       headers: header,
       crossdomain: true,
     }).then(async(response) => {
-      console.log("Response Received", response)
       if(response.ok){
         return response.json()
       } else {
         return response.json().then(errors => Promise.reject(errors))
       }
     }).then((data) => {    
-      console.log("Data Available", data)
       dispatch({type: 'GET_LOCATIONS', locations: data.locations})
       return data
     }).catch((error) => {
       if(error.errors === undefined){
         error.errors = {connection: ["Database Error"]}
       }   
-      console.log("db error:", error.errors)   
       return Promise.reject(error.errors)
     })
   }

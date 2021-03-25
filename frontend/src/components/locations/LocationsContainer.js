@@ -22,20 +22,16 @@ class LocationsContainer extends Component {
     const {getLocations} = this.props
     getLocations()
       .then(responseJson => {
-          console.log("componentDidMount", responseJson);
         })
         .catch(errors => {
-          console.log("componentDidMount errors", errors);
           this.setState({
             error: true,
             errors
           })
         })
-    console.log("componentDidMount:")
   }
 
   render() {
-    console.log("LocationsContainer", "props", this.props)
     const {locationsFetched} = this.props.state.locations
     if(this.state.error){
       return (

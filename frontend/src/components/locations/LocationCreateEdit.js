@@ -31,7 +31,6 @@ class LocationCreate extends Component {
       default:
         saved = e.target.value;
     }
-    console.log("saved:", saved)
     this.setState({
       [e.target.name]: saved,
     })
@@ -42,7 +41,6 @@ class LocationCreate extends Component {
     // const {name, description, location_info} = this.state;    
     const form = e.target;
     const body = new FormData();
-    console.log("this.props", this.props)
     body.append("location[id]", this.locationID());
     body.append("location[name]", form.name.value);
     body.append("location[description]", form.description.value);
@@ -51,13 +49,11 @@ class LocationCreate extends Component {
       const {newLocation} = this.props;
       newLocation(body)
         .then(locationJson =>{
-          console.log("locationJson:", locationJson)
           this.setState({
             isAccepted: true
           })
         })
         .catch(errors => {
-          console.log("locationErrors", errors)
           this.setState({
             errors
           })
@@ -66,13 +62,11 @@ class LocationCreate extends Component {
       const {updateLocation} = this.props
       updateLocation(body)
       .then(locationJson =>{
-        console.log("locationJson:", locationJson)
         this.setState({
           isAccepted: true
         })
       })
       .catch(errors => {
-        console.log("locationErrors", errors)
         this.setState({
           errors
         })
@@ -111,7 +105,6 @@ class LocationCreate extends Component {
         <Redirect to={`/locations/${id}`}/>
       )
     }
-    console.log("LocationCreateEdit:", "render props", this.props)
     return (
       <div className="form-part">
         <p>Location {this.formFunction()}</p>

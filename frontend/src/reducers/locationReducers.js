@@ -8,7 +8,6 @@ const initialState = {
 const locationReducers = (state = initialState, action) => {
   switch (action.type) {    
     case 'GET_LOCATIONS':
-      console.log("locationReducers:", "GET_LOCATIONS", action);
       return {
         ...state,
         locationsFetched: true,
@@ -17,23 +16,18 @@ const locationReducers = (state = initialState, action) => {
         locationErrors: {}
       }
     case 'UPDATE_LOCATION':
-      console.log("locationReducers:", "UPDATE_LOCATION", action)
       return {
         ...state,
         location: action.location,
         locations: action.locations
       }
     case 'CREATE_LOCATION':
-      console.log("locationReducers:", "CREATE_LOCATION", action)
-      console.log("locationReducers:", "Location", action.location)
       return {
         ...state,
         location: action.location,
         locations: action.locations,
       }
     case 'DELETE_LOCATION':
-      console.log("locationReducers:", "DELETE_LOCATION", action)
-      console.log("locationReducers:", "DELETE_LOCATION:", state)
       return {
         ...state,
         locations: state.locations.filter(location => location.id !== action.id),
@@ -46,7 +40,6 @@ const locationReducers = (state = initialState, action) => {
         locationErrors: action.errors
       }
       case 'LOCATION_ERROR':
-        console.log("locationReducers:", "LOCATION_ERROR", action)
         return {
           ...state,
           isLocationError: true,

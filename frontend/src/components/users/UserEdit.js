@@ -68,7 +68,6 @@ class UserEdit extends Component {
       default:
         saved = e.target.value;
     }
-    console.log("saved:", saved)
     this.setState({
       user: {
         ...this.state.user,
@@ -104,7 +103,6 @@ class UserEdit extends Component {
     const form = e.target;
     const body = new FormData();
     body.append("user[id]", this.user().id)
-    console.log("user.id", this.user().id)
     body.append("user[username]", form.username.value)
     body.append("user[first_name", form.first_name.value)
     body.append("user[last_name]", form.last_name.value)
@@ -118,7 +116,6 @@ class UserEdit extends Component {
         this.setState({
           isAccepted: true
         })
-        console.log("userJson", `/users/${userJson.user.id}`)
         this.props.history.push(`/users/${userJson.user.id}`)
       })
       .catch(errors => {
