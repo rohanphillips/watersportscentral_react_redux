@@ -71,23 +71,6 @@ const deleteUser = (id) => async (dispatch) => {
 }  
 export {deleteUser};
 
-// const getUser = () => async (dispatch) => {
-//   const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
-//   try {
-//     const response = await axios({
-//       method: 'GET',
-//       url: `${GET_USER_URL}`,
-//       headers: header,
-//       crossdomain: true,
-//     })
-//     dispatch({type: 'USER_LOGIN'})
-//     dispatch({type: 'CREATE_USER', ...response.data.user})
-//   } catch {
-
-//   }  
-// }  
-// export {getUser};
-
 export const getUser = () => {      
   return async (dispatch) => {
     const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
