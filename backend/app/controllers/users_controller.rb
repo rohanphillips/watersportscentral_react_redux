@@ -21,8 +21,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def update
-    
+  def update    
     if logged_in_user then
       @user = User.find(params[:id])      
       if @user.valid?           

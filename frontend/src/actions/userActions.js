@@ -43,6 +43,7 @@ export const getUsers = () => {
     }).then((data) => {   
       console.log("getUsers", data)
       dispatch({type: 'GET_USERS', users: data.users})
+      return data
     }).catch((error) => {
       if(error.errors === undefined){
         error.errors = {connection: ["Database Error"]}
@@ -88,6 +89,7 @@ export const getUser = () => {
       console.log("getUser", data)
       dispatch({type: 'USER_LOGIN'})
       dispatch({type: 'CREATE_USER', ...data.user})
+      return data
     }).catch((error) => {
       if(error.errors === undefined){
         error.errors = {connection: ["Database Error"]}
@@ -132,7 +134,9 @@ export const updateUser = (updateUser) => {
         return response.json().then(errors => Promise.reject(errors))
       }
     }).then((data) => {    
+      console.log("Update User date", data)
       dispatch({type: 'UPDATE_USER', user: data.user})
+      return data
     }).catch((error) => {
       if(error.errors === undefined){
         error.errors = {connection: ["Database Error"]}

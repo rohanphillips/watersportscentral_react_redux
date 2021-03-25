@@ -46,18 +46,18 @@ const userReducers = (state = initialState, action) => {
         errors: {...action.error},
       }
       case 'UPDATE_USER':
-        console.log("userReducers:", "UPDATE_USER");
+        console.log("userReducers:", "UPDATE_USER", action.id);
         return {
           ...state,
           user: {
             id: action.id,
-            username: action.username,
-            firstName: action.first_name,
-            lastName: action.last_name,
-            email: action.email,
-            password: action.password,
-            admin: action.admin,
-            active: action.active
+            username: action.user.username,
+            firstName: action.user.first_name,
+            lastName: action.user.last_name,
+            email: action.user.email,
+            password: action.user.password,
+            admin: action.user.admin,
+            active: action.user.active
           },
           users: [],
           usersFetched: false,

@@ -118,6 +118,8 @@ class UserEdit extends Component {
         this.setState({
           isAccepted: true
         })
+        console.log("userJson", `/users/${userJson.user.id}`)
+        this.props.history.push(`/users/${userJson.user.id}`)
       })
       .catch(errors => {
         this.setState({

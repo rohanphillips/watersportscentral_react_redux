@@ -20,6 +20,7 @@ export const getLocations = () => {
     }).then((data) => {    
       console.log("Data Available", data)
       dispatch({type: 'GET_LOCATIONS', locations: data.locations})
+      return data
     }).catch((error) => {
       if(error.errors === undefined){
         error.errors = {connection: ["Database Error"]}
@@ -46,6 +47,7 @@ export const createLocation = (newLocation) => {
       }
     }).then((data) => {    
       dispatch({type: 'CREATE_LOCATION', location: data.location, locations: data.locations})
+      return data
     }).catch((error) => {
       if(error.errors === undefined){
         error.errors = {connection: ["Database Error"]}
@@ -72,6 +74,7 @@ export const updateLocation = (updateLocation) => {
       }
     }).then((data) => {    
       dispatch({type: 'UPDATE_LOCATION', location: data.location, locations: data.locations})
+      return data
     }).catch((error) => {
       if(error.errors === undefined){
         error.errors = {connection: ["Database Error"]}

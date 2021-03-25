@@ -20,7 +20,7 @@ const User = (data) => {
         First Name: {user.first_name}          
       </div>
       <div>
-      Last Name: {user.last_name}         
+        Last Name: {user.last_name}         
       </div>
       <Link to={`/users/${user.id}/edit`}>
           <button class="btn-edit">Edit</button>
