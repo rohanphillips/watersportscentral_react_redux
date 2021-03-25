@@ -15,14 +15,27 @@ class UsersContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: ''
+      message: '',
+      errors: {}
     }
   }
   
 
   componentDidMount(){
     console.log("UsersContainer:", "componentDidMount")
+    const {getUsers} = this.props;
     this.props.getUsers()
+    getUsers()
+      .then(responseJson => {
+          console.log("componentDidMount", responseJson);
+        })
+        .catch(errors => {
+          console.log("componentDidMount errors", errors);
+          this.setState({
+            error: true,
+            errors
+          })
+        })
   }
 
   render (){    

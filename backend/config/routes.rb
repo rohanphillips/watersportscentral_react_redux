@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get 'welcome', to: 'sessions#welcome'
   get 'authorized', to: 'sessions#page_requires_login'
   get '/auth/facebook/callback' => 'sessions#fb_create'
-  get 'getuser', to: 'sessions#getuser'
 
   resources :users do
     collection do

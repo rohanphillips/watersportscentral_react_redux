@@ -27,25 +27,30 @@ const createUser = newUser => async (dispatch) => {
 }
 export {createUser}
 
-const getUsers = () => async (dispatch) => {          
-  console.log("siteAction:", "getUsers:", getUsers);
-  const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
-  console.log("headers", header)
-  try {
-    const response = await axios({
+export const getUsers = () => {      
+  return async (dispatch) => {
+    const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
+    return fetch(USERS_URL,{
       method: 'GET',
-      url: USERS_URL,
       headers: header,
       crossdomain: true,
+    }).then(async(response) => {
+      if(response.ok){
+        return response.json()
+      } else {
+        return response.json().then(errors => Promise.reject(errors))
+      }
+    }).then((data) => {   
+      console.log("getUsers", data)
+      dispatch({type: 'GET_USERS', users: data.users})
+    }).catch((error) => {
+      if(error.errors === undefined){
+        error.errors = {connection: ["Database Error"]}
+      }   
+      return Promise.reject(error.errors)
     })
-    console.log("getUsers:", "response:", response)
-    dispatch({type: 'GET_USERS', users: response.data.users})
-  } catch {
-    console.log("getUsers Error:", USERS_URL)
   }
-  
 }  
-export {getUsers};
 
 const deleteUser = (id) => async (dispatch) => {          
   console.log("siteAction:", "deleteUser:", deleteUser);
