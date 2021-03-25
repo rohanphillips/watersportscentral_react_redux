@@ -24,7 +24,6 @@ class UsersContainer extends Component {
   componentDidMount(){
     console.log("UsersContainer:", "componentDidMount")
     const {getUsers} = this.props;
-    this.props.getUsers()
     getUsers()
       .then(responseJson => {
           console.log("componentDidMount", responseJson);

@@ -58,7 +58,6 @@ class App extends Component {
 
 
   render() {
-    console.log("App", "props", this.props)
     if(this.props.state.site.isLogin === false){
       this.getUser();
     }   

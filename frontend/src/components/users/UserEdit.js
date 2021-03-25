@@ -18,23 +18,30 @@ class UserEdit extends Component {
       admin: false,
       active: false},
       message: '',
-      isLoaded: false
+      isLoaded: false,
+      error: false,
+      errors: {},
     }
   }
 
   componentDidMount(){
-    console.log("UserEdit:", "componentDidMount")
     this.loadState()
   }
 
   componentDidUpdate(){
-    console.log("UserEdit:", "componentDidUpdate")
     this.loadState()
-    console.log("componentDidUpdate:", "this.state", this.state)
     if (this.props.state.users.userUpdated){
       this.props.state.users.userUpdated = false;
-      this.props.getUsers();
-      console.log("wants to get users")
+      const {getUsers} = this.props;
+      getUsers()
+        .then(responseJson => {
+          })
+          .catch(errors => {
+            this.setState({
+              error: true,
+              errors
+            })
+          })
     }
   }
 
@@ -42,7 +49,6 @@ class UserEdit extends Component {
     if (this.props.state.users.usersFetched && this.state.isLoaded === false){
       if (this.state.isLoaded === false){
         const {user} = this.user();
-        console.log("loadState", "user:", user)
         this.setState({
           ...this.state,
           user: {...user},
@@ -74,11 +80,9 @@ class UserEdit extends Component {
     e.preventDefault();
     const {username, password} = this.state;
     const {loginUser} = this.props;
-    console.log("Login:","startlogin:")
     loginUser({
       username, password
     })
-    console.log("Login:","endlogin:")
   }
 
   user = () => {
@@ -88,7 +92,6 @@ class UserEdit extends Component {
 
   hasAccess = () =>{
     const {user, id} = this.user() 
-    console.log("hasAccess", "user:", user)
     if (user === undefined){
       return false;
     }        
@@ -96,9 +99,7 @@ class UserEdit extends Component {
   }
 
   createPayload = () => {    
-    console.log("createPayload", "this.state", this.state);   
     let user = {...this.state.user}
-    console.log("createPayload", "user", user);
     delete user.id
     delete user.password_digest
     delete user.created_at
@@ -109,7 +110,6 @@ class UserEdit extends Component {
 
   handleOnSubmit = async (e) => {
     e.preventDefault();
-    console.log("Update Requested")
     this.props.updateUser(this.createPayload())
     // const {username, password} = this.state;
     // const {loginUser} = this.props;
@@ -122,7 +122,6 @@ class UserEdit extends Component {
 
   render(){
     const { message } = this.state;
-    console.log("userEdit:", "this.props", this.props)
     if (this.props.state.users.usersFetched === false){
       return (
         <p>Loading...</p>

@@ -98,21 +98,47 @@ export const getUser = () => {
   }
 }  
 
-const updateUser = (payload) => async (dispatch) => {
-  const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
-  console.log("updateUser", "payload:", payload);
-  try {
-    const response = await axios({
-      method: 'PATCH',
-      url: `${USERS_URL}/${payload.id}`,
-      headers: header,
-      data: {user: payload.user},
-      crossdomain: true,
-    })
-    console.log("siteActions:", "updateUserResponse", response)
-    dispatch({type: 'UPDATE_USER', ...response.data.user});
-  } catch {
+// const updateUser = (payload) => async (dispatch) => {
+//   const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
+//   console.log("updateUser", "payload:", payload);
+//   try {
+//     const response = await axios({
+//       method: 'PATCH',
+//       url: `${USERS_URL}/${payload.id}`,
+//       headers: header,
+//       data: {user: payload.user},
+//       crossdomain: true,
+//     })
+//     console.log("siteActions:", "updateUserResponse", response)
+//     dispatch({type: 'UPDATE_USER', ...response.data.user});
+//   } catch {
 
-  }  
-}  
-export {updateUser};
+//   }  
+// }  
+// export {updateUser};
+
+export const updateUser = (updateUser) => {      
+  return async (dispatch) => {
+    const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
+    const id = updateUser.get("location[id]")
+    return fetch(`${USERS_URL}/${id}`,{
+      method: 'PATCH',
+      headers: header,
+      body: updateUser,
+      crossdomain: true,
+    }).then(async(response) => {
+      if(response.ok){
+        return response.json()
+      } else {
+        return response.json().then(errors => Promise.reject(errors))
+      }
+    }).then((data) => {    
+      dispatch({type: 'UPDATE_USER', user: data.user})
+    }).catch((error) => {
+      if(error.errors === undefined){
+        error.errors = {connection: ["Database Error"]}
+      }      
+      return Promise.reject(error.errors)
+    })
+  }
+} 
