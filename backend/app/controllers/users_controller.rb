@@ -22,21 +22,20 @@ class UsersController < ApplicationController
   end
 
   def update
+    
     if logged_in_user then
-      @user = User.find(params[:id])
-      if @user.valid?   
-        
+      @user = User.find(params[:id])      
+      if @user.valid?           
         if user_params[:password].nil?
             user_params.delete(:password)
         end
         @user.update(user_params)  
-        byebug
         render json: {user: @user}, status: :ok
       else
-        render json: {:error => @user.errors.messages}
+        render json: {errors: @user.errors}, status: :unprocessable_entity
       end
     else
-      render json: {:error => {message: "Invalid user"}}
+      render json: {errors: {message: "Invalid user"}}, status: :unprocessable_entity
     end
   end
 
@@ -50,7 +49,6 @@ class UsersController < ApplicationController
   end
 
   def index
-    # byebug
     if logged_in_user
       if logged_in_user.admin then
         @users = User.all;
@@ -61,7 +59,7 @@ class UsersController < ApplicationController
       # time = Time.now + 24.hours.to_i
       render json: {users: @users }, status: :ok
     else
-      render json: {:error => 'Not Authorized'}
+      render json: {:error => 'Not Authorized'}, status: :not_authorized
     end
   end
 
@@ -71,7 +69,7 @@ class UsersController < ApplicationController
       @user.destroy
       render json: {}, status: :ok
     else
-      render json: {:error => 'Not Authorized'}
+      render json: {:error => 'Not Authorized'}, status: :not_authorized
     end    
   end
 

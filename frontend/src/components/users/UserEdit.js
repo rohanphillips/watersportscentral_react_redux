@@ -11,14 +11,15 @@ class UserEdit extends Component {
     this.hasAccess = this.hasAccess.bind(this)
     this.state = {
       user: {username: '',
-      first_name: '',
-      last_name: '',
-      email: '',
-      password: '',
-      admin: false,
-      active: false},
+            first_name: '',
+            last_name: '',
+            email: '',
+            password: '',
+            admin: false,
+            active: false},
       message: '',
       isLoaded: false,
+      isAccepted: false,
       error: false,
       errors: {},
     }
@@ -98,26 +99,31 @@ class UserEdit extends Component {
     return user.id === id
   }
 
-  createPayload = () => {    
-    let user = {...this.state.user}
-    delete user.id
-    delete user.password_digest
-    delete user.created_at
-    delete user.updated_at
-    const payLoad = {id: this.state.user.id, user: user}
-    return payLoad
-  }
-
   handleOnSubmit = async (e) => {
     e.preventDefault();
-    this.props.updateUser(this.createPayload())
-    // const {username, password} = this.state;
-    // const {loginUser} = this.props;
-    // console.log("Login:","startlogin:")
-    // this.props.loginUser({
-    //   username, password
-    // })
-    // console.log("Login:","endlogin:")
+    const form = e.target;
+    const body = new FormData();
+    body.append("user[id]", this.user().id)
+    console.log("user.id", this.user().id)
+    body.append("user[username]", form.username.value)
+    body.append("user[first_name", form.first_name.value)
+    body.append("user[last_name]", form.last_name.value)
+    body.append("user[email]", form.email.value)
+    body.append("user[active]", form.active.value)
+    body.append("user[admin]", form.admin.value)
+
+    const {updateUser} = this.props
+    updateUser(body)
+      .then(userJson => {
+        this.setState({
+          isAccepted: true
+        })
+      })
+      .catch(errors => {
+        this.setState({
+          errors
+        })
+      })
   }
 
   render(){
@@ -205,7 +211,7 @@ class UserEdit extends Component {
               />
             </label>
           </AdminAccess>
-          <button class="btn-save" onClick={this.handleOnSubmit}>Update</button>
+          <button class="btn-save" type="submit" >Update</button>
         </form>
       </div>
     )

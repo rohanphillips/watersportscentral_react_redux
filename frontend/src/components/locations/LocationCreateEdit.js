@@ -37,7 +37,7 @@ class LocationCreate extends Component {
     })
   }
 
-  handleOnSubmit = async (e, edit) => {
+  handleOnSubmit = async (e) => {
     e.preventDefault();
     // const {name, description, location_info} = this.state;    
     const form = e.target;

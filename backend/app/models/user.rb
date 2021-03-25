@@ -13,8 +13,7 @@ class User < ApplicationRecord
                     email: true
   
   has_secure_password 
-  validates :password, presence: {on: :create}, confirmation: {case_sensitive: true}, length: {minimum: 4}
-  # validates :password_confirmation, presence: true
+  validates :password, presence: {on: :create}, confirmation: {case_sensitive: true}, length: {minimum: 4}, allow_blank: true, allow_nil: true
 
   scope :active, -> { where(active: true) }
   scope :inactive, -> { where(active: false) }
