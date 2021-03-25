@@ -4,12 +4,15 @@ import {Redirect} from 'react-router-dom'
 import {createLocation, updateLocation} from '../../actions/locationActions'
 
 class LocationCreate extends Component {
-  state = {
-    name: '',
-    description: '',
-    location_info: '',
-    errors: {}
-  }
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      description: '',
+      location_info: '',
+      errors: {}
+    }
+  }  
 
   componentDidMount(){
     if (this.editMode()) {
