@@ -29,10 +29,10 @@ export const getLocations = () => {
 
 export const createLocation = (newLocation) => {      
   return async (dispatch) => {
-    const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
+    const headers = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
     return fetch(LOCATIONS_URL,{
       method: 'POST',
-      headers: header,
+      headers,
       body: newLocation,
       crossdomain: true,
     }).then(async(response) => {
