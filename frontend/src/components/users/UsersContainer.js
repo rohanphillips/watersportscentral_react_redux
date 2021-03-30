@@ -36,7 +36,7 @@ class UsersContainer extends Component {
 
   render (){  
     return (
-      <div class="container border border-amber-200 w-full">
+      <div className="container border border-amber-200 w-full">
           <AdminAccess>
             <Route exact path="/users" render={routerProps => <UsersList {...routerProps}/>}></Route>
           </AdminAccess>            

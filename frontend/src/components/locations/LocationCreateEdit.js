@@ -139,7 +139,7 @@ class LocationCreate extends Component {
             />
             <span className="text-red-400">{this.state.errors.location_info}</span>
           </label>
-          <button class="btn-save" type="submit">{this.buttonFunction()}</button>
+          <button className="btn-save" type="submit">{this.buttonFunction()}</button>
         </form>
       </div>
     );

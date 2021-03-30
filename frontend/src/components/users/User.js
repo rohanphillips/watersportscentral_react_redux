@@ -19,10 +19,10 @@ const User = (data) => {
         Last Name: {user.last_name}         
       </div>
       <Link to={`/users/${user.id}/edit`}>
-          <button class="btn-edit">Edit</button>
+          <button className="btn-edit">Edit</button>
       </Link> 
       <AdminAccess>
-        <button class="btn-delete" id={`${user.id}`} 
+        <button className="btn-delete" id={`${user.id}`} 
           onClick={() => data.props.deleteUser(user.id)
         }>
           Delete

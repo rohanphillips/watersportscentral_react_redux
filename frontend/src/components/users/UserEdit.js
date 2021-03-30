@@ -210,7 +210,7 @@ class UserEdit extends Component {
               />
             </label>
           </AdminAccess>
-          <button class="btn-save" type="submit" >Update</button>
+          <button className="btn-save" type="submit" >Update</button>
         </form>
       </div>
     )

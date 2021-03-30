@@ -61,8 +61,8 @@ class Login extends Component {
             placeholder="Password"
             required />
 
-          <button class="btn-amber" type="submit">Log In</button>
-          <button class="btn-amber" onClick={this.signup}>Sign Up</button>
+          <button className="btn-amber" type="submit">Log In</button>
+          <button className="btn-amber" onClick={this.signup}>Sign Up</button>
         </form>  
               
       </div>

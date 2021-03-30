@@ -49,9 +49,9 @@ class Signup extends Component {
     return (
       <div>
          <p>Create Account</p>
-         <form class="flex-col" onSubmit={this.handleOnSubmit}>
+         <form className="flex-col" onSubmit={this.handleOnSubmit}>
           <h1>{message}</h1>
-          <div class="py-2">
+          <div className="py-2">
             <input onChange={this.handleChange}
               type="text"
               name="username"
@@ -59,35 +59,35 @@ class Signup extends Component {
               required 
             />
           </div>
-          <div class="py-2">
+          <div className="py-2">
             <input onChange={this.handleChange}
               type="text"
               name="firstName"
               placeholder="Firstname"
               required />
           </div>
-          <div class="py-2">
+          <div className="py-2">
             <input onChange={this.handleChange}
               type="text"
               name="lastName"
               placeholder="Lastname"
               />
           </div>
-          <div class="py-2">
+          <div className="py-2">
             <input onChange={this.handleChange}
               type="text"
               name="email"
               placeholder="Email"
               required />
           </div>
-          <div class="py-2">
+          <div className="py-2">
             <input onChange={this.handleChange}
               type="text"
               name="password"
               placeholder="Password"
               required />
           </div>
-          <button class="btn-save" type="submit">Create Account</button>
+          <button className="btn-save" type="submit">Create Account</button>
         </form>
       </div>
     )

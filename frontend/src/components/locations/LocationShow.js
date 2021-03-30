@@ -11,7 +11,7 @@ const LocationShow = (data) => {
     <div>
       <div>
         <Link to="/locations">
-              <button class="btn-view w-32">Locations</button>
+              <button className="btn-view w-32">Locations</button>
         </Link>
       </div>
       <div>
@@ -22,11 +22,11 @@ const LocationShow = (data) => {
       </div>
       <IsOwner type="location" location={location}>
         <Link to={`/locations/${location.id}/edit`}>
-            <button class="btn-edit">Edit</button>
+            <button className="btn-edit">Edit</button>
         </Link> 
       </IsOwner>
       <AdminAccess>
-        <button class="btn-delete" id={`${location.id}`} 
+        <button className="btn-delete" id={`${location.id}`} 
           onClick={() => data.data.props.deleteLocation(location.id)
         }>
           Delete
