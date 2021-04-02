@@ -51,7 +51,7 @@ class LocationCreate extends Component {
     if (this.editMode() === false){
       const {newLocation} = this.props;
       newLocation(body)
-        .then(locationJson =>{
+        .then(locationJson =>{          
           this.setState({
             isAccepted: true
           })
@@ -65,6 +65,7 @@ class LocationCreate extends Component {
       const {updateLocation} = this.props
       updateLocation(body)
       .then(locationJson =>{
+        console.log("handleOnSubmit", JSON.stringify(locationJson))
         this.setState({
           isAccepted: true
         })
