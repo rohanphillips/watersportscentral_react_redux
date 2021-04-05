@@ -29,11 +29,12 @@ export const getLocations = () => {
 
 export const createLocation = (newLocation) => {      
   return async (dispatch) => {
-    const headers = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
+    const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin'),
+    "Content-Type": "application/json"};
     return fetch(LOCATIONS_URL,{
       method: 'POST',
-      headers,
-      body: newLocation,
+      headers: header,
+      body: JSON.stringify(newLocation),
       crossdomain: true,
     }).then(async(response) => {
       if(response.ok){
@@ -56,12 +57,13 @@ export const createLocation = (newLocation) => {
 export const updateLocation = (updateLocation) => {      
   return async (dispatch) => {
     async function myFetch () {
-      const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
-      const id = updateLocation.get("location[id]")
+      const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin'),
+      "Content-Type": "application/json"};
+      const {id} = updateLocation.location
       let response = await fetch(`${LOCATIONS_URL}/${id}`,{
         method: 'PATCH',
         headers: header,
-        body: updateLocation,
+        body: JSON.stringify(updateLocation),
         crossdomain: true,
       })
       if(!response.ok){

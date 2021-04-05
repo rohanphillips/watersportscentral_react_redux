@@ -98,6 +98,7 @@ export const updateUser = (updateUser) => {
   return async (dispatch) => {
     const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin')};
     const id = updateUser.get("user[id]")
+    console.log("updateUser", updateUser)
     return fetch(`${USERS_URL}/${id}`,{
       method: 'PATCH',
       headers: header,

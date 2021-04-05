@@ -42,15 +42,24 @@ class LocationCreate extends Component {
   handleOnSubmit = async (e) => {
     e.preventDefault();
     // const {name, description, location_info} = this.state;    
-    const form = e.target;
-    const body = new FormData();
-    body.append("location[id]", this.locationID());
-    body.append("location[name]", form.name.value);
-    body.append("location[description]", form.description.value);
-    body.append("location[location_info]", form.location_info.value)
+    const data = {
+      location: {id: this.locationID(),
+      name: this.state.name,
+      description: this.state.description,
+      location_info: this.state.location_info,
+      }
+    }
+    console.log("data", data)
+    console.log("editMode", this.editMode())
+    // const form = e.target;
+    // const body = new FormData();
+    // body.append("location[id]", this.locationID());
+    // body.append("location[name]", form.name.value);
+    // body.append("location[description]", form.description.value);
+    // body.append("location[location_info]", form.location_info.value)
     if (this.editMode() === false){
       const {newLocation} = this.props;
-      newLocation(body)
+      newLocation(data)
         .then(locationJson =>{          
           this.setState({
             isAccepted: true
@@ -63,7 +72,7 @@ class LocationCreate extends Component {
         })
     } else {
       const {updateLocation} = this.props
-      updateLocation(body)
+      updateLocation(data)
       .then(locationJson =>{
         this.setState({
           isAccepted: true
