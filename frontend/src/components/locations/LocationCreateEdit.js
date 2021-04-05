@@ -65,13 +65,11 @@ class LocationCreate extends Component {
       const {updateLocation} = this.props
       updateLocation(body)
       .then(locationJson =>{
-        console.log("handleOnSubmit", locationJson)
         this.setState({
           isAccepted: true
         })
       })
       .catch(errors => {
-        console.log("handleOnSubmits - error", errors)
         this.setState({
           errors
         })

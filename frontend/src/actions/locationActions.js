@@ -65,16 +65,13 @@ export const updateLocation = (updateLocation) => {
         crossdomain: true,
       })
       if(!response.ok){
-        console.log("was error - do something with it")
         const error = await response.json()
         return Promise.reject(error.errors)
       }
       return await response.json()
     }
     return myFetch().then((res) => {
-      console.log("res", res)
-      dispatch({type:"UPDATE_LOCATION", res})
-      // return data.json()
+      dispatch({type: 'UPDATE_LOCATION', location: res.location, locations: res.locations})
     }).catch((e) => {      
       return Promise.reject(e)
     })
