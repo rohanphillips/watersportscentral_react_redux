@@ -27,7 +27,7 @@ export const getLocations = () => {
   }
 }  
 
-export const createLocation = (newLocation) => {      
+export const createLocation = (newLocation) => {  
   return async (dispatch) => {
     const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin'),
     "Content-Type": "application/json"};

@@ -51,16 +51,10 @@ class LocationCreate extends Component {
     }
     console.log("data", data)
     console.log("editMode", this.editMode())
-    // const form = e.target;
-    // const body = new FormData();
-    // body.append("location[id]", this.locationID());
-    // body.append("location[name]", form.name.value);
-    // body.append("location[description]", form.description.value);
-    // body.append("location[location_info]", form.location_info.value)
     if (this.editMode() === false){
       const {newLocation} = this.props;
       newLocation(data)
-        .then(locationJson =>{          
+        .then(locationJson =>{   
           this.setState({
             isAccepted: true
           })
