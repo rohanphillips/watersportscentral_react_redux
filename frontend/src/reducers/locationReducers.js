@@ -16,6 +16,7 @@ const locationReducers = (state = initialState, action) => {
         locationErrors: {}
       }
     case 'UPDATE_LOCATION':
+      console.log("action", action.location)
       return {
         ...state,
         location: action.location,
