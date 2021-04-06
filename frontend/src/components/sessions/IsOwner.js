@@ -7,7 +7,7 @@ class IsOwner extends React.Component {
         let isOwner
         switch(this.props.type){
           case 'location':
-            isOwner = this.props.state.users.user.id === this.props.location.user_id;
+            isOwner = this.props.state.usersState.user.id === this.props.location.user_id;
             break;
           default:
             isOwner = false;

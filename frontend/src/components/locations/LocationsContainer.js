@@ -32,7 +32,7 @@ class LocationsContainer extends Component {
   }
 
   render() {
-    const {locationsFetched} = this.props.locations
+    const {locationsFetched} = this.props.locationsState
     if(this.state.error){
       return (
         <ErrorsList state={this.state}/>
@@ -56,7 +56,7 @@ class LocationsContainer extends Component {
 };
 
 const mapStateToProps = state => {
-  return {locations: state.locations}
+  return {locationsState: state.locationsState}
 }
 
 const mapDispatchToProps = (dispatch) => {

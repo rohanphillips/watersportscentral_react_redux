@@ -41,7 +41,7 @@ class Login extends Component {
     if (navigate) {
       return <Redirect to="/signup" />
     }
-    if(this.props.state.site.isLogin) {
+    if(this.props.state.siteState.isLogin) {
       return <Redirect to="/"/>
     }
     return (

@@ -17,7 +17,7 @@ class LocationsList extends Component {
           </NavLink>
         </LoggedIn>        
         {
-          this.props.state.locations.locations.map( location => (
+          this.props.locationsState.locations.map( location => (
             <React.Fragment key={location.id}>
               <LocationFlat data={location} deleteLocation={this.props.deleteLocation}/>
             </React.Fragment>
@@ -29,7 +29,7 @@ class LocationsList extends Component {
 };
 
 const mapStateToProps = (state) => {
-  return {state}
+  return {locationsState: state.locationsState};
 }
 
 const mapDispatchToProps = dispatch => {

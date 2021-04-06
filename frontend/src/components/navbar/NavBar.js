@@ -26,7 +26,7 @@ function Signout(data){
 }
 
 function DisplayUsers(data){
-  const {admin} = data.state.users.user;
+  const {admin} = data.state.usersState.user;
   if (admin){
     return <NavLink to="/users"><button className="btn-amber">Users</button></NavLink>;
   }
@@ -35,7 +35,7 @@ function DisplayUsers(data){
 
 function Profile(data){
   if (data.login){
-    const {id} = data.state.users.user;
+    const {id} = data.state.usersState.user;
     const link = `/users/${id}`
     return <NavLink to={`${link}`}><button className="btn-amber">Profile</button></NavLink>;
   }
@@ -44,7 +44,7 @@ function Profile(data){
 
 class NavBar extends Component{  
   render(){
-    const {isLogin} = this.props.state.site;
+    const {isLogin} = this.props.state.siteState;
     return (
       <div className="flex-col border-red-800 ...">        
         {/* <nav > */}

@@ -10,7 +10,7 @@ class UsersList extends Component {
       <div> 
           <h1>Users List</h1>
           {
-            this.props.state.users.users.map(user => (
+            this.props.state.usersState.users.map(user => (
               <React.Fragment key={user.id}>
                 <UserFlat user={user} deleteUser={this.props.deleteUser}/>
               </React.Fragment>

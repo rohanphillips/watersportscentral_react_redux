@@ -58,7 +58,7 @@ class App extends Component {
 
 
   render() {
-    if(this.props.state.site.isLogin === false){
+    if(this.props.siteState.isLogin === false){
       this.getUser();
     }   
     return (
@@ -99,7 +99,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  return {state}
+  return {siteState: state.siteState};
 }
 
 const mapDispatchToProps = dispatch => {

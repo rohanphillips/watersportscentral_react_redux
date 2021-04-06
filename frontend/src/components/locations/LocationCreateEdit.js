@@ -16,7 +16,8 @@ class LocationCreate extends Component {
 
   componentDidMount(){
     if (this.editMode()) {
-      const location = this.props.data.props.state.locations.locations.find(location => location.id === this.locationID())
+      console.log("R", this.props)
+      const location = this.props.data.props.locationsState.locations.find(location => location.id === this.locationID())
       this.setState({
         name: location.name,
         description: location.description,
@@ -108,7 +109,7 @@ class LocationCreate extends Component {
   
   render() {
     if (this.state.isAccepted){
-      const {id} = this.props.data.props.state.locations.location;
+      const {id} = this.props.data.props.locationsState.location;
       return (
         <Redirect to={`/locations/${id}`}/>
       )

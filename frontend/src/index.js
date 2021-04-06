@@ -12,7 +12,7 @@ import locationReducers from './reducers/locationReducers'
 import { composeWithDevTools } from "redux-devtools-extension";
 // import reportWebVitals from './reportWebVitals';
 
-const rootReducer = combineReducers({site: siteReducers, users: userReducers, locations: locationReducers});
+const rootReducer = combineReducers({siteState: siteReducers, usersState: userReducers, locationsState: locationReducers});
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
 
 ReactDOM.render(
