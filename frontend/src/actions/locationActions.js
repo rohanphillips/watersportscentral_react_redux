@@ -56,10 +56,10 @@ export const createLocation = (newLocation) => {
 
 export const updateLocation = (updateLocation) => {      
   return async (dispatch) => {
-    async function myFetch () {
-      const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin'),
-      "Content-Type": "application/json"};
-      const {id} = updateLocation.location
+    const header = {'Authorization': 'JWT ' + localStorage.getItem('loggedin'),
+    "Content-Type": "application/json"};
+    const {id} = updateLocation.location
+    try {
       let response = await fetch(`${LOCATIONS_URL}/${id}`,{
         method: 'PATCH',
         headers: header,
@@ -67,16 +67,16 @@ export const updateLocation = (updateLocation) => {
         crossdomain: true,
       })
       if(!response.ok){
-        const error = await response.json()
-        return Promise.reject(error.errors)
+        const err = await response.json()
+        return Promise.reject(err.errors)
       }
-      return await response.json()
+      const data =  await response.json()
+      dispatch({type: "UPDATE_LOCATION", location: data.location, locations: data.locations});
+      return data
+    } catch (err){
+      return {connection: [err]}
+
     }
-    return myFetch().then((res) => {
-      dispatch({type: 'UPDATE_LOCATION', location: res.location, locations: res.locations})
-    }).catch((e) => {      
-      return Promise.reject(e)
-    })
   }  
 } 
 
