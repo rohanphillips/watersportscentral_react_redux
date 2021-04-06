@@ -5,7 +5,8 @@ import IsOwner from '../sessions/IsOwner'
 
 const LocationShow = (data) => {
   const id = parseInt(data.data.routerProps.match.params.id)
-  const location = data.data.props.state.locations.locations.find(location => location.id === id);
+  console.log("data", data)
+  const location = data.data.props.locations.locations.find(location => location.id === id);
   
   return (
     <div>

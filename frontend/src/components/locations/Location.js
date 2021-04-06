@@ -5,7 +5,7 @@ import LocationCreateEdit from './LocationCreateEdit'
 
 const Location = (data) => {
   const id = parseInt(data.routerProps.match.params.id)
-  const location = data.props.state.locations.locations.find(location => location.id === id)
+  const location = data.props.locations.locations.find(location => location.id === id)
   const conditions = ["create", "edit"]
   if (conditions.some(st => data.routerProps.location.pathname.includes(st))) {
     return (
