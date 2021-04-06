@@ -52,8 +52,8 @@ class LocationCreate extends Component {
     console.log("data", data)
     console.log("editMode", this.editMode())
     if (this.editMode() === false){
-      const {newLocation} = this.props;
-      newLocation(data)
+      const {createLocation} = this.props;
+      createLocation(data)
         .then(locationJson =>{   
           this.setState({
             isAccepted: true
@@ -150,7 +150,7 @@ class LocationCreate extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  newLocation: payload => dispatch(createLocation(payload)),
+  createLocation: payload => dispatch(createLocation(payload)),
   updateLocation: payload => dispatch(updateLocation(payload))
 })
  
