@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 class AdminAccess extends React.Component {
 
     render() {
-        const isAdmin = this.props.state.usersState.user.admin;
+        const isAdmin = this.props.user.admin;
         const isAuthenticated = localStorage.getItem('loggedin') != null && isAdmin;
         return isAuthenticated ? (
             this.props.children
@@ -15,7 +15,7 @@ class AdminAccess extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return {state}
+    return {user: state.usersState.user}
   }
 
 export default connect(mapStateToProps)(AdminAccess);
