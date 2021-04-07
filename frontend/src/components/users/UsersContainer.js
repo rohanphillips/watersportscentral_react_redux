@@ -40,7 +40,7 @@ class UsersContainer extends Component {
           <AdminAccess>
             <Route exact path="/users" render={routerProps => <UsersList {...routerProps}/>}></Route>
           </AdminAccess>            
-          <Route exact path="/users/:id" render={routerProps => <User {...routerProps} props={this.props} />}/>
+          <Route exact path="/users/:id" render={routerProps => <User {...routerProps} props={this.props.usersState} />}/>
           <Route exact path="/users/:id/edit" render={routerProps => <UserEdit {...routerProps} />}/>
       </div>
     )

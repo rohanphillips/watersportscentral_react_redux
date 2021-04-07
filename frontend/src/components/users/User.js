@@ -6,6 +6,7 @@ import AdminAccess from '../sessions/AdminAccess'
 
 const User = (data) => {
   const id = parseInt(data.match.params.id)
+  console.log("User", data)
   const user = data.props.users.find(user => user.id === id);
   if (user === undefined){
     return <p>No Access</p>
