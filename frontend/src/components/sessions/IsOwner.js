@@ -21,7 +21,7 @@ class IsOwner extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return {state}
+    return {user: state.usersState.user}
   }
 
 export default connect(mapStateToProps)(IsOwner);
