@@ -3,9 +3,10 @@ import UserFlat from './UserFlat'
 import { connect } from 'react-redux';
 import {deleteUser} from '../../actions/userActions'
 
-class UsersList extends Component {   
-
+class UsersList extends Component { 
+  
   render() {
+    console.log("propss", this.props);
     return (
       <div> 
           <h1>Users List</h1>

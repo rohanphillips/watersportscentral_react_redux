@@ -41,14 +41,14 @@ class UsersContainer extends Component {
             <Route exact path="/users" render={routerProps => <UsersList {...routerProps}/>}></Route>
           </AdminAccess>            
           <Route exact path="/users/:id" render={routerProps => <User {...routerProps} props={this.props} />}/>
-          <Route exact path="/users/:id/edit" render={routerProps => <UserEdit {...routerProps} state={this.props.state} />}/>
+          <Route exact path="/users/:id/edit" render={routerProps => <UserEdit {...routerProps} />}/>
       </div>
     )
   };
 };
 
 const mapStateToProps = state => {
-  return {state}
+  return {usersState: state.usersState}
 }
 
 const mapDispatchToProps = dispatch => {

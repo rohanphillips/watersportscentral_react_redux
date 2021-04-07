@@ -6,7 +6,7 @@ import AdminAccess from '../sessions/AdminAccess'
 
 const User = (data) => {
   const id = parseInt(data.match.params.id)
-  const user = data.props.state.usersState.users.find(user => user.id === id);
+  const user = data.props.users.find(user => user.id === id);
   if (user === undefined){
     return <p>No Access</p>
   }
