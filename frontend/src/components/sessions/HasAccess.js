@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect} from 'react-redux';
 import {Redirect} from 'react-router-dom'
 
 class HasAccess extends React.Component {
@@ -13,8 +12,4 @@ class HasAccess extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {state}
-  }
-
-export default connect(mapStateToProps)(HasAccess);
+export default HasAccess;
