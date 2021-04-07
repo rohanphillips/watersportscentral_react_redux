@@ -9,14 +9,14 @@ import Signup from './Signup';
 const SessionsContainer = ({ match, state}) => {
   return (
     <div>
-      <Route exact path="/login" render={routerProps => <Login {...routerProps} state={state}/>} />
-      <Route exact path="/signup" render={routerProps => <Signup {...routerProps} state={state}/>} />
+      <Route exact path="/login" render={routerProps => <Login {...routerProps } />} />
+      <Route exact path="/signup" render={routerProps => <Signup {...routerProps}/>} />
     </div>
   );
 };
 
 const mapStateToProps = state => {
-  return {state}
+  return {isLogin: state.siteState.isLogin};
 }
 
 export default connect(mapStateToProps)(SessionsContainer);

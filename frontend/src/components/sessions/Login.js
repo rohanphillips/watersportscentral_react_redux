@@ -4,7 +4,6 @@ import {Redirect} from "react-router-dom";
 import { loginUser } from '../../actions/siteActions';
 
 class Login extends Component {  
-
   constructor(props) {
     super(props);
     this.state = {
@@ -41,7 +40,7 @@ class Login extends Component {
     if (navigate) {
       return <Redirect to="/signup" />
     }
-    if(this.props.state.siteState.isLogin) {
+    if(this.props.isLogin) {
       return <Redirect to="/"/>
     }
     return (
