@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 class IsOwner extends React.Component {    
     render() {
         let isOwner
-        console.log("isOwner", this.props);
         switch(this.props.type){
           case 'location':
             isOwner = this.props.usersState.user.id === this.props.location.user_id;
