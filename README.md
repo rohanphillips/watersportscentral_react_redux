@@ -6,11 +6,9 @@
 ![GitHub stars](https://img.shields.io/github/stars/rohanphillips/watersportscentral?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/rohanphillips/watersportscentral?style=social)
 
-WaterSportsCentral is a CMS that allows users to add/edit/collaborate on Water Sporting events and locations.
+WaterSportsCentral is a CMS that allows users to add/edit/collaborate on Water Sporting locations.
 
 The overarching theme is to compile a full list of all water sporting types, locations where they're conducted and events both past and present that are conducted at each location.  There is currently a need to have a central place where a user can come to obtain this kind of information.
-
-
 
 ## Contributing to WaterSportsCentral
 <!--- If your README is long or you have some specific process or steps you want contributors to follow, consider creating a separate CONTRIBUTING.md file--->
@@ -34,15 +32,13 @@ Alternatively see the GitHub documentation on [creating a pull request](https://
 ## Initializing WaterSportsCentral Frontend
 
 1. Navigate to the frontend folder - cd frontend
-2. Start development server - yard start
+2. Start development server - yarn start
 
 ## Contributors
 
 Thanks to the following people who have contributed to this project:
 
 * [@rohanphillips](https://github.com/rohanphillips) 📖
-
-You might want to consider using something like the [All Contributors](https://github.com/all-contributors/all-contributors) specification and its [emoji key](https://allcontributors.org/docs/en/emoji-key).
 
 ## Contact
 
