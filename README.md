@@ -6,13 +6,13 @@
 ![GitHub stars](https://img.shields.io/github/stars/rohanphillips/watersportscentral?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/rohanphillips/watersportscentral?style=social)
 
-WaterSportsCentral is a CMS that allows users to add/edit/collaborate on Water Sporting locations. 
+WaterSportsCentral is a CMS that allows users to add/edit/collaborate on Water Sporting locations.
 
-The overarching theme is to compile a full list of all water sporting types, locations where they're conducted and events both past and present that are conducted at each location.  There is currently a need to have a central place where a user can come to obtain this kind of information. 
+The overarching theme is to compile a full list of all water sporting types, locations where they're conducted and events both past and present that are conducted at each location.  There is currently a need to have a central place where a user can come to obtain this kind of information.
 
 ## Contributing to WaterSportsCentral
 <!--- If your README is long or you have some specific process or steps you want contributors to follow, consider creating a separate CONTRIBUTING.md file--->
-To contribute to WaterSportsCentral, follow these steps: 
+To contribute to WaterSportsCentral, follow these steps:
 
 1. Fork this repository.
 2. Create a branch: `git checkout -b <branch_name>`.
