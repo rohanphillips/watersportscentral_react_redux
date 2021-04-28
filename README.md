@@ -6,9 +6,27 @@
 ![GitHub stars](https://img.shields.io/github/stars/rohanphillips/watersportscentral?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/rohanphillips/watersportscentral?style=social)
 
+## Description
+
 WaterSportsCentral is a CMS that allows users to add/edit/collaborate on Water Sporting locations.
 
 The overarching theme is to compile a full list of all water sporting types, locations where they're conducted and events both past and present that are conducted at each location.  There is currently a need to have a central place where a user can come to obtain this kind of information.
+
+## Quick links
+
+![Demo Gif](https://github.com/rohanphillips/watersportscentral_react_redux/blob/main/frontend/src/assets/images/WaterSportsCentralDemoReact.gif?raw=true)
+
+[Demo Video](https://youtu.be/NFAOGPDlPWI)
+
+## Roadmap
+
+1. Split front/back end folders in preparation for Heroku deployment.
+2. Complete all user log in/profile functionality.
+3. Add some Oauth components.
+4. Complete full functionality for Locations.  This will include maps, comments, questions and perhaps event blog posts associated with the location.
+5. Build out the Sports section with identical funcationality to Locations.
+6. Build out the Events section with identical functionality to Sports.
+7. Launch for public use.
 
 ## Contributing to WaterSportsCentral
 <!--- If your README is long or you have some specific process or steps you want contributors to follow, consider creating a separate CONTRIBUTING.md file--->
