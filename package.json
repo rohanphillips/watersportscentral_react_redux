@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "trim-newlines": "^4.0.1"
+    "trim-newlines": "^4.0.1",
+    "yarn-upgrade-all": "^0.5.4"
   }
 }
