@@ -16,6 +16,7 @@ export const getLocations = () => {
         return response.json().then(errors => Promise.reject(errors))
       }
     }).then((data) => {    
+      console.log("GetData:", data)
       dispatch({type: 'GET_LOCATIONS', locations: data.locations})
       return data
     }).catch((error) => {
